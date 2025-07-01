@@ -2,6 +2,9 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.faction_ranked_war_report_response import \
+    FactionRankedWarReportResponse
+
 
 class FactionRankedWarId(BaseQuery):
     """
@@ -27,7 +30,7 @@ class FactionRankedWarId(BaseQuery):
 
     rankedwarreport = Path(
         "/faction/{rankedWarId}/rankedwarreport",
-        None,
+        FactionRankedWarReportResponse,
         rankedWarId=Parameter("rankedWarId", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -35,4 +38,4 @@ class FactionRankedWarId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="faction_rankedWarId")

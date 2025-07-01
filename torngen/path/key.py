@@ -2,6 +2,9 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.key_info_response import KeyInfoResponse
+from ..schema.key_log_response import KeyLogResponse
+
 
 class Key(BaseQuery):
     """
@@ -40,14 +43,14 @@ class Key(BaseQuery):
 
     info = Path(
         "/key/info",
-        None,
+        KeyInfoResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     log = Path(
         "/key/log",
-        None,
+        KeyLogResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -56,4 +59,4 @@ class Key(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="key")

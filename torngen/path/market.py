@@ -2,6 +2,10 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.bazaar_response import BazaarResponse
+from ..schema.market_lookup_response import MarketLookupResponse
+from ..schema.timestamp_response import TimestampResponse
+
 
 class Market(BaseQuery):
     """
@@ -49,7 +53,7 @@ class Market(BaseQuery):
 
     bazaar = Path(
         "/market/bazaar",
-        None,
+        BazaarResponse,
         cat=Parameter("cat", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -57,18 +61,18 @@ class Market(BaseQuery):
     )
     lookup = Path(
         "/market/lookup",
-        None,
+        MarketLookupResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     timestamp = Path(
         "/market/timestamp",
-        None,
+        TimestampResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="market")

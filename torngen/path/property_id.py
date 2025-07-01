@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.user_property_response import UserPropertyResponse
+
 
 class PropertyId(BaseQuery):
     """
@@ -27,7 +29,7 @@ class PropertyId(BaseQuery):
 
     property = Path(
         "/property/{id}/property",
-        None,
+        UserPropertyResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -35,4 +37,4 @@ class PropertyId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="property_id")

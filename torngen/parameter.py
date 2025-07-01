@@ -9,4 +9,7 @@ class Parameter:
         required: bool = False,
         deprecated: bool = False,
     ):
-        pass
+        self.parameter_name: str = parameter_name
+        self.parameter_in: typing.Literal["query", "path"] = parameter_in
+        self.required: bool = required
+        self.deprecated: bool = deprecated

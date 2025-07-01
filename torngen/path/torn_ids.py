@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.torn_items_response import TornItemsResponse
+
 
 class TornIds(BaseQuery):
     """
@@ -28,7 +30,7 @@ class TornIds(BaseQuery):
 
     items = Path(
         "/torn/{ids}/items",
-        None,
+        TornItemsResponse,
         ids=Parameter("ids", "path", required=True, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -37,4 +39,4 @@ class TornIds(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="torn_ids")

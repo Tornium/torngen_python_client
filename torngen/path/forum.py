@@ -2,6 +2,11 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.forum_categories_response import ForumCategoriesResponse
+from ..schema.forum_lookup_response import ForumLookupResponse
+from ..schema.forum_threads_response import ForumThreadsResponse
+from ..schema.timestamp_response import TimestampResponse
+
 
 class Forum(BaseQuery):
     """
@@ -63,14 +68,14 @@ class Forum(BaseQuery):
 
     lookup = Path(
         "/forum/lookup",
-        None,
+        ForumLookupResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     threads = Path(
         "/forum/threads",
-        None,
+        ForumThreadsResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
@@ -81,18 +86,18 @@ class Forum(BaseQuery):
     )
     timestamp = Path(
         "/forum/timestamp",
-        None,
+        TimestampResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     categories = Path(
         "/forum/categories",
-        None,
+        ForumCategoriesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="forum")

@@ -2,6 +2,18 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.faction_basic_response import FactionBasicResponse
+from ..schema.faction_chains_response import FactionChainsResponse
+from ..schema.faction_hof_response import FactionHofResponse
+from ..schema.faction_members_response import FactionMembersResponse
+from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
+from ..schema.faction_raids_response import FactionRaidsResponse
+from ..schema.faction_ranked_war_response import FactionRankedWarResponse
+from ..schema.faction_territories_reponse import FactionTerritoriesReponse
+from ..schema.faction_territory_wars_history_response import \
+    FactionTerritoryWarsHistoryResponse
+from ..schema.faction_wars_response import FactionWarsResponse
+
 
 class FactionId(BaseQuery):
     """
@@ -140,7 +152,7 @@ class FactionId(BaseQuery):
 
     hof = Path(
         "/faction/{id}/hof",
-        None,
+        FactionHofResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -148,7 +160,7 @@ class FactionId(BaseQuery):
     )
     wars = Path(
         "/faction/{id}/wars",
-        None,
+        FactionWarsResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -156,7 +168,7 @@ class FactionId(BaseQuery):
     )
     rankedwars = Path(
         "/faction/{id}/rankedwars",
-        None,
+        FactionRankedWarResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -164,7 +176,7 @@ class FactionId(BaseQuery):
     )
     chains = Path(
         "/faction/{id}/chains",
-        None,
+        FactionChainsResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -176,7 +188,7 @@ class FactionId(BaseQuery):
     )
     raids = Path(
         "/faction/{id}/raids",
-        None,
+        FactionRaidsResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -184,7 +196,7 @@ class FactionId(BaseQuery):
     )
     chain = Path(
         "/faction/{id}/chain",
-        None,
+        FactionOngoingChainResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -192,7 +204,7 @@ class FactionId(BaseQuery):
     )
     members = Path(
         "/faction/{id}/members",
-        None,
+        FactionMembersResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         striptags=Parameter("striptags", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -201,7 +213,7 @@ class FactionId(BaseQuery):
     )
     territory = Path(
         "/faction/{id}/territory",
-        None,
+        FactionTerritoriesReponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -209,7 +221,7 @@ class FactionId(BaseQuery):
     )
     basic = Path(
         "/faction/{id}/basic",
-        None,
+        FactionBasicResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -217,7 +229,7 @@ class FactionId(BaseQuery):
     )
     territorywars = Path(
         "/faction/{id}/territorywars",
-        None,
+        FactionTerritoryWarsHistoryResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -225,4 +237,4 @@ class FactionId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="faction_id")

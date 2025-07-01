@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.forum_threads_response import ForumThreadsResponse
+
 
 class ForumCategoryIds(BaseQuery):
     """
@@ -31,7 +33,7 @@ class ForumCategoryIds(BaseQuery):
 
     threads = Path(
         "/forum/{categoryIds}/threads",
-        None,
+        ForumThreadsResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
@@ -43,4 +45,4 @@ class ForumCategoryIds(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="forum_categoryIds")

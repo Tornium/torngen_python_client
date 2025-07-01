@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.faction_chain_report_response import FactionChainReportResponse
+
 
 class FactionChainId(BaseQuery):
     """
@@ -27,7 +29,7 @@ class FactionChainId(BaseQuery):
 
     chainreport = Path(
         "/faction/{chainId}/chainreport",
-        None,
+        FactionChainReportResponse,
         chainId=Parameter("chainId", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -35,4 +37,4 @@ class FactionChainId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="faction_chainId")

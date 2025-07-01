@@ -2,6 +2,9 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.market_properties_response import MarketPropertiesResponse
+from ..schema.market_rentals_response import MarketRentalsResponse
+
 
 class MarketPropertyTypeId(BaseQuery):
     """
@@ -45,7 +48,7 @@ class MarketPropertyTypeId(BaseQuery):
 
     properties = Path(
         "/market/{propertyTypeId}/properties",
-        None,
+        MarketPropertiesResponse,
         propertyTypeId=Parameter(
             "propertyTypeId", "path", required=True, deprecated=False
         ),
@@ -58,7 +61,7 @@ class MarketPropertyTypeId(BaseQuery):
     )
     rentals = Path(
         "/market/{propertyTypeId}/rentals",
-        None,
+        MarketRentalsResponse,
         propertyTypeId=Parameter(
             "propertyTypeId", "path", required=True, deprecated=False
         ),
@@ -71,4 +74,4 @@ class MarketPropertyTypeId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="market_propertyTypeId")

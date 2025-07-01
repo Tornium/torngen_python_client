@@ -2,6 +2,34 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.faction_attacks_full_response import FactionAttacksFullResponse
+from ..schema.faction_attacks_response import FactionAttacksResponse
+from ..schema.reports_response import ReportsResponse
+from ..schema.revives_full_response import RevivesFullResponse
+from ..schema.revives_response import RevivesResponse
+from ..schema.timestamp_response import TimestampResponse
+from ..schema.user_bounties_response import UserBountiesResponse
+from ..schema.user_calendar_response import UserCalendarResponse
+from ..schema.user_education_response import UserEducationResponse
+from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
+from ..schema.user_faction_balance_response import UserFactionBalanceResponse
+from ..schema.user_forum_feed_response import UserForumFeedResponse
+from ..schema.user_forum_friends_response import UserForumFriendsResponse
+from ..schema.user_forum_posts_response import UserForumPostsResponse
+from ..schema.user_forum_subscribed_threads_response import \
+    UserForumSubscribedThreadsResponse
+from ..schema.user_forum_threads_response import UserForumThreadsResponse
+from ..schema.user_hof_response import UserHofResponse
+from ..schema.user_item_market_response import UserItemMarketResponse
+from ..schema.user_job_ranks_response import UserJobRanksResponse
+from ..schema.user_list_response import UserListResponse
+from ..schema.user_lookup_response import UserLookupResponse
+from ..schema.user_organized_crime_response import UserOrganizedCrimeResponse
+from ..schema.user_personal_stats_response import UserPersonalStatsResponse
+from ..schema.user_properties_response import UserPropertiesResponse
+from ..schema.user_property_response import UserPropertyResponse
+from ..schema.user_races_response import UserRacesResponse
+
 
 class User(BaseQuery):
     """
@@ -353,21 +381,21 @@ class User(BaseQuery):
 
     education = Path(
         "/user/education",
-        None,
+        UserEducationResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     forumfriends = Path(
         "/user/forumfriends",
-        None,
+        UserForumFriendsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     attacks = Path(
         "/user/attacks",
-        None,
+        FactionAttacksResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -378,21 +406,21 @@ class User(BaseQuery):
     )
     bounties = Path(
         "/user/bounties",
-        None,
+        UserBountiesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     lookup = Path(
         "/user/lookup",
-        None,
+        UserLookupResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     forumposts = Path(
         "/user/forumposts",
-        None,
+        UserForumPostsResponse,
         striptags=Parameter("striptags", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -404,7 +432,7 @@ class User(BaseQuery):
     )
     list = Path(
         "/user/list",
-        None,
+        UserListResponse,
         cat=Parameter("cat", "query", required=True, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
@@ -415,14 +443,14 @@ class User(BaseQuery):
     )
     factionbalance = Path(
         "/user/factionbalance",
-        None,
+        UserFactionBalanceResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     personalstats = Path(
         "/user/personalstats",
-        None,
+        UserPersonalStatsResponse,
         cat=Parameter("cat", "query", required=False, deprecated=False),
         stat=Parameter("stat", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -431,7 +459,7 @@ class User(BaseQuery):
     )
     properties = Path(
         "/user/properties",
-        None,
+        UserPropertiesResponse,
         offset=Parameter("offset", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -440,21 +468,21 @@ class User(BaseQuery):
     )
     property = Path(
         "/user/property",
-        None,
+        UserPropertyResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     forumsubscribedthreads = Path(
         "/user/forumsubscribedthreads",
-        None,
+        UserForumSubscribedThreadsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     reports = Path(
         "/user/reports",
-        None,
+        ReportsResponse,
         cat=Parameter("cat", "query", required=False, deprecated=False),
         target=Parameter("target", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
@@ -465,7 +493,7 @@ class User(BaseQuery):
     )
     races = Path(
         "/user/races",
-        None,
+        UserRacesResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
@@ -477,35 +505,35 @@ class User(BaseQuery):
     )
     calendar = Path(
         "/user/calendar",
-        None,
+        UserCalendarResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     forumfeed = Path(
         "/user/forumfeed",
-        None,
+        UserForumFeedResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     hof = Path(
         "/user/hof",
-        None,
+        UserHofResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     jobranks = Path(
         "/user/jobranks",
-        None,
+        UserJobRanksResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     forumthreads = Path(
         "/user/forumthreads",
-        None,
+        UserForumThreadsResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
@@ -516,14 +544,14 @@ class User(BaseQuery):
     )
     enlistedcars = Path(
         "/user/enlistedcars",
-        None,
+        UserEnlistedCarsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     attacksfull = Path(
         "/user/attacksfull",
-        None,
+        FactionAttacksFullResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -534,14 +562,14 @@ class User(BaseQuery):
     )
     timestamp = Path(
         "/user/timestamp",
-        None,
+        TimestampResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     itemmarket = Path(
         "/user/itemmarket",
-        None,
+        UserItemMarketResponse,
         offset=Parameter("offset", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -549,14 +577,14 @@ class User(BaseQuery):
     )
     organizedcrime = Path(
         "/user/organizedcrime",
-        None,
+        UserOrganizedCrimeResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     revives = Path(
         "/user/revives",
-        None,
+        RevivesResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -568,7 +596,7 @@ class User(BaseQuery):
     )
     revivesFull = Path(
         "/user/revivesFull",
-        None,
+        RevivesFullResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -580,4 +608,4 @@ class User(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="user")

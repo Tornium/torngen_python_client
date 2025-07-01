@@ -2,6 +2,9 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.bazaar_response_specialized import BazaarResponseSpecialized
+from ..schema.market_item_market_response import MarketItemMarketResponse
+
 
 class MarketId(BaseQuery):
     """
@@ -41,7 +44,7 @@ class MarketId(BaseQuery):
 
     itemmarket = Path(
         "/market/{id}/itemmarket",
-        None,
+        MarketItemMarketResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         bonus=Parameter("bonus", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
@@ -51,7 +54,7 @@ class MarketId(BaseQuery):
     )
     bazaar = Path(
         "/market/{id}/bazaar",
-        None,
+        BazaarResponseSpecialized,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -59,4 +62,4 @@ class MarketId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="market_id")

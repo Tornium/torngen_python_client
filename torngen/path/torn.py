@@ -2,6 +2,24 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.attack_log_response import AttackLogResponse
+from ..schema.timestamp_response import TimestampResponse
+from ..schema.torn_bounties_response import TornBountiesResponse
+from ..schema.torn_calendar_response import TornCalendarResponse
+from ..schema.torn_crimes_response import TornCrimesResponse
+from ..schema.torn_education_response import TornEducationResponse
+from ..schema.torn_faction_hof_response import TornFactionHofResponse
+from ..schema.torn_faction_tree_response import TornFactionTreeResponse
+from ..schema.torn_hof_response import TornHofResponse
+from ..schema.torn_item_ammo_response import TornItemAmmoResponse
+from ..schema.torn_item_mods_response import TornItemModsResponse
+from ..schema.torn_items_response import TornItemsResponse
+from ..schema.torn_log_categories_response import TornLogCategoriesResponse
+from ..schema.torn_log_types_response import TornLogTypesResponse
+from ..schema.torn_lookup_response import TornLookupResponse
+from ..schema.torn_properties import TornProperties
+from ..schema.torn_territories_response import TornTerritoriesResponse
+
 
 class Torn(BaseQuery):
     """
@@ -219,14 +237,14 @@ class Torn(BaseQuery):
 
     logtypes = Path(
         "/torn/logtypes",
-        None,
+        TornLogTypesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     attacklog = Path(
         "/torn/attacklog",
-        None,
+        AttackLogResponse,
         log=Parameter("log", "query", required=True, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -237,7 +255,7 @@ class Torn(BaseQuery):
     )
     bounties = Path(
         "/torn/bounties",
-        None,
+        TornBountiesResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -246,35 +264,35 @@ class Torn(BaseQuery):
     )
     properties = Path(
         "/torn/properties",
-        None,
+        TornProperties,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     education = Path(
         "/torn/education",
-        None,
+        TornEducationResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     itemmods = Path(
         "/torn/itemmods",
-        None,
+        TornItemModsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     timestamp = Path(
         "/torn/timestamp",
-        None,
+        TimestampResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     territory = Path(
         "/torn/territory",
-        None,
+        TornTerritoriesResponse,
         ids=Parameter("ids", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
@@ -284,28 +302,28 @@ class Torn(BaseQuery):
     )
     factiontree = Path(
         "/torn/factiontree",
-        None,
+        TornFactionTreeResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     lookup = Path(
         "/torn/lookup",
-        None,
+        TornLookupResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     itemammo = Path(
         "/torn/itemammo",
-        None,
+        TornItemAmmoResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     factionhof = Path(
         "/torn/factionhof",
-        None,
+        TornFactionHofResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         cat=Parameter("cat", "query", required=True, deprecated=False),
@@ -315,7 +333,7 @@ class Torn(BaseQuery):
     )
     items = Path(
         "/torn/items",
-        None,
+        TornItemsResponse,
         cat=Parameter("cat", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -324,21 +342,21 @@ class Torn(BaseQuery):
     )
     crimes = Path(
         "/torn/crimes",
-        None,
+        TornCrimesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     calendar = Path(
         "/torn/calendar",
-        None,
+        TornCalendarResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     hof = Path(
         "/torn/hof",
-        None,
+        TornHofResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         cat=Parameter("cat", "query", required=True, deprecated=False),
@@ -348,11 +366,11 @@ class Torn(BaseQuery):
     )
     logcategories = Path(
         "/torn/logcategories",
-        None,
+        TornLogCategoriesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="torn")

@@ -2,6 +2,13 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.racing_car_upgrades_response import RacingCarUpgradesResponse
+from ..schema.racing_cars_response import RacingCarsResponse
+from ..schema.racing_lookup_response import RacingLookupResponse
+from ..schema.racing_races_response import RacingRacesResponse
+from ..schema.racing_tracks_response import RacingTracksResponse
+from ..schema.timestamp_response import TimestampResponse
+
 
 class Racing(BaseQuery):
     """
@@ -86,42 +93,42 @@ class Racing(BaseQuery):
 
     tracks = Path(
         "/racing/tracks",
-        None,
+        RacingTracksResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     timestamp = Path(
         "/racing/timestamp",
-        None,
+        TimestampResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     carupgrades = Path(
         "/racing/carupgrades",
-        None,
+        RacingCarUpgradesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     lookup = Path(
         "/racing/lookup",
-        None,
+        RacingLookupResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     cars = Path(
         "/racing/cars",
-        None,
+        RacingCarsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     races = Path(
         "/racing/races",
-        None,
+        RacingRacesResponse,
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -133,4 +140,4 @@ class Racing(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="racing")

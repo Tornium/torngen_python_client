@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.torn_log_types_response import TornLogTypesResponse
+
 
 class TornLogCategoryId(BaseQuery):
     """
@@ -27,7 +29,7 @@ class TornLogCategoryId(BaseQuery):
 
     logtypes = Path(
         "/torn/{logCategoryId}/logtypes",
-        None,
+        TornLogTypesResponse,
         logCategoryId=Parameter(
             "logCategoryId", "path", required=True, deprecated=False
         ),
@@ -37,4 +39,4 @@ class TornLogCategoryId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="torn_logCategoryId")

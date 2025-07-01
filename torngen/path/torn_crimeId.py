@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.torn_subcrimes_response import TornSubcrimesResponse
+
 
 class TornCrimeId(BaseQuery):
     """
@@ -27,7 +29,7 @@ class TornCrimeId(BaseQuery):
 
     subcrimes = Path(
         "/torn/{crimeId}/subcrimes",
-        None,
+        TornSubcrimesResponse,
         crimeId=Parameter("crimeId", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -35,4 +37,4 @@ class TornCrimeId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="torn_crimeId")

@@ -2,6 +2,9 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.forum_posts_response import ForumPostsResponse
+from ..schema.forum_thread_response import ForumThreadResponse
+
 
 class ForumThreadId(BaseQuery):
     """
@@ -41,7 +44,7 @@ class ForumThreadId(BaseQuery):
 
     thread = Path(
         "/forum/{threadId}/thread",
-        None,
+        ForumThreadResponse,
         threadId=Parameter("threadId", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -49,7 +52,7 @@ class ForumThreadId(BaseQuery):
     )
     posts = Path(
         "/forum/{threadId}/posts",
-        None,
+        ForumPostsResponse,
         offset=Parameter("offset", "query", required=False, deprecated=False),
         striptags=Parameter("striptags", "query", required=False, deprecated=False),
         threadId=Parameter("threadId", "path", required=True, deprecated=False),
@@ -59,4 +62,4 @@ class ForumThreadId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="forum_threadId")

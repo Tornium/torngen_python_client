@@ -2,6 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.racing_track_records_response import RacingTrackRecordsResponse
+
 
 class RacingTrackId(BaseQuery):
     """
@@ -28,7 +30,7 @@ class RacingTrackId(BaseQuery):
 
     records = Path(
         "/racing/{trackId}/records",
-        None,
+        RacingTrackRecordsResponse,
         trackId=Parameter("trackId", "path", required=True, deprecated=False),
         cat=Parameter("cat", "query", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -37,4 +39,4 @@ class RacingTrackId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="racing_trackId")

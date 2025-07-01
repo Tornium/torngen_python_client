@@ -2,6 +2,14 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.user_bounties_response import UserBountiesResponse
+from ..schema.user_forum_posts_response import UserForumPostsResponse
+from ..schema.user_forum_threads_response import UserForumThreadsResponse
+from ..schema.user_hof_response import UserHofResponse
+from ..schema.user_personal_stats_response import UserPersonalStatsResponse
+from ..schema.user_properties_response import UserPropertiesResponse
+from ..schema.user_property_response import UserPropertyResponse
+
 
 class UserId(BaseQuery):
     """
@@ -118,7 +126,7 @@ class UserId(BaseQuery):
 
     personalstats = Path(
         "/user/{id}/personalstats",
-        None,
+        UserPersonalStatsResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         cat=Parameter("cat", "query", required=False, deprecated=False),
         stat=Parameter("stat", "query", required=False, deprecated=False),
@@ -128,7 +136,7 @@ class UserId(BaseQuery):
     )
     forumposts = Path(
         "/user/{id}/forumposts",
-        None,
+        UserForumPostsResponse,
         striptags=Parameter("striptags", "query", required=False, deprecated=False),
         id=Parameter("id", "path", required=True, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
@@ -141,7 +149,7 @@ class UserId(BaseQuery):
     )
     bounties = Path(
         "/user/{id}/bounties",
-        None,
+        UserBountiesResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -149,7 +157,7 @@ class UserId(BaseQuery):
     )
     properties = Path(
         "/user/{id}/properties",
-        None,
+        UserPropertiesResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
@@ -159,7 +167,7 @@ class UserId(BaseQuery):
     )
     hof = Path(
         "/user/{id}/hof",
-        None,
+        UserHofResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -167,7 +175,7 @@ class UserId(BaseQuery):
     )
     property = Path(
         "/user/{id}/property",
-        None,
+        UserPropertyResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -175,7 +183,7 @@ class UserId(BaseQuery):
     )
     forumthreads = Path(
         "/user/{id}/forumthreads",
-        None,
+        UserForumThreadsResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -187,4 +195,4 @@ class UserId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__()
+        super().__init__(base_path="user_id")
