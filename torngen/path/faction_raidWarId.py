@@ -1,0 +1,38 @@
+from base_path import Path
+from base_query import BaseQuery
+from parameter import Parameter
+
+
+class FactionRaidWarId(BaseQuery):
+    """
+    A collection of paths representing `FactionRaidWarId`.
+
+    Paths
+    -----
+    - `/faction/{raidWarId}/raidreport` : Get raid war details
+
+
+    `/faction/{raidWarId}/raidreport`
+    -------------
+    Get raid war details
+    Requires public access key. <br>
+
+    # Parameters
+    - raidWarId : Raid war id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+
+    """
+
+    raidreport = Path(
+        "/faction/{raidWarId}/raidreport",
+        None,
+        raidWarId=Parameter("raidWarId", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+
+    def __init__(self):
+        super().__init__()

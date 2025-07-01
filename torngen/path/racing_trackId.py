@@ -1,0 +1,40 @@
+from base_path import Path
+from base_query import BaseQuery
+from parameter import Parameter
+
+
+class RacingTrackId(BaseQuery):
+    """
+    A collection of paths representing `RacingTrackId`.
+
+    Paths
+    -----
+    - `/racing/{trackId}/records` : Get track records
+
+
+    `/racing/{trackId}/records`
+    -------------
+    Get track records
+    Requires public access key. <br>Returns a list of 10 best lap records for the chosen track and car class. Results are cached globally 1 hour.
+
+    # Parameters
+    - trackId : Track id
+    - cat : Car class
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+
+    """
+
+    records = Path(
+        "/racing/{trackId}/records",
+        None,
+        trackId=Parameter("trackId", "path", required=True, deprecated=False),
+        cat=Parameter("cat", "query", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+
+    def __init__(self):
+        super().__init__()
