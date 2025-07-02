@@ -237,4 +237,4 @@ class FactionId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="faction_id")
+        super().__init__(base_path="faction/{id}")

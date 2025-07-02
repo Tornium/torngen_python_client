@@ -37,4 +37,4 @@ class UserCrimeId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="user_crimeId")
+        super().__init__(base_path="user/{crimeId}")

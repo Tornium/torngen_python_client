@@ -62,4 +62,4 @@ class MarketId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="market_id")
+        super().__init__(base_path="market/{id}")

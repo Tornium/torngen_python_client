@@ -37,4 +37,4 @@ class PropertyId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="property_id")
+        super().__init__(base_path="property/{id}")

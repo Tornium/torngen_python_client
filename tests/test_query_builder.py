@@ -1,6 +1,6 @@
 import pytest
 from torngen import BaseQuery
-from torngen.path import User
+from torngen.path import FactionId, User
 
 
 def test_empty_query():
@@ -44,7 +44,7 @@ def test_query_api_key():
     return
 
 
-def test_query_url():
+def test_query_parameter_url():
     url = (
         User()
         .select(User.revives, User.attacks)
@@ -54,3 +54,9 @@ def test_query_url():
     )
 
     assert url == "https://api.torn.com/v2/user/?selections=attacks,revives&limit=10"
+
+
+def test_path_parameter_url():
+    url = FactionId().select(FactionId.members).id(15644).key("1234abcd1234abcd").url()
+
+    assert url == "https://api.torn.com/v2/faction/15644/?selections=members"

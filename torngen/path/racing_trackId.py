@@ -39,4 +39,4 @@ class RacingTrackId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="racing_trackId")
+        super().__init__(base_path="racing/{trackId}")

@@ -74,4 +74,4 @@ class MarketPropertyTypeId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="market_propertyTypeId")
+        super().__init__(base_path="market/{propertyTypeId}")

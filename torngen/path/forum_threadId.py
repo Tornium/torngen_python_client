@@ -62,4 +62,4 @@ class ForumThreadId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="forum_threadId")
+        super().__init__(base_path="forum/{threadId}")

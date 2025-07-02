@@ -39,4 +39,4 @@ class TornLogCategoryId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="torn_logCategoryId")
+        super().__init__(base_path="torn/{logCategoryId}")

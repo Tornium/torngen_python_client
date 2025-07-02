@@ -45,4 +45,4 @@ class ForumCategoryIds(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="forum_categoryIds")
+        super().__init__(base_path="forum/{categoryIds}")

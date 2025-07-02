@@ -39,4 +39,4 @@ class TornIds(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="torn_ids")
+        super().__init__(base_path="torn/{ids}")

@@ -37,4 +37,4 @@ class FactionCrimeId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="faction_crimeId")
+        super().__init__(base_path="faction/{crimeId}")

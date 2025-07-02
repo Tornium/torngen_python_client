@@ -195,4 +195,4 @@ class UserId(BaseQuery):
     )
 
     def __init__(self):
-        super().__init__(base_path="user_id")
+        super().__init__(base_path="user/{id}")
