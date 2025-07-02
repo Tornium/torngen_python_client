@@ -1,29 +1,26 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionPositionAbilityEnum(BaseSchema):
-
-    values = [
-        "Medical Item Usage",
-        "Booster Item Usage",
-        "Drug Item Usage",
-        "Energy Refill Usage",
-        "Nerve Refill Usage",
-        "Temporary Item Loaning",
-        "Weapon & Armor Loaning",
-        "Item Retrieving",
-        "Organised Crimes",
-        "Faction API Access",
-        "Item Giving",
-        "Money Giving",
-        "Points Giving",
-        "Forum Management",
-        "Application Management",
-        "Kick Members",
-        "Balance Adjustment",
-        "War Management",
-        "Upgrade Management",
-        "Newsletter Sending",
-        "Announcement Changes",
-        "Description Changes",
-    ]
+FactionPositionAbilityEnum = typing.Literal[
+    "Medical Item Usage",
+    "Booster Item Usage",
+    "Drug Item Usage",
+    "Energy Refill Usage",
+    "Nerve Refill Usage",
+    "Temporary Item Loaning",
+    "Weapon & Armor Loaning",
+    "Item Retrieving",
+    "Organised Crimes",
+    "Faction API Access",
+    "Item Giving",
+    "Money Giving",
+    "Points Giving",
+    "Forum Management",
+    "Application Management",
+    "Kick Members",
+    "Balance Adjustment",
+    "War Management",
+    "Upgrade Management",
+    "Newsletter Sending",
+    "Announcement Changes",
+    "Description Changes",
+]

@@ -1,13 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionRankEnum(BaseSchema):
-
-    values = [
-        "Unranked",
-        "Bronze",
-        "Silver",
-        "Gold",
-        "Platinum",
-        "Diamond",
-    ]
+FactionRankEnum = typing.Literal[
+    "Unranked", "Bronze", "Silver", "Gold", "Platinum", "Diamond"
+]

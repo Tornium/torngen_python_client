@@ -1,10 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class RaceStatusEnum(BaseSchema):
-
-    values = [
-        "open",
-        "in_progress",
-        "finished",
-    ]
+RaceStatusEnum = typing.Literal["open", "in_progress", "finished"]

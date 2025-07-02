@@ -1,10 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionBranchId(BaseSchema):
-    value: int
-
-    def parse(data):
-        if not isinstance(data, int):
-            raise TypeError(f"Expected type {int}, but got type {type(data)}")
-        return BaseSchema.parse(data, int)
+FactionBranchId = typing.NewType("FactionBranchId", int)

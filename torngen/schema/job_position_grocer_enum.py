@@ -1,12 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class JobPositionGrocerEnum(BaseSchema):
-
-    values = [
-        "Bagboy",
-        "Price Labeler",
-        "Cashier",
-        "Food Delivery",
-        "Manager",
-    ]
+JobPositionGrocerEnum = typing.Literal[
+    "Bagboy", "Price Labeler", "Cashier", "Food Delivery", "Manager"
+]

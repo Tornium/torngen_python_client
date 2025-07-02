@@ -1,11 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class TornItemWeaponCategoryEnum(BaseSchema):
-
-    values = [
-        "Melee",
-        "Secondary",
-        "Primary",
-        "Temporary",
-    ]
+TornItemWeaponCategoryEnum = typing.Literal[
+    "Melee", "Secondary", "Primary", "Temporary"
+]

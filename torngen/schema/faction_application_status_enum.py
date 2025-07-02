@@ -1,11 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionApplicationStatusEnum(BaseSchema):
-
-    values = [
-        "accepted",
-        "declined",
-        "withdrawn",
-        "active",
-    ]
+FactionApplicationStatusEnum = typing.Literal[
+    "accepted", "declined", "withdrawn", "active"
+]

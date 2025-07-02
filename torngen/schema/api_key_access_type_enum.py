@@ -1,12 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class ApiKeyAccessTypeEnum(BaseSchema):
-
-    values = [
-        "Custom",
-        "Public Only",
-        "Minimal Access",
-        "Limited Access",
-        "Full Access",
-    ]
+ApiKeyAccessTypeEnum = typing.Literal[
+    "Custom", "Public Only", "Minimal Access", "Limited Access", "Full Access"
+]

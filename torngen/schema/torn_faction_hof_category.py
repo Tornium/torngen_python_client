@@ -1,10 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class TornFactionHofCategory(BaseSchema):
-
-    values = [
-        "respect",
-        "chains",
-        "rank",
-    ]
+TornFactionHofCategory = typing.Literal["respect", "chains", "rank"]

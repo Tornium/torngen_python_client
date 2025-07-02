@@ -1,17 +1,14 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class JobPositionArmyEnum(BaseSchema):
-
-    values = [
-        "Private",
-        "Corporal",
-        "Sergeant",
-        "Master Sergeant",
-        "Warrant Officer",
-        "Lieutenant",
-        "Major",
-        "Colonel",
-        "Brigadier",
-        "General",
-    ]
+JobPositionArmyEnum = typing.Literal[
+    "Private",
+    "Corporal",
+    "Sergeant",
+    "Master Sergeant",
+    "Warrant Officer",
+    "Lieutenant",
+    "Major",
+    "Colonel",
+    "Brigadier",
+    "General",
+]

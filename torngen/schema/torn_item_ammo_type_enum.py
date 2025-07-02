@@ -1,12 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class TornItemAmmoTypeEnum(BaseSchema):
-
-    values = [
-        "Standard",
-        "Hollow Point",
-        "Piercing",
-        "Tracer",
-        "Incendiary",
-    ]
+TornItemAmmoTypeEnum = typing.Literal[
+    "Standard", "Hollow Point", "Piercing", "Tracer", "Incendiary"
+]

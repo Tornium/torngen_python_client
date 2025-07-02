@@ -1,11 +1,12 @@
 import inspect
+import textwrap
 import types
 import typing
 import warnings
 
 
 class BaseSchema:
-    @classmethod
+    @staticmethod
     def parse(data: dict):
         raise NotImplementedError("This should be implemented by the schema")
 
@@ -40,6 +41,10 @@ class BaseSchema:
 
             return parsed_dict
 
+        if hasattr(type_hints, "__supertype__"):
+            # should only be NewType
+            return BaseSchema.parse(data, type_hints.__supertype__)
+
         if origin is None and data is None:
             return None
 
@@ -70,6 +75,12 @@ class BaseSchema:
                     continue
 
                 raise TypeError(f"Data does not match any type in union {args}")
+
+        if origin is typing.Literal and data in args:
+            return data
+        elif origin is typing.Literal:
+            args_string = textwrap.shorten(", ".join(args), width=30, placeholder="...")
+            raise ValueError(f"Data does not match any value in the literal with values {args_string}")
 
         if origin in (list, typing.List):
             if not isinstance(data, list):

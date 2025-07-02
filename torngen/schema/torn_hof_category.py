@@ -1,21 +1,18 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class TornHofCategory(BaseSchema):
-
-    values = [
-        "level",
-        "busts",
-        "rank",
-        "traveltime",
-        "workstats",
-        "networth",
-        "revives",
-        "defends",
-        "offences",
-        "attacks",
-        "awards",
-        "racingwins",
-        "racingpoints",
-        "racingskill",
-    ]
+TornHofCategory = typing.Literal[
+    "level",
+    "busts",
+    "rank",
+    "traveltime",
+    "workstats",
+    "networth",
+    "revives",
+    "defends",
+    "offences",
+    "attacks",
+    "awards",
+    "racingwins",
+    "racingpoints",
+    "racingskill",
+]

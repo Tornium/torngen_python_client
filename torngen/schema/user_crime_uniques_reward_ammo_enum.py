@@ -1,9 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class UserCrimeUniquesRewardAmmoEnum(BaseSchema):
-
-    values = [
-        "standard",
-        "special",
-    ]
+UserCrimeUniquesRewardAmmoEnum = typing.Literal["standard", "special"]

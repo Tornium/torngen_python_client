@@ -1,17 +1,14 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class RaceCarUpgradeCategory(BaseSchema):
-
-    values = [
-        "Aerodynamics",
-        "Brakes",
-        "Engine",
-        "Exhaust and Induction",
-        "Fuel",
-        "Safety",
-        "Suspension",
-        "Transmission",
-        "Weight Reduction",
-        "Wheels and Tyres",
-    ]
+RaceCarUpgradeCategory = typing.Literal[
+    "Aerodynamics",
+    "Brakes",
+    "Engine",
+    "Exhaust and Induction",
+    "Fuel",
+    "Safety",
+    "Suspension",
+    "Transmission",
+    "Weight Reduction",
+    "Wheels and Tyres",
+]

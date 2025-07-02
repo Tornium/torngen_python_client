@@ -1,18 +1,15 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class TornItemArmorCoveragePartEnum(BaseSchema):
-
-    values = [
-        "Full Body",
-        "Heart",
-        "Stomach",
-        "Chest",
-        "Arm",
-        "Groin",
-        "Leg",
-        "Throat",
-        "Hand",
-        "Foot",
-        "Head",
-    ]
+TornItemArmorCoveragePartEnum = typing.Literal[
+    "Full Body",
+    "Heart",
+    "Stomach",
+    "Chest",
+    "Arm",
+    "Groin",
+    "Leg",
+    "Throat",
+    "Hand",
+    "Foot",
+    "Head",
+]

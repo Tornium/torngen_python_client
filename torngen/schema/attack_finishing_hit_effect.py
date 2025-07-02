@@ -1,13 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class AttackFinishingHitEffect(BaseSchema):
-
-    values = [
-        "proficience",
-        "stricken",
-        "revitalize",
-        "warlord",
-        "plunder",
-        "irradiate",
-    ]
+AttackFinishingHitEffect = typing.Literal[
+    "proficience", "stricken", "revitalize", "warlord", "plunder", "irradiate"
+]

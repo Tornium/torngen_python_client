@@ -1,17 +1,14 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class ReportTypeEnum(BaseSchema):
-
-    values = [
-        "mostwanted",
-        "money",
-        "stats",
-        "references",
-        "friendorfoe",
-        "companyfinancials",
-        "truelevel",
-        "stockanalysis",
-        "anonymousbounties",
-        "investment",
-    ]
+ReportTypeEnum = typing.Literal[
+    "mostwanted",
+    "money",
+    "stats",
+    "references",
+    "friendorfoe",
+    "companyfinancials",
+    "truelevel",
+    "stockanalysis",
+    "anonymousbounties",
+    "investment",
+]

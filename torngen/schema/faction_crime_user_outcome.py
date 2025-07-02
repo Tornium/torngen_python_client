@@ -1,12 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionCrimeUserOutcome(BaseSchema):
-
-    values = [
-        "Successful",
-        "Failed",
-        "Jailed",
-        "Injured",
-        "Hospitalized",
-    ]
+FactionCrimeUserOutcome = typing.Literal[
+    "Successful", "Failed", "Jailed", "Injured", "Hospitalized"
+]

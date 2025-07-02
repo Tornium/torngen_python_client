@@ -1,9 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionBranchStateEnum(BaseSchema):
-
-    values = [
-        "war",
-        "peace",
-    ]
+FactionBranchStateEnum = typing.Literal["war", "peace"]

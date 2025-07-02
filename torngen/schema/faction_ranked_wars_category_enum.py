@@ -1,9 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionRankedWarsCategoryEnum(BaseSchema):
-
-    values = [
-        "all",
-        "ongoing",
-    ]
+FactionRankedWarsCategoryEnum = typing.Literal["all", "ongoing"]

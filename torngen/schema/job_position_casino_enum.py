@@ -1,12 +1,9 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class JobPositionCasinoEnum(BaseSchema):
-
-    values = [
-        "Gaming Consultant",
-        "Marketing Manager",
-        "Revenue Manager",
-        "Casino Manager",
-        "Casino President",
-    ]
+JobPositionCasinoEnum = typing.Literal[
+    "Gaming Consultant",
+    "Marketing Manager",
+    "Revenue Manager",
+    "Casino Manager",
+    "Casino President",
+]

@@ -1,18 +1,15 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class CountryEnum(BaseSchema):
-
-    values = [
-        "Mexico",
-        "Hawaii",
-        "South Africa",
-        "Japan",
-        "China",
-        "Argentina",
-        "Switzerland",
-        "Canada",
-        "United Kingdom",
-        "UAE",
-        "Cayman Islands",
-    ]
+CountryEnum = typing.Literal[
+    "Mexico",
+    "Hawaii",
+    "South Africa",
+    "Japan",
+    "China",
+    "Argentina",
+    "Switzerland",
+    "Canada",
+    "United Kingdom",
+    "UAE",
+    "Cayman Islands",
+]

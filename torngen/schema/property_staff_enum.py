@@ -1,12 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class PropertyStaffEnum(BaseSchema):
-
-    values = [
-        "Maid",
-        "Guard",
-        "Doctor",
-        "Pilot",
-        "Butler",
-    ]
+PropertyStaffEnum = typing.Literal["Maid", "Guard", "Doctor", "Pilot", "Butler"]

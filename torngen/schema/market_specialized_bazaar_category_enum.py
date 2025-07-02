@@ -1,31 +1,28 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class MarketSpecializedBazaarCategoryEnum(BaseSchema):
-
-    values = [
-        "Alcohol",
-        "Artifact",
-        "Booster",
-        "Candy",
-        "Car",
-        "Clothing",
-        "Collectible",
-        "Defensive",
-        "Drug",
-        "Energy Drink",
-        "Enhancer",
-        "Flower",
-        "Jewelry",
-        "Material",
-        "Medical",
-        "Melee",
-        "Other",
-        "Plushie",
-        "Primary",
-        "Secondary",
-        "Special",
-        "Supply Pack",
-        "Temporary",
-        "Tool",
-    ]
+MarketSpecializedBazaarCategoryEnum = typing.Literal[
+    "Alcohol",
+    "Artifact",
+    "Booster",
+    "Candy",
+    "Car",
+    "Clothing",
+    "Collectible",
+    "Defensive",
+    "Drug",
+    "Energy Drink",
+    "Enhancer",
+    "Flower",
+    "Jewelry",
+    "Material",
+    "Medical",
+    "Melee",
+    "Other",
+    "Plushie",
+    "Primary",
+    "Secondary",
+    "Special",
+    "Supply Pack",
+    "Temporary",
+    "Tool",
+]

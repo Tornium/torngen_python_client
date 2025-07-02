@@ -1,12 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class RaceClassEnum(BaseSchema):
-
-    values = [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-    ]
+RaceClassEnum = typing.Literal["A", "B", "C", "D", "E"]

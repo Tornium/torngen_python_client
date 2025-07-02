@@ -1,11 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class ReviveSetting(BaseSchema):
-
-    values = [
-        "Everyone",
-        "Friends & faction",
-        "No one",
-        "Unknown",
-    ]
+ReviveSetting = typing.Literal["Everyone", "Friends & faction", "No one", "Unknown"]

@@ -1,19 +1,6 @@
 import pytest
-import requests
-
-from torngen import BaseQuery, HTTPAdapter
+from torngen import BaseQuery
 from torngen.path import User
-
-
-class RequestsAdapter(HTTPAdapter):
-    def get(url, headers):
-        return requests.get(url, headers=headers).json()
-
-    def version():
-        return "Requests/Unknown"
-
-    def client_name():
-        return "torngen-unit-test"
 
 
 def test_empty_query():
@@ -58,10 +45,12 @@ def test_query_api_key():
 
 
 def test_query_url():
-    url = User().select(User.revives, User.attacks).limit(10).key("1234abcd1234abcd").url()
+    url = (
+        User()
+        .select(User.revives, User.attacks)
+        .limit(10)
+        .key("1234abcd1234abcd")
+        .url()
+    )
 
     assert url == "https://api.torn.com/v2/user/?selections=attacks,revives&limit=10"
-
-
-def test_parsing():
-    User().select(User.revives).limit(10).key("None").get(adapter=RequestsAdapter).parse()

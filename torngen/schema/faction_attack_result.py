@@ -1,21 +1,18 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionAttackResult(BaseSchema):
-
-    values = [
-        "None",
-        "Attacked",
-        "Mugged",
-        "Hospitalized",
-        "Arrested",
-        "Looted",
-        "Lost",
-        "Stalemate",
-        "Assist",
-        "Escape",
-        "Timeout",
-        "Special",
-        "Bounty",
-        "Interrupted",
-    ]
+FactionAttackResult = typing.Literal[
+    "None",
+    "Attacked",
+    "Mugged",
+    "Hospitalized",
+    "Arrested",
+    "Looted",
+    "Lost",
+    "Stalemate",
+    "Assist",
+    "Escape",
+    "Timeout",
+    "Special",
+    "Bounty",
+    "Interrupted",
+]

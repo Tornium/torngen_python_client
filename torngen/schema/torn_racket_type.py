@@ -1,10 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class TornRacketType(BaseSchema):
-
-    values = [
-        "Item",
-        "Points",
-        "Money",
-    ]
+TornRacketType = typing.Literal["Item", "Points", "Money"]

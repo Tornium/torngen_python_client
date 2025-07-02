@@ -1,12 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionWarfareTypeEnum(BaseSchema):
-
-    values = [
-        "ranked",
-        "territory",
-        "raid",
-        "chain",
-        "db",
-    ]
+FactionWarfareTypeEnum = typing.Literal["ranked", "territory", "raid", "chain", "db"]

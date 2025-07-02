@@ -1,14 +1,11 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class JobPositionEducationEnum(BaseSchema):
-
-    values = [
-        "Recess Supervisor",
-        "Substitute Teacher",
-        "Elementary Teacher",
-        "Secondary Teacher",
-        "Professor",
-        "Vice-Principal",
-        "Principal",
-    ]
+JobPositionEducationEnum = typing.Literal[
+    "Recess Supervisor",
+    "Substitute Teacher",
+    "Elementary Teacher",
+    "Secondary Teacher",
+    "Professor",
+    "Vice-Principal",
+    "Principal",
+]

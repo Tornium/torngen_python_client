@@ -1,12 +1,5 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionCrimeStatusEnum(BaseSchema):
-
-    values = [
-        "Recruiting",
-        "Planning",
-        "Successful",
-        "Failure",
-        "Expired",
-    ]
+FactionCrimeStatusEnum = typing.Literal[
+    "Recruiting", "Planning", "Successful", "Failure", "Expired"
+]

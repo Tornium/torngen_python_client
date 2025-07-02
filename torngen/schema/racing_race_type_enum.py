@@ -1,9 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class RacingRaceTypeEnum(BaseSchema):
-
-    values = [
-        "official",
-        "custom",
-    ]
+RacingRaceTypeEnum = typing.Literal["official", "custom"]

@@ -1,10 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class FactionOrganizedCrimePayoutType(BaseSchema):
-
-    values = [
-        "balance",
-        "wallet",
-        "inventory",
-    ]
+FactionOrganizedCrimePayoutType = typing.Literal["balance", "wallet", "inventory"]

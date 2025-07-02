@@ -1,13 +1,10 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class JobPositionLawEnum(BaseSchema):
-
-    values = [
-        "Law Student",
-        "Paralegal",
-        "Probate Lawyer",
-        "Trial Lawyer",
-        "Circuit Court Judge",
-        "Federal Judge",
-    ]
+JobPositionLawEnum = typing.Literal[
+    "Law Student",
+    "Paralegal",
+    "Probate Lawyer",
+    "Trial Lawyer",
+    "Circuit Court Judge",
+    "Federal Judge",
+]

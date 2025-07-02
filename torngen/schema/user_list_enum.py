@@ -1,10 +1,3 @@
-from ..base_schema import BaseSchema
+import typing
 
-
-class UserListEnum(BaseSchema):
-
-    values = [
-        "Friends",
-        "Enemies",
-        "Targets",
-    ]
+UserListEnum = typing.Literal["Friends", "Enemies", "Targets"]
