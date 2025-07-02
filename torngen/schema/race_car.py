@@ -31,7 +31,7 @@ class RaceCar(BaseSchema):
             safety=BaseSchema.parse(data.get("safety"), int),
             handling=BaseSchema.parse(data.get("handling"), int),
             dirt=BaseSchema.parse(data.get("dirt"), int),
-            class_=BaseSchema.parse(data.get("class_"), RaceClassEnum),
+            class_=BaseSchema.parse(data.get("class"), RaceClassEnum),
             car_item_name=BaseSchema.parse(data.get("car_item_name"), str),
             car_item_id=BaseSchema.parse(data.get("car_item_id"), ItemId),
             braking=BaseSchema.parse(data.get("braking"), int),

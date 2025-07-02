@@ -1,8 +1,12 @@
 import sys
-from hypothesis import given, settings, HealthCheck, strategies as st
+
+from hypothesis import HealthCheck, given, settings
+from hypothesis import strategies as st
 from torngen.path import __all__ as __all_base_resources__
 
-all_base_resources = [getattr(sys.modules["torngen.path"], name) for name in __all_base_resources__]
+all_base_resources = [
+    getattr(sys.modules["torngen.path"], name) for name in __all_base_resources__
+]
 
 
 @st.composite
@@ -21,14 +25,10 @@ def single_path_strategy(draw):
 def test_fuzzy_single_selection(api_key, requests_adapter, test_data):
     base_resource, selection = test_data
 
-    query = (
-        base_resource()
-        .select(selection)
-        .key(api_key)
-    )
+    query = base_resource().select(selection).key(api_key)
     if "id}" in query.url().lower():
         # NOTE: selections containing a resource using a path parmeter are skipped
-        # as the logic to determine how to fill the path parameter correctly is 
+        # as the logic to determine how to fill the path parameter correctly is
         # not ready yet
         return
 
