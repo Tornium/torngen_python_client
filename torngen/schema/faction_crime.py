@@ -6,6 +6,7 @@ from .faction_crime_id import FactionCrimeId
 from .faction_crime_reward import FactionCrimeReward
 from .faction_crime_slot import FactionCrimeSlot
 from .faction_crime_status_enum import FactionCrimeStatusEnum
+from .organized_crime_name import OrganizedCrimeName
 
 
 @dataclass
@@ -20,7 +21,7 @@ class FactionCrime(BaseSchema):
     ready_at: None | int
     previous_crime_id: None | FactionCrimeId
     planning_at: None | int
-    name: str
+    name: OrganizedCrimeName
     id: FactionCrimeId
     expired_at: int
     executed_at: None | int
@@ -38,7 +39,7 @@ class FactionCrime(BaseSchema):
                 data.get("previous_crime_id"), None | FactionCrimeId
             ),
             planning_at=BaseSchema.parse(data.get("planning_at"), None | int),
-            name=BaseSchema.parse(data.get("name"), str),
+            name=BaseSchema.parse(data.get("name"), OrganizedCrimeName),
             id=BaseSchema.parse(data.get("id"), FactionCrimeId),
             expired_at=BaseSchema.parse(data.get("expired_at"), int),
             executed_at=BaseSchema.parse(data.get("executed_at"), None | int),

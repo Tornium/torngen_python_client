@@ -2,8 +2,7 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
-from ..schema.faction_ranked_war_report_response import \
-    FactionRankedWarReportResponse
+from ..schema.faction_ranked_war_report_response import FactionRankedWarReportResponse
 
 
 class FactionRankedWarId(BaseQuery):

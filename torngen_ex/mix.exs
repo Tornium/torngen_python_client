@@ -18,7 +18,7 @@ defmodule Torngen.Client.Python.MixProject do
 
   defp deps do
     [
-      # {:torngen, github: "Tornium/torngen", runtime: false}
+      # {:torngen, "~> 0.1.0", runtime: false}
       {:torngen, path: "../../torngen", runtime: false}
     ]
   end

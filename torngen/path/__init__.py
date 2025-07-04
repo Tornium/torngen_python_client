@@ -12,6 +12,7 @@ from .key import Key
 from .market import Market
 from .market_id import MarketId
 from .market_propertyTypeId import MarketPropertyTypeId
+from .property import Property
 from .property_id import PropertyId
 from .racing import Racing
 from .racing_raceId import RacingRaceId
@@ -39,6 +40,7 @@ __all__ = [
     "Market",
     "MarketId",
     "MarketPropertyTypeId",
+    "Property",
     "PropertyId",
     "Racing",
     "RacingRaceId",

@@ -22,11 +22,11 @@ from ..schema.faction_raids_response import FactionRaidsResponse
 from ..schema.faction_ranked_war_response import FactionRankedWarResponse
 from ..schema.faction_search_response import FactionSearchResponse
 from ..schema.faction_stats_response import FactionStatsResponse
-from ..schema.faction_territories_ownership_response import \
-    FactionTerritoriesOwnershipResponse
+from ..schema.faction_territories_ownership_response import (
+    FactionTerritoriesOwnershipResponse,
+)
 from ..schema.faction_territories_reponse import FactionTerritoriesReponse
-from ..schema.faction_territory_wars_response import \
-    FactionTerritoryWarsResponse
+from ..schema.faction_territory_wars_response import FactionTerritoryWarsResponse
 from ..schema.faction_upgrades_response import FactionUpgradesResponse
 from ..schema.faction_warfare_response import FactionWarfareResponse
 from ..schema.faction_wars_response import FactionWarsResponse
@@ -434,6 +434,7 @@ class Faction(BaseQuery):
 
        # Parameters
        - cat : Category of organized crimes returned. Category 'available' includes both 'recruiting' & 'planning', and category 'completed' includes both 'successful' & 'failure' Default category is 'all'.
+       - filters : It's possible to set this parameter to specify a field used for the sort, from & to query parameters. If not specified, the field will default to the category sorting as described above.
        - offset : N/A
        - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
        - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -709,6 +710,7 @@ class Faction(BaseQuery):
         "/faction/crimes",
         FactionCrimesResponse,
         cat=Parameter("cat", "query", required=False, deprecated=False),
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),

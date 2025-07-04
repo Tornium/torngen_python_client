@@ -17,6 +17,7 @@ from ..schema.torn_items_response import TornItemsResponse
 from ..schema.torn_log_categories_response import TornLogCategoriesResponse
 from ..schema.torn_log_types_response import TornLogTypesResponse
 from ..schema.torn_lookup_response import TornLookupResponse
+from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_properties import TornProperties
 from ..schema.torn_territories_response import TornTerritoriesResponse
 
@@ -43,6 +44,7 @@ class Torn(BaseQuery):
     - `/torn/crimes` : Get crimes information
     - `/torn/calendar` : Get calendar information
     - `/torn/hof` : Get player hall of fame positions for a specific category
+    - `/torn/organizedcrimes` : Get organized crimes information
     - `/torn/logcategories` : Get available log categories
 
 
@@ -223,6 +225,16 @@ class Torn(BaseQuery):
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
 
+    `/torn/organizedcrimes`
+    -------------
+    Get organized crimes information
+    Requires public access key. <br> Return the details about released faction organized crimes.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+
     `/torn/logcategories`
     -------------
     Get available log categories
@@ -360,6 +372,13 @@ class Torn(BaseQuery):
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         cat=Parameter("cat", "query", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    organizedcrimes = Path(
+        "/torn/organizedcrimes",
+        TornOrganizedCrimeResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),

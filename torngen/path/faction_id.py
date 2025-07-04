@@ -10,8 +10,9 @@ from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
 from ..schema.faction_raids_response import FactionRaidsResponse
 from ..schema.faction_ranked_war_response import FactionRankedWarResponse
 from ..schema.faction_territories_reponse import FactionTerritoriesReponse
-from ..schema.faction_territory_wars_history_response import \
-    FactionTerritoryWarsHistoryResponse
+from ..schema.faction_territory_wars_history_response import (
+    FactionTerritoryWarsHistoryResponse,
+)
 from ..schema.faction_wars_response import FactionWarsResponse
 
 

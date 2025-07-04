@@ -3,8 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .forum_id import ForumId
-from .forum_subscribed_thread_posts_count import \
-    ForumSubscribedThreadPostsCount
+from .forum_subscribed_thread_posts_count import ForumSubscribedThreadPostsCount
 from .forum_thread_author import ForumThreadAuthor
 from .forum_thread_id import ForumThreadId
 

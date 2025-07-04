@@ -17,7 +17,7 @@ class RacingTrackId(BaseQuery):
     `/racing/{trackId}/records`
     -------------
     Get track records
-    Requires public access key. <br>Returns a list of 10 best lap records for the chosen track and car class. Results are cached globally 1 hour.
+    Requires public access key. <br>Returns a list of 5 best lap records for the chosen track and car class.
 
     # Parameters
     - trackId : Track id

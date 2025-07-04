@@ -16,7 +16,8 @@ class FactionApplication(BaseSchema):
     user: typing.TypedDict(
         "",
         {
-            "stats": typing.TypedDict(
+            "stats": None
+            | typing.TypedDict(
                 "", {"strength": int, "speed": int, "dexterity": int, "defense": int}
             ),
             "name": str,
@@ -25,7 +26,7 @@ class FactionApplication(BaseSchema):
         },
     )
     status: FactionApplicationStatusEnum
-    message: str
+    message: None | str
     id: int
 
     @staticmethod
@@ -37,7 +38,8 @@ class FactionApplication(BaseSchema):
                 typing.TypedDict(
                     "",
                     {
-                        "stats": typing.TypedDict(
+                        "stats": None
+                        | typing.TypedDict(
                             "",
                             {
                                 "strength": int,
@@ -53,6 +55,6 @@ class FactionApplication(BaseSchema):
                 ),
             ),
             status=BaseSchema.parse(data.get("status"), FactionApplicationStatusEnum),
-            message=BaseSchema.parse(data.get("message"), str),
+            message=BaseSchema.parse(data.get("message"), None | str),
             id=BaseSchema.parse(data.get("id"), int),
         )

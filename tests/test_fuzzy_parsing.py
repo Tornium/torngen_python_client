@@ -7,17 +7,28 @@ from torngen.path import __all__ as __all_base_resources__
 all_base_resources = [
     getattr(sys.modules["torngen.path"], name) for name in __all_base_resources__
 ]
+all_paths = []
+for cls in all_base_resources:
+    instance = cls()
+    for key, path in instance.__class__.__dict__.items():
+        if not key.startswith("__") and "id}" not in key.lower() and "ids}" not in key.lower():
+            all_paths.append((cls, path))
 
+
+# @st.composite
+# def single_path_strategy(draw):
+#     cls = draw(st.sampled_from(all_base_resources))
+#     paths = [
+#         path
+#         for key, path in cls().__class__.__dict__.items()
+#         if not key.startswith("__")
+#         and ("id}" not in key.lower() and "ids}" not in key.lower())
+#     ]
+#     return cls, draw(st.sampled_from(paths))
 
 @st.composite
 def single_path_strategy(draw):
-    cls = draw(st.sampled_from(all_base_resources))
-    paths = [
-        path
-        for key, path in cls().__class__.__dict__.items()
-        if not key.startswith("__") and "id}" not in key.lower()
-    ]
-    return cls, draw(st.sampled_from(paths))
+    return draw(st.sampled_from(all_paths))
 
 
 @settings(suppress_health_check=[HealthCheck.function_scoped_fixture], deadline=None)
@@ -26,7 +37,7 @@ def test_fuzzy_single_selection(api_key, requests_adapter, test_data):
     base_resource, selection = test_data
 
     query = base_resource().select(selection).key(api_key)
-    if "id}" in query.url().lower():
+    if "id}" in query.url().lower() or "ids}" in query.url().lower():
         # NOTE: selections containing a resource using a path parmeter are skipped
         # as the logic to determine how to fill the path parameter correctly is
         # not ready yet
@@ -34,4 +45,10 @@ def test_fuzzy_single_selection(api_key, requests_adapter, test_data):
 
     print(query.url())
 
-    query.get(adapter=requests_adapter).parse()
+    response = query.get(adapter=requests_adapter)
+
+    try:
+        response.parse()
+    except Exception as e:
+        print(response.response)
+        raise e

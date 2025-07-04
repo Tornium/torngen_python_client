@@ -2,8 +2,7 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .user_item_marke_listing_item_details import \
-    UserItemMarkeListingItemDetails
+from .user_item_marke_listing_item_details import UserItemMarkeListingItemDetails
 
 
 @dataclass

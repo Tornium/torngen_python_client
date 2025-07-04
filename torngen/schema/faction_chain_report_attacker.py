@@ -2,10 +2,8 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .faction_chain_report_attacker_attacks import \
-    FactionChainReportAttackerAttacks
-from .faction_chain_report_attacker_respect import \
-    FactionChainReportAttackerRespect
+from .faction_chain_report_attacker_attacks import FactionChainReportAttackerAttacks
+from .faction_chain_report_attacker_respect import FactionChainReportAttackerRespect
 from .user_id import UserId
 
 

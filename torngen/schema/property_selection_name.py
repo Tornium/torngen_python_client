@@ -5,5 +5,5 @@ from ..base_schema import BaseSchema
 
 
 @dataclass
-class Parameters(BaseSchema):
+class PropertySelectionName(BaseSchema):
     value: str | str

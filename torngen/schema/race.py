@@ -35,6 +35,7 @@ class Race(BaseSchema):
     )
     participants: typing.TypedDict("", {"minimum": int, "maximum": int, "current": int})
     laps: int
+    is_official: bool
     id: RaceId
     creator_id: UserId
 
@@ -75,6 +76,7 @@ class Race(BaseSchema):
                 typing.TypedDict("", {"minimum": int, "maximum": int, "current": int}),
             ),
             laps=BaseSchema.parse(data.get("laps"), int),
+            is_official=BaseSchema.parse(data.get("is_official"), bool),
             id=BaseSchema.parse(data.get("id"), RaceId),
             creator_id=BaseSchema.parse(data.get("creator_id"), UserId),
         )

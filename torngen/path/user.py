@@ -16,8 +16,9 @@ from ..schema.user_faction_balance_response import UserFactionBalanceResponse
 from ..schema.user_forum_feed_response import UserForumFeedResponse
 from ..schema.user_forum_friends_response import UserForumFriendsResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
-from ..schema.user_forum_subscribed_threads_response import \
-    UserForumSubscribedThreadsResponse
+from ..schema.user_forum_subscribed_threads_response import (
+    UserForumSubscribedThreadsResponse,
+)
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_item_market_response import UserItemMarketResponse
@@ -29,6 +30,7 @@ from ..schema.user_personal_stats_response import UserPersonalStatsResponse
 from ..schema.user_properties_response import UserPropertiesResponse
 from ..schema.user_property_response import UserPropertyResponse
 from ..schema.user_races_response import UserRacesResponse
+from ..schema.user_racing_records_response import UserRacingRecordsResponse
 
 
 class User(BaseQuery):
@@ -42,6 +44,7 @@ class User(BaseQuery):
        - `/user/attacks` : Get your detailed attacks
        - `/user/bounties` : Get bounties placed on you
        - `/user/lookup` : Get all available user selections
+       - `/user/racingrecords` : Get your current racing records
        - `/user/forumposts` : Get your posts
        - `/user/list` : Get your friends, enemies or targets list
        - `/user/factionbalance` : Get your current faction balance
@@ -118,6 +121,16 @@ class User(BaseQuery):
        - timestamp : Timestamp to bypass cache
        - comment : Comment for your tool/service/bot/website to be visible in the logs.
        - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+
+       `/user/racingrecords`
+       -------------
+       Get your current racing records
+       Requires minimal access key. <br>
+
+       # Parameters
+       - timestamp : Timestamp to bypass cache
+       - comment : Comment for your tool/service/bot/website to be visible in the logs.
+       - key : API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
 
        `/user/forumposts`
        -------------
@@ -414,6 +427,13 @@ class User(BaseQuery):
     lookup = Path(
         "/user/lookup",
         UserLookupResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    racingrecords = Path(
+        "/user/racingrecords",
+        UserRacingRecordsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),

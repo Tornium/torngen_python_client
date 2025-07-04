@@ -12,7 +12,7 @@ class TornHof(BaseSchema):
     JSON object of `TornHof`.
     """
 
-    value: typing.Any
+    value: int | float | str | int
     username: str
     signed_up: int
     rank_number: int
@@ -28,7 +28,7 @@ class TornHof(BaseSchema):
     @staticmethod
     def parse(data):
         return TornHof(
-            value=BaseSchema.parse(data.get("value"), typing.Any),
+            value=BaseSchema.parse(data.get("value"), int | float | str | int),
             username=BaseSchema.parse(data.get("username"), str),
             signed_up=BaseSchema.parse(data.get("signed_up"), int),
             rank_number=BaseSchema.parse(data.get("rank_number"), int),

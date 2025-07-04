@@ -1,4 +1,5 @@
 import typing
+from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .user_personal_stats_category import UserPersonalStatsCategory
@@ -8,6 +9,7 @@ from .user_personal_stats_historic import UserPersonalStatsHistoric
 from .user_personal_stats_popular import UserPersonalStatsPopular
 
 
+@dataclass
 class UserPersonalStatsResponse(BaseSchema):
     value: (
         UserPersonalStatsHistoric

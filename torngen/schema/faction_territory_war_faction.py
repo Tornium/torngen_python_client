@@ -3,6 +3,9 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_id import FactionId
+from .faction_territory_war_faction_wall_players import (
+    FactionTerritoryWarFactionWallPlayers,
+)
 
 
 @dataclass
@@ -12,7 +15,7 @@ class FactionTerritoryWarFaction(BaseSchema):
     """
 
     score: int
-    players_on_wall: typing.List[typing.Any]
+    players_on_wall: typing.List[FactionTerritoryWarFactionWallPlayers]
     name: str
     id: FactionId
     chain: int
@@ -22,7 +25,8 @@ class FactionTerritoryWarFaction(BaseSchema):
         return FactionTerritoryWarFaction(
             score=BaseSchema.parse(data.get("score"), int),
             players_on_wall=BaseSchema.parse(
-                data.get("players_on_wall"), typing.List[typing.Any]
+                data.get("players_on_wall"),
+                typing.List[FactionTerritoryWarFactionWallPlayers],
             ),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), FactionId),

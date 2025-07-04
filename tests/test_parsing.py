@@ -1,4 +1,4 @@
-from torngen.path import FactionId, User
+from torngen.path import FactionId, Market, User
 
 
 def test_manual_user(api_key, requests_adapter):
@@ -33,3 +33,16 @@ def test_manual_faction(api_key, requests_adapter):
     assert response["basic"].basic.is_enlisted is None or isinstance(
         response["basic"].basic.is_enlisted, bool
     )
+
+
+def test_manual_market(api_key, requests_adapter):
+    response = (
+        Market()
+        .select(Market.bazaar, Market.timestamp, Market.lookup)
+        .key(api_key)
+        .get(adapter=requests_adapter)
+        .parse()
+    )
+
+    assert response["timestamp"].timestamp > 0
+    assert len(response["lookup"].selections) > 2
