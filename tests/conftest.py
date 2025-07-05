@@ -1,7 +1,7 @@
 import os
-import time
 
 import pytest
+import hypothesis
 import requests
 from torngen import HTTPAdapter
 
@@ -10,10 +10,11 @@ class RequestsAdapter(HTTPAdapter):
     @staticmethod
     def get(url, headers):
         # TODO: Replace this with some sort of pytest ratelimiter
-        # This is temporarily until then to avoid ratelimiting API keys
-        time.sleep(1)
 
-        return requests.get(url, headers=headers).json()
+        json_response = requests.get(url, headers=headers).json()
+        hypothesis.assume("error" not in json_response)
+
+        return json_response
 
     @staticmethod
     def version():

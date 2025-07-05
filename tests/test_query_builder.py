@@ -41,7 +41,19 @@ def test_query_parameters():
 
 
 def test_query_api_key():
-    return
+    with pytest.raises(ValueError):
+        User().select(User.attacks).url()
+
+    with pytest.raises(ValueError):
+        User().select(User.attacks).key("asdf")
+
+    with pytest.raises(ValueError):
+        User().select(User.attacks).key("!!!!!!!!!!!!!!!!")
+
+    with pytest.raises(TypeError):
+        User().select(User.attacks).key(1234)
+
+    User().select(User.bounties).key("1234abcd1234abcd")
 
 
 def test_query_parameter_url():
@@ -57,6 +69,9 @@ def test_query_parameter_url():
 
 
 def test_path_parameter_url():
+    with pytest.raises(RuntimeError):
+        FactionId().select(FactionId.members).key("1234abcd1234abcd").url()
+
     url = FactionId().select(FactionId.members).id(15644).key("1234abcd1234abcd").url()
 
     assert url == "https://api.torn.com/v2/faction/15644/?selections=members"

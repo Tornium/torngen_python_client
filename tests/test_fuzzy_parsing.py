@@ -11,20 +11,13 @@ all_paths = []
 for cls in all_base_resources:
     instance = cls()
     for key, path in instance.__class__.__dict__.items():
-        if not key.startswith("__") and "id}" not in key.lower() and "ids}" not in key.lower():
+        if (
+            not key.startswith("__")
+            and "id}" not in key.lower()
+            and "ids}" not in key.lower()
+        ):
             all_paths.append((cls, path))
 
-
-# @st.composite
-# def single_path_strategy(draw):
-#     cls = draw(st.sampled_from(all_base_resources))
-#     paths = [
-#         path
-#         for key, path in cls().__class__.__dict__.items()
-#         if not key.startswith("__")
-#         and ("id}" not in key.lower() and "ids}" not in key.lower())
-#     ]
-#     return cls, draw(st.sampled_from(paths))
 
 @st.composite
 def single_path_strategy(draw):
@@ -37,15 +30,15 @@ def test_fuzzy_single_selection(api_key, requests_adapter, test_data):
     base_resource, selection = test_data
 
     query = base_resource().select(selection).key(api_key)
-    if "id}" in query.url().lower() or "ids}" in query.url().lower():
+
+    try:
+        print(query.url())
+        response = query.get(adapter=requests_adapter)
+    except RuntimeError:
         # NOTE: selections containing a resource using a path parmeter are skipped
         # as the logic to determine how to fill the path parameter correctly is
         # not ready yet
         return
-
-    print(query.url())
-
-    response = query.get(adapter=requests_adapter)
 
     try:
         response.parse()
