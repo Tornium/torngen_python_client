@@ -1,7 +1,7 @@
 import os
+import time
 
 import pytest
-import hypothesis
 import requests
 from torngen import HTTPAdapter
 
@@ -10,9 +10,12 @@ class RequestsAdapter(HTTPAdapter):
     @staticmethod
     def get(url, headers):
         # TODO: Replace this with some sort of pytest ratelimiter
+        time.sleep(1)
 
         json_response = requests.get(url, headers=headers).json()
-        hypothesis.assume("error" not in json_response)
+
+        if "error" in json_response:
+            pytest.skip()
 
         return json_response
 

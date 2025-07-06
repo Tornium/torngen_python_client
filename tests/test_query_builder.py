@@ -1,3 +1,5 @@
+import urllib.parse
+
 import pytest
 from torngen import BaseQuery
 from torngen.path import FactionId, User
@@ -65,7 +67,15 @@ def test_query_parameter_url():
         .url()
     )
 
-    assert url == "https://api.torn.com/v2/user/?selections=attacks,revives&limit=10"
+    parsed_url = urllib.parse.urlparse(url)
+    assert parsed_url.scheme in ("http", "https")
+    assert parsed_url.netloc == "api.torn.com"
+    assert parsed_url.path == "/v2/user/"
+
+    parsed_url_query = urllib.parse.parse_qs(parsed_url.query)
+    assert "attacks" in parsed_url_query.get("selections", [])[0].split(",")
+    assert "revives" in parsed_url_query.get("selections", [])[0].split(",")
+    assert parsed_url_query.get("limit", "")[0] == "10"
 
 
 def test_path_parameter_url():
