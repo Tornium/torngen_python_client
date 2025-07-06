@@ -22,11 +22,12 @@ for cls in all_base_resources:
             and "ids}" not in key.lower()
         ):
             # all_paths.append((cls, path))
+            print(key)
             url = urllib.parse.urlunparse(
                 _URLComponents(
                     scheme="",
                     netloc="",
-                    path=f"/{key}/{path.selection}",
+                    path=f"/{cls().base_path}/{key}",
                     params="",
                     query="",
                     fragment="",
@@ -36,7 +37,7 @@ for cls in all_base_resources:
 
 
 @pytest.mark.parametrize("test_data", all_paths.values(), ids=all_paths.keys())
-def test_fuzzy_single_selection(api_key, requests_adapter, test_data):
+def test_all_selections(api_key, requests_adapter, test_data):
     base_resource, selection = test_data
     query = base_resource().select(selection).key(api_key)
 
