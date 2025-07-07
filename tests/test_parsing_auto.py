@@ -3,7 +3,6 @@ import typing
 import urllib.parse
 
 import pytest
-
 from torngen.base_query import BaseQuery, _URLComponents
 from torngen.path import __all__ as __all_base_resources__
 

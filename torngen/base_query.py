@@ -6,7 +6,7 @@ from adapter import HTTPAdapter
 from base_path import Path
 from base_schema import BaseSchema
 
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 
 
 class _URLComponents(typing.NamedTuple):
@@ -95,7 +95,9 @@ class BaseQuery(object):
 
         missing_path_parameter = re.search(r".*\/{(.*)}.*", url)
         if missing_path_parameter:
-            raise RuntimeError(f"Missing path parameter {missing_path_parameter.group(1)}")
+            raise RuntimeError(
+                f"Missing path parameter {missing_path_parameter.group(1)}"
+            )
 
         # TODO: Required parameters
         # TODO: Warn on deprecated parameters

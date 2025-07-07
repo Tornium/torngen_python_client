@@ -16,13 +16,13 @@ class UserPropertiesResponse(BaseSchema):
     JSON object of `UserPropertiesResponse`.
     """
 
-    properties: (
+    properties: typing.List[
         UserPropertyDetailsExtendedForSale
         | UserPropertyDetailsExtendedForRent
         | UserPropertyDetailsExtendedRented
         | UserPropertyDetailsExtended
         | UserPropertyBasicDetails
-    )
+    ]
     _metadata: RequestMetadataWithLinks
 
     @staticmethod
@@ -30,11 +30,13 @@ class UserPropertiesResponse(BaseSchema):
         return UserPropertiesResponse(
             properties=BaseSchema.parse(
                 data.get("properties"),
-                UserPropertyDetailsExtendedForSale
-                | UserPropertyDetailsExtendedForRent
-                | UserPropertyDetailsExtendedRented
-                | UserPropertyDetailsExtended
-                | UserPropertyBasicDetails,
+                typing.List[
+                    UserPropertyDetailsExtendedForSale
+                    | UserPropertyDetailsExtendedForRent
+                    | UserPropertyDetailsExtendedRented
+                    | UserPropertyDetailsExtended
+                    | UserPropertyBasicDetails
+                ],
             ),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )

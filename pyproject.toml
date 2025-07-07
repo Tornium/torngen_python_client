@@ -13,3 +13,4 @@ license = "Apache-2.0"
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-sugar", "requests"]
+docs = ["pdoc"]

@@ -11,12 +11,12 @@ class FactionTerritoriesOwnershipResponse(BaseSchema):
     JSON object of `FactionTerritoriesOwnershipResponse`.
     """
 
-    territoryownership: typing.List[FactionTerritoryOwnership]
+    territoryOwnership: typing.List[FactionTerritoryOwnership]
 
     @staticmethod
     def parse(data):
         return FactionTerritoriesOwnershipResponse(
-            territoryownership=BaseSchema.parse(
-                data.get("territoryownership"), typing.List[FactionTerritoryOwnership]
+            territoryOwnership=BaseSchema.parse(
+                data.get("territoryOwnership"), typing.List[FactionTerritoryOwnership]
             ),
         )
