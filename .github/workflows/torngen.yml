@@ -7,7 +7,7 @@ on:
 
 env:
   MIX_ENV: prod
-  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   generate:
@@ -54,7 +54,7 @@ jobs:
 
       - run: cd torngen_ex && mix torngen.generate
 
-      - run: pip install .[ci]
+      - run: pip install isort black
 
       - run: isort . && black .
 
