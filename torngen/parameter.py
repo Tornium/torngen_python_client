@@ -2,10 +2,6 @@ import typing
 
 
 class Parameter:
-    """
-    Representation of a parameter for a resource and selection.
-    """
-
     def __init__(
         self,
         parameter_name: str,
