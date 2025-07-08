@@ -52,7 +52,7 @@ jobs:
 
       - run: wget -U "torngen-gh-action" https://www.torn.com/swagger/openapi.json
 
-      - run: mix torngen.generate
+      - run: cd torngen_ex && mix torngen.generate
 
       - run: pip install .[ci]
 
