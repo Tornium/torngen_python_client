@@ -25,226 +25,6 @@ from ..schema.torn_territories_response import TornTerritoriesResponse
 class Torn(BaseQuery):
     """
     A collection of paths representing `Torn`.
-
-    Paths
-    -----
-    - `/torn/logtypes` : Get all available log ids
-    - `/torn/attacklog` : Get attack log details
-    - `/torn/bounties` : Get bounties
-    - `/torn/properties` : Get properties details
-    - `/torn/education` : Get education information
-    - `/torn/itemmods` : Get information about weapon upgrades
-    - `/torn/timestamp` : Get current server time
-    - `/torn/territory` : Get territory details
-    - `/torn/factiontree` : Get full faction tree
-    - `/torn/lookup` : Get all available torn selections
-    - `/torn/itemammo` : Get information about ammo
-    - `/torn/factionhof` : Get faction hall of fame positions for a specific category
-    - `/torn/items` : Get information about items
-    - `/torn/crimes` : Get crimes information
-    - `/torn/calendar` : Get calendar information
-    - `/torn/hof` : Get player hall of fame positions for a specific category
-    - `/torn/organizedcrimes` : Get organized crimes information
-    - `/torn/logcategories` : Get available log categories
-
-
-    `/torn/logtypes`
-    -------------
-    Get all available log ids
-    Requires public key. <br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/attacklog`
-    -------------
-    Get attack log details
-    Requires public key. <br>
-
-    # Parameters
-    - log : Code of the attack log. E.g. d51ad4fe6be884b309b142e2d1d4f807
-    - offset : N/A
-    - sort : Sorted by the greatest timestamps
-    - striptags : Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/bounties`
-    -------------
-    Get bounties
-    Requires public key. <br>
-
-    # Parameters
-    - limit : N/A
-    - offset : N/A
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/properties`
-    -------------
-    Get properties details
-    Requires public access key. <br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/education`
-    -------------
-    Get education information
-    Requires public access key.<br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/itemmods`
-    -------------
-    Get information about weapon upgrades
-    Requires public key.
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/timestamp`
-    -------------
-    Get current server time
-    Requires public key. <br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/territory`
-    -------------
-    Get territory details
-    Requires public access key. <br>
-
-    # Parameters
-    - ids : Specific territory id or a list of territory ids (comma separated)
-    - offset : N/A
-    - limit : N/A
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/factiontree`
-    -------------
-    Get full faction tree
-    Requires public access key. <br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/lookup`
-    -------------
-    Get all available torn selections
-    Requires public key. <br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/itemammo`
-    -------------
-    Get information about ammo
-    Requires public key.
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/factionhof`
-    -------------
-    Get faction hall of fame positions for a specific category
-    Requires public access key. <br>
-
-    # Parameters
-    - limit : N/A
-    - offset : N/A
-    - cat : Leaderboards category
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/items`
-    -------------
-    Get information about items
-    Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
-
-    # Parameters
-    - cat : Item category type
-    - sort : Sort rows from newest to oldest Default ordering is ascending
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/crimes`
-    -------------
-    Get crimes information
-    Requires public access key. <br> Return the details about released crimes.
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/calendar`
-    -------------
-    Get calendar information
-    Requires public access key. <br> Get the details about competitions & events in the running year.
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/hof`
-    -------------
-    Get player hall of fame positions for a specific category
-    Requires public key.
-
-    # Parameters
-    - limit : N/A
-    - offset : N/A
-    - cat : Leaderboards category
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/organizedcrimes`
-    -------------
-    Get organized crimes information
-    Requires public access key. <br> Return the details about released faction organized crimes.
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/torn/logcategories`
-    -------------
-    Get available log categories
-    Requires public key. <br>
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
     """
 
     logtypes = Path(
@@ -254,6 +34,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/logtypes`: Get all available log ids
+    Requires public key. <br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     attacklog = Path(
         "/torn/attacklog",
         AttackLogResponse,
@@ -265,6 +56,21 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/attacklog`: Get attack log details
+    Requires public key. <br>
+
+    # Parameters
+    - log : Code of the attack log. E.g. d51ad4fe6be884b309b142e2d1d4f807
+    - offset : N/A
+    - sort : Sorted by the greatest timestamps
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     bounties = Path(
         "/torn/bounties",
         TornBountiesResponse,
@@ -274,6 +80,19 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/bounties`: Get bounties
+    Requires public key. <br>
+
+    # Parameters
+    - limit : N/A
+    - offset : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     properties = Path(
         "/torn/properties",
         TornProperties,
@@ -281,6 +100,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/properties`: Get properties details
+    Requires public access key. <br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     education = Path(
         "/torn/education",
         TornEducationResponse,
@@ -288,6 +118,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/education`: Get education information
+    Requires public access key.<br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     itemmods = Path(
         "/torn/itemmods",
         TornItemModsResponse,
@@ -295,6 +136,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/itemmods`: Get information about weapon upgrades
+    Requires public key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     timestamp = Path(
         "/torn/timestamp",
         TimestampResponse,
@@ -302,6 +154,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/timestamp`: Get current server time
+    Requires public key. <br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     territory = Path(
         "/torn/territory",
         TornTerritoriesResponse,
@@ -312,6 +175,20 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/territory`: Get territory details
+    Requires public access key. <br>
+
+    # Parameters
+    - ids : Specific territory id or a list of territory ids (comma separated)
+    - offset : N/A
+    - limit : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     factiontree = Path(
         "/torn/factiontree",
         TornFactionTreeResponse,
@@ -319,6 +196,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/factiontree`: Get full faction tree
+    Requires public access key. <br> 
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     lookup = Path(
         "/torn/lookup",
         TornLookupResponse,
@@ -326,6 +214,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/lookup`: Get all available torn selections
+    Requires public key. <br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     itemammo = Path(
         "/torn/itemammo",
         TornItemAmmoResponse,
@@ -333,6 +232,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/itemammo`: Get information about ammo
+    Requires public key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     factionhof = Path(
         "/torn/factionhof",
         TornFactionHofResponse,
@@ -343,6 +253,20 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/factionhof`: Get faction hall of fame positions for a specific category
+    Requires public access key. <br> 
+
+    # Parameters
+    - limit : N/A
+    - offset : N/A
+    - cat : Leaderboards category
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     items = Path(
         "/torn/items",
         TornItemsResponse,
@@ -352,6 +276,19 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/items`: Get information about items
+    Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
+
+    # Parameters
+    - cat : Item category type
+    - sort : Sort rows from newest to oldest Default ordering is ascending
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     crimes = Path(
         "/torn/crimes",
         TornCrimesResponse,
@@ -359,6 +296,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/crimes`: Get crimes information
+    Requires public access key. <br> Return the details about released crimes.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     calendar = Path(
         "/torn/calendar",
         TornCalendarResponse,
@@ -366,6 +314,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/calendar`: Get calendar information
+    Requires public access key. <br> Get the details about competitions & events in the running year.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     hof = Path(
         "/torn/hof",
         TornHofResponse,
@@ -376,6 +335,20 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/hof`: Get player hall of fame positions for a specific category
+    Requires public key.
+
+    # Parameters
+    - limit : N/A
+    - offset : N/A
+    - cat : Leaderboards category
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     organizedcrimes = Path(
         "/torn/organizedcrimes",
         TornOrganizedCrimeResponse,
@@ -383,6 +356,17 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/organizedcrimes`: Get organized crimes information
+    Requires public access key. <br> Return the details about released faction organized crimes.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     logcategories = Path(
         "/torn/logcategories",
         TornLogCategoriesResponse,
@@ -390,6 +374,16 @@ class Torn(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/logcategories`: Get available log categories
+    Requires public key. <br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
 
     def __init__(self):
         super().__init__(base_path="torn")

@@ -8,23 +8,6 @@ from ..schema.torn_log_types_response import TornLogTypesResponse
 class TornLogCategoryId(BaseQuery):
     """
     A collection of paths representing `TornLogCategoryId`.
-
-    Paths
-    -----
-    - `/torn/{logCategoryId}/logtypes` : Get available log ids for a specific log category
-
-
-    `/torn/{logCategoryId}/logtypes`
-    -------------
-    Get available log ids for a specific log category
-    Requires public key. <br>
-
-    # Parameters
-    - logCategoryId : Log category id
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
     """
 
     logtypes = Path(
@@ -37,6 +20,17 @@ class TornLogCategoryId(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/torn/{logCategoryId}/logtypes`: Get available log ids for a specific log category
+    Requires public key. <br>
+
+    # Parameters
+    - logCategoryId : Log category id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
 
     def __init__(self):
         super().__init__(base_path="torn/{logCategoryId}")

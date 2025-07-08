@@ -8,23 +8,6 @@ from ..schema.faction_chain_report_response import FactionChainReportResponse
 class FactionChainId(BaseQuery):
     """
     A collection of paths representing `FactionChainId`.
-
-    Paths
-    -----
-    - `/faction/{chainId}/chainreport` : Get a chain report
-
-
-    `/faction/{chainId}/chainreport`
-    -------------
-    Get a chain report
-    Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.
-
-    # Parameters
-    - chainId : Chain id
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
     """
 
     chainreport = Path(
@@ -35,6 +18,17 @@ class FactionChainId(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/faction/{chainId}/chainreport`: Get a chain report
+    Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.
+
+    # Parameters
+    - chainId : Chain id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
 
     def __init__(self):
         super().__init__(base_path="faction/{chainId}")

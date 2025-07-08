@@ -8,37 +8,7 @@ from ..schema.key_log_response import KeyLogResponse
 
 class Key(BaseQuery):
     """
-       A collection of paths representing `Key`.
-
-       Paths
-       -----
-       - `/key/info` : Get current key info
-       - `/key/log` : Get current key log history
-
-
-       `/key/info`
-       -------------
-       Get current key info
-       Available for any key. <br>
-
-       # Parameters
-       - timestamp : Timestamp to bypass cache
-       - comment : Comment for your tool/service/bot/website to be visible in the logs.
-       - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-       `/key/log`
-       -------------
-       Get current key log history
-       Available for any key. <br>
-    * This selection contains up to last 250 request logs.
-
-       # Parameters
-       - limit : N/A
-       - offset : N/A
-       - timestamp : Timestamp to bypass cache
-       - comment : Comment for your tool/service/bot/website to be visible in the logs.
-       - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
+    A collection of paths representing `Key`.
     """
 
     info = Path(
@@ -48,6 +18,17 @@ class Key(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/key/info`: Get current key info
+    Available for any key. <br>
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     log = Path(
         "/key/log",
         KeyLogResponse,
@@ -57,6 +38,19 @@ class Key(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/key/log`: Get current key log history
+    Available for any key. <br>
+ * This selection contains up to last 250 request logs.
+
+    # Parameters
+    - limit : N/A
+    - offset : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
 
     def __init__(self):
         super().__init__(base_path="key")

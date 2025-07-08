@@ -9,37 +9,6 @@ from ..schema.market_item_market_response import MarketItemMarketResponse
 class MarketId(BaseQuery):
     """
     A collection of paths representing `MarketId`.
-
-    Paths
-    -----
-    - `/market/{id}/itemmarket` : Get item market listings
-    - `/market/{id}/bazaar` : Get item specialized bazaar directory
-
-
-    `/market/{id}/itemmarket`
-    -------------
-    Get item market listings
-    Requires public access key. <br>
-
-    # Parameters
-    - id : Item id
-    - bonus : Used to filter weapons with a specific bonus.
-    - offset : N/A
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
-    `/market/{id}/bazaar`
-    -------------
-    Get item specialized bazaar directory
-    Requires public access key. <br>
-
-    # Parameters
-    - id : Item id
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
-
     """
 
     itemmarket = Path(
@@ -52,6 +21,20 @@ class MarketId(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/market/{id}/itemmarket`: Get item market listings
+    Requires public access key. <br>
+
+    # Parameters
+    - id : Item id
+    - bonus : Used to filter weapons with a specific bonus.
+    - offset : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     bazaar = Path(
         "/market/{id}/bazaar",
         BazaarResponseSpecialized,
@@ -60,6 +43,17 @@ class MarketId(BaseQuery):
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
+    """
+    `/market/{id}/bazaar`: Get item specialized bazaar directory
+    Requires public access key. <br>
+
+    # Parameters
+    - id : Item id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
 
     def __init__(self):
         super().__init__(base_path="market/{id}")
