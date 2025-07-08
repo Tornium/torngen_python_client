@@ -1,9 +1,69 @@
 import typing
-from dataclasses import dataclass
 
-from ..base_schema import BaseSchema
-
-
-@dataclass
-class UserSelectionName(BaseSchema):
-    value: str | str
+UserSelectionName = (
+    str
+    | typing.Literal[
+        "attacks",
+        "attacksfull",
+        "bounties",
+        "calendar",
+        "crimes",
+        "enlistedcars",
+        "factionbalance",
+        "forumfeed",
+        "forumfriends",
+        "forumposts",
+        "forumsubscribedthreads",
+        "forumthreads",
+        "hof",
+        "itemmarket",
+        "jobranks",
+        "list",
+        "lookup",
+        "organizedcrime",
+        "personalstats",
+        "properties",
+        "property",
+        "races",
+        "racingrecords",
+        "revives",
+        "revivesfull",
+        "timestamp",
+        "ammo",
+        "bars",
+        "basic",
+        "battlestats",
+        "bazaar",
+        "cooldowns",
+        "criminalrecord",
+        "discord",
+        "display",
+        "education",
+        "equipment",
+        "events",
+        "gym",
+        "honors",
+        "icons",
+        "inventory",
+        "jobpoints",
+        "log",
+        "medals",
+        "merits",
+        "messages",
+        "missions",
+        "money",
+        "networth",
+        "newevents",
+        "newmessages",
+        "notifications",
+        "perks",
+        "profile",
+        "refills",
+        "reports",
+        "skills",
+        "stocks",
+        "travel",
+        "weaponexp",
+        "workstats",
+    ]
+)

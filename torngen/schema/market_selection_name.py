@@ -1,9 +1,14 @@
 import typing
-from dataclasses import dataclass
 
-from ..base_schema import BaseSchema
-
-
-@dataclass
-class MarketSelectionName(BaseSchema):
-    value: str | str
+MarketSelectionName = (
+    str
+    | typing.Literal[
+        "bazaar",
+        "itemmarket",
+        "properties",
+        "rentals",
+        "lookup",
+        "timestamp",
+        "pointsmarket",
+    ]
+)

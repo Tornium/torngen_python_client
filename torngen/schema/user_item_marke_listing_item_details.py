@@ -16,7 +16,7 @@ class UserItemMarkeListingItemDetails(BaseSchema):
     uid: None | ItemUid
     type: str
     stats: None | ItemMarketListingItemStats
-    rarity: None | str
+    rarity: None | typing.Literal["yellow", "orange", "red"]
     name: str
     id: int
     bonuses: typing.List[ItemMarketListingItemBonus]
@@ -29,7 +29,9 @@ class UserItemMarkeListingItemDetails(BaseSchema):
             stats=BaseSchema.parse(
                 data.get("stats"), None | ItemMarketListingItemStats
             ),
-            rarity=BaseSchema.parse(data.get("rarity"), None | str),
+            rarity=BaseSchema.parse(
+                data.get("rarity"), None | typing.Literal["yellow", "orange", "red"]
+            ),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), int),
             bonuses=BaseSchema.parse(

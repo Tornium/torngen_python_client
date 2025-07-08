@@ -1,9 +1,44 @@
 import typing
-from dataclasses import dataclass
 
-from ..base_schema import BaseSchema
-
-
-@dataclass
-class TornSelectionName(BaseSchema):
-    value: str | str
+TornSelectionName = (
+    str
+    | typing.Literal[
+        "attacklog",
+        "bounties",
+        "calendar",
+        "crimes",
+        "education",
+        "factionhof",
+        "factiontree",
+        "hof",
+        "itemammo",
+        "itemmods",
+        "items",
+        "logcategories",
+        "logtypes",
+        "lookup",
+        "organizedcrimes",
+        "properties",
+        "subcrimes",
+        "territory",
+        "timestamp",
+        "bank",
+        "cards",
+        "cityshops",
+        "companies",
+        "competition",
+        "gyms",
+        "honors",
+        "itemdetails",
+        "itemstats",
+        "medals",
+        "organisedcrimes",
+        "pawnshop",
+        "pokertables",
+        "rockpaperscissors",
+        "searchforcash",
+        "shoplifting",
+        "stats",
+        "stocks",
+    ]
+)

@@ -1,9 +1,15 @@
 import typing
-from dataclasses import dataclass
 
-from ..base_schema import BaseSchema
-
-
-@dataclass
-class RacingSelectionName(BaseSchema):
-    value: str | str
+RacingSelectionName = (
+    str
+    | typing.Literal[
+        "cars",
+        "carupgrades",
+        "lookup",
+        "race",
+        "races",
+        "records",
+        "timestamp",
+        "tracks",
+    ]
+)

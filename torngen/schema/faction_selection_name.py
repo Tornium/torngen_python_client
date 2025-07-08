@@ -1,9 +1,50 @@
 import typing
-from dataclasses import dataclass
 
-from ..base_schema import BaseSchema
-
-
-@dataclass
-class FactionSelectionName(BaseSchema):
-    value: str | str
+FactionSelectionName = (
+    str
+    | typing.Literal[
+        "applications",
+        "attacks",
+        "attacksfull",
+        "balance",
+        "basic",
+        "chain",
+        "chainreport",
+        "chains",
+        "contributors",
+        "crime",
+        "crimes",
+        "hof",
+        "lookup",
+        "members",
+        "news",
+        "positions",
+        "rackets",
+        "raidreport",
+        "raids",
+        "rankedwars",
+        "rankedwarreport",
+        "reports",
+        "revives",
+        "revivesfull",
+        "search",
+        "stats",
+        "territory",
+        "territoryownership",
+        "territorywarreport",
+        "territorywars",
+        "timestamp",
+        "upgrades",
+        "warfare",
+        "wars",
+        "armor",
+        "boosters",
+        "caches",
+        "cesium",
+        "crimeexp",
+        "drugs",
+        "medical",
+        "temporary",
+        "weapons",
+    ]
+)

@@ -15,7 +15,7 @@ class ItemMarketListingItemDetails(BaseSchema):
 
     uid: ItemUid
     stats: ItemMarketListingItemStats
-    rarity: None | str
+    rarity: None | typing.Literal["yellow", "orange", "red"]
     bonuses: typing.List[ItemMarketListingItemBonus]
 
     @staticmethod
@@ -23,7 +23,9 @@ class ItemMarketListingItemDetails(BaseSchema):
         return ItemMarketListingItemDetails(
             uid=BaseSchema.parse(data.get("uid"), ItemUid),
             stats=BaseSchema.parse(data.get("stats"), ItemMarketListingItemStats),
-            rarity=BaseSchema.parse(data.get("rarity"), None | str),
+            rarity=BaseSchema.parse(
+                data.get("rarity"), None | typing.Literal["yellow", "orange", "red"]
+            ),
             bonuses=BaseSchema.parse(
                 data.get("bonuses"), typing.List[ItemMarketListingItemBonus]
             ),

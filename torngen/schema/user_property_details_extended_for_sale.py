@@ -13,7 +13,7 @@ from .property_staff_enum import PropertyStaffEnum
 class UserPropertyDetailsExtendedForSale(BaseSchema):
 
     used_by: typing.List[BasicUser]
-    status: str
+    status: typing.Literal["for_sale"]
     cost: int
     upkeep: typing.TypedDict("", {"staff": int, "property": int})
     staff: typing.List[typing.TypedDict("", {"type": PropertyStaffEnum, "amount": int})]
@@ -28,7 +28,7 @@ class UserPropertyDetailsExtendedForSale(BaseSchema):
     def parse(data):
         return UserPropertyDetailsExtendedForSale(
             used_by=BaseSchema.parse(data.get("used_by"), typing.List[BasicUser]),
-            status=BaseSchema.parse(data.get("status"), str),
+            status=BaseSchema.parse(data.get("status"), typing.Literal["for_sale"]),
             cost=BaseSchema.parse(data.get("cost"), int),
             upkeep=BaseSchema.parse(
                 data.get("upkeep"),

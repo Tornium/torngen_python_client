@@ -13,7 +13,7 @@ from .property_staff_enum import PropertyStaffEnum
 class UserPropertyDetailsExtendedForRent(BaseSchema):
 
     used_by: typing.List[BasicUser]
-    status: str
+    status: typing.Literal["for_rent"]
     renter_asked: BasicUser
     rental_period: int
     cost_per_day: int
@@ -31,7 +31,7 @@ class UserPropertyDetailsExtendedForRent(BaseSchema):
     def parse(data):
         return UserPropertyDetailsExtendedForRent(
             used_by=BaseSchema.parse(data.get("used_by"), typing.List[BasicUser]),
-            status=BaseSchema.parse(data.get("status"), str),
+            status=BaseSchema.parse(data.get("status"), typing.Literal["for_rent"]),
             renter_asked=BaseSchema.parse(data.get("renter_asked"), BasicUser),
             rental_period=BaseSchema.parse(data.get("rental_period"), int),
             cost_per_day=BaseSchema.parse(data.get("cost_per_day"), int),
