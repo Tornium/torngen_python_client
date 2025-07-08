@@ -1,8 +1,8 @@
 name: Python Torn APIv2 code generation via Torngen
 
 on:
-  schedule:
-    - cron: "* * * * 1-5"
+  # schedule:
+  #   - cron: "* * * * 1-5"
   workflow_dispatch:
 
 env:
@@ -45,7 +45,7 @@ jobs:
           restore-keys: |
             mix-${{ runner.os }}-${{matrix.elixir}}-${{matrix.otp}}-
 
-      - run: cd ../torngen/ && rm -rf path schemas
+      - run: cd torngen && rm -rf path schemas
 
       - run: cd ../torngen_ex/ && mix do deps.get --check-locked, deps.compile
         if: steps.cache-deps.outputs.cache-hit != 'true'
