@@ -17,7 +17,7 @@ from ..schema.faction_members_response import FactionMembersResponse
 from ..schema.faction_news_response import FactionNewsResponse
 from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
 from ..schema.faction_positions_response import FactionPositionsResponse
-from ..schema.faction_rackets_reponse import FactionRacketsReponse
+from ..schema.faction_rackets_response import FactionRacketsResponse
 from ..schema.faction_raids_response import FactionRaidsResponse
 from ..schema.faction_ranked_war_response import FactionRankedWarResponse
 from ..schema.faction_search_response import FactionSearchResponse
@@ -25,7 +25,7 @@ from ..schema.faction_stats_response import FactionStatsResponse
 from ..schema.faction_territories_ownership_response import (
     FactionTerritoriesOwnershipResponse,
 )
-from ..schema.faction_territories_reponse import FactionTerritoriesReponse
+from ..schema.faction_territories_response import FactionTerritoriesResponse
 from ..schema.faction_territory_wars_response import FactionTerritoryWarsResponse
 from ..schema.faction_upgrades_response import FactionUpgradesResponse
 from ..schema.faction_warfare_response import FactionWarfareResponse
@@ -545,7 +545,7 @@ class Faction(BaseQuery):
     )
     territory = Path(
         "/faction/territory",
-        FactionTerritoriesReponse,
+        FactionTerritoriesResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -567,7 +567,7 @@ class Faction(BaseQuery):
     )
     rackets = Path(
         "/faction/rackets",
-        FactionRacketsReponse,
+        FactionRacketsResponse,
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),

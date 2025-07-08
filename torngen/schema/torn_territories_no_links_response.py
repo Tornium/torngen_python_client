@@ -6,16 +6,16 @@ from .torn_territory import TornTerritory
 
 
 @dataclass
-class TornTerritoriesNoLinksReponse(BaseSchema):
+class TornTerritoriesNoLinksResponse(BaseSchema):
     """
-    JSON object of `TornTerritoriesNoLinksReponse`.
+    JSON object of `TornTerritoriesNoLinksResponse`.
     """
 
     territory: typing.List[TornTerritory]
 
     @staticmethod
     def parse(data):
-        return TornTerritoriesNoLinksReponse(
+        return TornTerritoriesNoLinksResponse(
             territory=BaseSchema.parse(
                 data.get("territory"), typing.List[TornTerritory]
             ),

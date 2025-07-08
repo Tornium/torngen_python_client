@@ -6,15 +6,15 @@ from .torn_racket import TornRacket
 
 
 @dataclass
-class FactionRacketsReponse(BaseSchema):
+class FactionRacketsResponse(BaseSchema):
     """
-    JSON object of `FactionRacketsReponse`.
+    JSON object of `FactionRacketsResponse`.
     """
 
     rackets: typing.List[TornRacket]
 
     @staticmethod
     def parse(data):
-        return FactionRacketsReponse(
+        return FactionRacketsResponse(
             rackets=BaseSchema.parse(data.get("rackets"), typing.List[TornRacket]),
         )

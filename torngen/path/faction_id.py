@@ -9,7 +9,7 @@ from ..schema.faction_members_response import FactionMembersResponse
 from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
 from ..schema.faction_raids_response import FactionRaidsResponse
 from ..schema.faction_ranked_war_response import FactionRankedWarResponse
-from ..schema.faction_territories_reponse import FactionTerritoriesReponse
+from ..schema.faction_territories_response import FactionTerritoriesResponse
 from ..schema.faction_territory_wars_history_response import (
     FactionTerritoryWarsHistoryResponse,
 )
@@ -214,7 +214,7 @@ class FactionId(BaseQuery):
     )
     territory = Path(
         "/faction/{id}/territory",
-        FactionTerritoriesReponse,
+        FactionTerritoriesResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),

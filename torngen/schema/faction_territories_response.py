@@ -6,16 +6,16 @@ from .faction_territory import FactionTerritory
 
 
 @dataclass
-class FactionTerritoriesReponse(BaseSchema):
+class FactionTerritoriesResponse(BaseSchema):
     """
-    JSON object of `FactionTerritoriesReponse`.
+    JSON object of `FactionTerritoriesResponse`.
     """
 
     territory: typing.List[FactionTerritory]
 
     @staticmethod
     def parse(data):
-        return FactionTerritoriesReponse(
+        return FactionTerritoriesResponse(
             territory=BaseSchema.parse(
                 data.get("territory"), typing.List[FactionTerritory]
             ),
