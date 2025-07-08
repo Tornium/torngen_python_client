@@ -1,6 +1,7 @@
 import urllib.parse
 
 import pytest
+
 from torngen import BaseQuery
 from torngen.path import FactionId, User
 
