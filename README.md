@@ -9,7 +9,35 @@ For example, this can be done using [pip](https://pip.pypa.io/en/stable/):
 pip3 install git+https://github.com/Tornium/torngen_python_client.git
 ```
 
+## Basic Usage
+1. Create an implementation of the [`HTTPAdapater`](#HTTPAdapter) to perform API calls and any custom API-related behavior.
+2. Perform the query:
+```py
+from torngen_python_client.path import User
+
+response = (
+    User()
+    .select(User.attacks, User.bounties)
+    .limit(10)
+    .get(adapter=CustomHTTPClient)
+    .parse()
+)
+```
+
+3. Access query response:
+```py
+for attack in response["attacks"].attacks:
+    print(f"{attack.defender.name} was attacked")
+```
+
+Consult the documentation for information on available endpoints and parameters. For detailed API usage and available endpoints, refer to the Torn API [Swagger documentation](https://www.torn.com/swagger/index.html) and the generated source code in this repository.
+
 ## License
 Copyright 2025 tiksan
 
 This project is licensed under Apache 2.0; see [LICENSE.md](LICENSE.md) for more details.
+
+## Troubleshooting & Contributing
+- If you encounter issues, please ensure you have the latest version of the library.
+- Contributions are welcome! Open a pull request or submit an issue on GitHub if you have suggestions or bug reports.
+- If you have any questions, please use the [Tornium Discord server](https://discord.gg/pPcqTRTRyF).

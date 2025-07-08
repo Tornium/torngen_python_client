@@ -1,3 +1,7 @@
+"""
+.. include:: ../README.md
+"""
+
 from .adapter import HTTPAdapter
 from .base_path import Path
 from .base_query import BaseQuery
