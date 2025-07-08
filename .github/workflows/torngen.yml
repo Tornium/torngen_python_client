@@ -47,14 +47,14 @@ jobs:
 
       - run: cd torngen && rm -rf path schemas
 
-      - run: cd ../torngen_ex/ && mix do deps.get --check-locked, deps.compile
+      - run: cd torngen_ex && mix do deps.get --check-locked, deps.compile
         if: steps.cache-deps.outputs.cache-hit != 'true'
 
       - run: wget -U "torngen-gh-action" https://www.torn.com/swagger/openapi.json
 
       - run: mix torngen.generate
 
-      - run: cd .. && pip install .[ci]
+      - run: pip install .[ci]
 
       - run: isort . && black .
 
