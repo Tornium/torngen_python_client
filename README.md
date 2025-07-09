@@ -18,10 +18,11 @@ pip3 install git+https://github.com/Tornium/torngen_python_client.git
 
 **Example:**
 ```py
-from torngen_python_client.path import User
+from torngen.path import User
 
 response = (
     User()
+    .key("{{ API KEY }}")
     .select(User.attacks, User.bounties)
     .limit(10)
     .get(adapter=CustomHTTPClient)
