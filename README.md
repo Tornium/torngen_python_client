@@ -34,7 +34,7 @@ After being parsed, each selection's parsed response can be selected by accessin
 
 **Example:**
 ```py
-for attack in response["attacks"].attacks:
+for attack in response.attacks:
     print(f"{attack.defender.name} was attacked")
 ```
 

@@ -11,9 +11,9 @@ def test_manual_user(api_key, requests_adapter):
         .parse()
     )
 
-    assert len(response["attacks"].attacks) <= 10
-    assert len(response["bounties"].bounties) <= 10
-    assert isinstance(response["education"].education.complete, list)
+    assert len(response.attacks) <= 10
+    assert len(response.bounties) <= 10
+    assert isinstance(response.education.complete, list)
 
 
 def test_manual_faction(api_key, requests_adapter):
@@ -27,11 +27,11 @@ def test_manual_faction(api_key, requests_adapter):
         .parse()
     )
 
-    assert len(response["members"].members) >= 10
-    assert response["basic"].basic.name is not None
-    assert response["basic"].basic.best_chain >= 0
-    assert response["basic"].basic.is_enlisted is None or isinstance(
-        response["basic"].basic.is_enlisted, bool
+    assert len(response.members) >= 10
+    assert response.basic.name is not None
+    assert response.basic.best_chain >= 0
+    assert response.basic.is_enlisted is None or isinstance(
+        response.basic.is_enlisted, bool
     )
 
 
@@ -44,5 +44,5 @@ def test_manual_market(api_key, requests_adapter):
         .parse()
     )
 
-    assert response["timestamp"].timestamp > 0
-    assert len(response["lookup"].selections) > 2
+    assert response.timestamp > 0
+    assert len(response.selections) > 2

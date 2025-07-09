@@ -25,6 +25,21 @@ class _URLComponents(typing.NamedTuple):
     fragment: str
 
 
+class ParsedResponse:
+    def __init__(self, parsed_response: typing.Dict[str, BaseSchema]):
+        self.parsed_response: typing.Dict[str, BaseSchema] = parsed_response
+
+    def __getattr__(self, name: str) -> typing.Optional[BaseSchema]:
+        parsed_selection_response: Path
+        for selection, parsed_selection_response in self.parsed_response.items():
+            if not hasattr(parsed_selection_response, name):
+                continue
+
+            return getattr(parsed_selection_response, name)
+
+        raise KeyError(f"The {name} key does not exist in any returned selection")
+
+
 class BaseQuery(object):
     def __init__(self, base_path: str) -> typing.Self:
         self.base_path: str = base_path
@@ -34,7 +49,7 @@ class BaseQuery(object):
         self.response: typing.Optional[dict] = None
 
     def select(self, *args: typing.Tuple[Path]) -> typing.Self:
-        if any(not self.__validate_path(path) for path in args):
+        if any(not self.__validate_path__(path) for path in args):
             raise TypeError("At least one path is not of type Path")
 
         self.selections.update(args)
@@ -70,16 +85,16 @@ class BaseQuery(object):
         if self.api_key is None:
             raise ValueError("An API key is required")
 
-        for path_parameter, path_parameter_value in self.__path_parameters().items():
+        for path_parameter, path_parameter_value in self.__path_parameters__().items():
             path = path.replace("{" + path_parameter + "}", str(path_parameter_value))
 
-        # The parameters have already been validate by __validate_parameter when they were set so
+        # The parameters have already been validate by __validate_paramter__ when they were set so
         # they will not be validated now.
         query_params = {
             "selections": ",".join(
                 selection.selection for selection in self.selections
             ),
-            **self.__query_parameters(),
+            **self.__query_parameters__(),
         }
 
         url = urllib.parse.urlunparse(
@@ -104,11 +119,11 @@ class BaseQuery(object):
 
         return url
 
-    def parse(self) -> typing.Dict[str, BaseSchema]:
+    def parse(self) -> typing.Self:
         if self.response is None:
             raise ValueError("No API response has been stored")
 
-        parsed_response: typing.Dict[str, BaseSchema] = {}
+        parsed_response = {}
 
         selection: Path
         for selection in self.selections:
@@ -116,23 +131,19 @@ class BaseQuery(object):
                 self.response
             )
 
-        return parsed_response
+        return ParsedResponse(parsed_response)
 
-    def __getattr__(
-        self, parameter_name: str
-    ) -> typing.Callable[typing.Any, typing.Self]:
+    def __getattr__(self, name: str) -> typing.Callable[typing.Any, typing.Self]:
         def setter_method(value: str | int) -> typing.Self:
-            if not self.__validate_parameter(parameter_name, value):
-                raise ValueError(
-                    f"Invalid parameter {parameter_name} for the provided paths"
-                )
+            if not self.__validate_paramter__(name, value):
+                raise ValueError(f"Invalid parameter {name} for the provided paths")
 
-            self.parameters[parameter_name] = value
+            self.parameters[name] = value
             return self
 
         return setter_method
 
-    def __validate_parameter(
+    def __validate_paramter__(
         self, parameter_name: str, parameter_value: typing.Any
     ) -> bool:
         path: Path
@@ -148,7 +159,7 @@ class BaseQuery(object):
 
         return False
 
-    def __validate_path(self, value: Path | typing.Any) -> bool:
+    def __validate_path__(self, value: Path | typing.Any) -> bool:
         if not isinstance(value, Path):
             return False
 
@@ -158,7 +169,7 @@ class BaseQuery(object):
 
         return False
 
-    def __path_parameters(self) -> typing.Dict[str, str | int]:
+    def __path_parameters__(self) -> typing.Dict[str, str | int]:
         valid_path_parameters = set()
 
         path: Path
@@ -182,7 +193,7 @@ class BaseQuery(object):
             if parameter_name in valid_path_parameters
         }
 
-    def __query_parameters(self) -> typing.Dict[str, str | int]:
+    def __query_parameters__(self) -> typing.Dict[str, str | int]:
         valid_query_parameters = set()
 
         path: Path
