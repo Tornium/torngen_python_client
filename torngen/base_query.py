@@ -26,6 +26,13 @@ class _URLComponents(typing.NamedTuple):
 
 
 class ParsedResponse:
+    """
+    Parsed API response accessor class.
+
+    Direct child fields of response schemas can be accessed using dot notation (e.g.
+    `query.parse().attacks` for `user/attacks`).
+    """
+
     def __init__(self, parsed_response: typing.Dict[str, BaseSchema]):
         self.parsed_response: typing.Dict[str, BaseSchema] = parsed_response
 
@@ -41,6 +48,15 @@ class ParsedResponse:
 
 
 class BaseQuery(object):
+    """
+    Base Torn APIv2 query object for a resource.
+
+    The generated client is based on a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface) where
+    a query is built from a resource, at least one resource selection, and query/path parameters. After the
+    query has been built, the query can be run against an `HTTPAdapter` implementation and parsed against the
+    selected resource and selection(s).
+    """
+
     def __init__(self, base_path: str) -> typing.Self:
         self.base_path: str = base_path
         self.selections: typing.Set[Path] = set()
@@ -49,6 +65,10 @@ class BaseQuery(object):
         self.response: typing.Optional[dict] = None
 
     def select(self, *args: typing.Tuple[Path]) -> typing.Self:
+        """
+        Select at least one path belonging to the query's resource.
+        """
+
         if any(not self.__validate_path__(path) for path in args):
             raise TypeError("At least one path is not of type Path")
 
@@ -56,6 +76,9 @@ class BaseQuery(object):
         return self
 
     def key(self, api_key: str) -> typing.Self:
+        """
+        Add an API key to the query.
+        """
         if not isinstance(api_key, str):
             raise TypeError("API key must be a string")
         elif len(api_key) != 16:
@@ -69,6 +92,14 @@ class BaseQuery(object):
     def get(
         self, adapter: typing.Type[HTTPAdapter], new_headers: typing.Dict[str, str] = {}
     ) -> typing.Self:
+        """
+        Perform the Torn APIv2 request.
+
+        This function performs a Torn APIv2 request for a URL generated against the query and store the response
+        in the query. Once the query has been performed, the API response can be parsed with `parse()`
+        or accessed directly with `.response`.
+        """
+
         headers = {
             "User-Agent": f"{adapter.client_name()} ({adapter.version()}) torngen/{VERSION}",
             "Content-Type": "application/json",
@@ -80,6 +111,13 @@ class BaseQuery(object):
         return self
 
     def url(self, domain: str = "api.torn.com") -> str:
+        """
+        Generate a URL for the query.
+
+        Create a URL necessary for a Torn APIv2 call for the query. If a domain is provided, the domain will
+        be used when creating the URL; otherwise, `api.torn.com` will be used.
+        """
+
         path = f"/v2/{self.base_path}/"
 
         if self.api_key is None:
@@ -119,7 +157,11 @@ class BaseQuery(object):
 
         return url
 
-    def parse(self) -> typing.Self:
+    def parse(self) -> ParsedResponse:
+        """
+        Parse an API response against the resource and resource selections.
+        """
+
         if self.response is None:
             raise ValueError("No API response has been stored")
 
