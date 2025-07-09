@@ -30,7 +30,7 @@ for attack in response["attacks"].attacks:
     print(f"{attack.defender.name} was attacked")
 ```
 
-Consult the documentation for information on available endpoints and parameters. For detailed API usage and available endpoints, refer to the Torn API [Swagger documentation](https://www.torn.com/swagger/index.html) and the generated source code in this repository.
+Consult the [documentation](http://tornium.github.io/torngen_python_client/) (and the [path documentation](http://tornium.github.io/torngen_python_client/)) for information on available endpoints and parameters. For detailed API usage and available endpoints, refer to the Torn API [Swagger documentation](https://www.torn.com/swagger/index.html) and the generated source code in this repository.
 
 ## License
 Copyright 2025 tiksan
@@ -39,5 +39,5 @@ This project is licensed under Apache 2.0; see [LICENSE.md](LICENSE.md) for more
 
 ## Troubleshooting & Contributing
 - If you encounter issues, please ensure you have the latest version of the library.
-- Contributions are welcome! Open a pull request or submit an issue on GitHub if you have suggestions or bug reports.
+- Contributions are welcome! Open a pull request or submit an issue on [GitHub](https://github.com/Tornium/torngen) if you have suggestions or bug reports.
 - If you have any questions, please use the [Tornium Discord server](https://discord.gg/pPcqTRTRyF).
