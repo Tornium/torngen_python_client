@@ -12,6 +12,11 @@ pip3 install git+https://github.com/Tornium/torngen_python_client.git
 ## Basic Usage
 1. Create an implementation of the [`HTTPAdapater`](#HTTPAdapter) to perform API calls and any custom API-related behavior.
 2. Perform the query:
+    - Select a resource from the [path documentation](https://tornium.github.io/torngen_python_client/torngen/path.html).
+    - Determine the selections to use.
+    - Determine the parameters to use for those selections.
+
+**Example:**
 ```py
 from torngen_python_client.path import User
 
@@ -25,12 +30,15 @@ response = (
 ```
 
 3. Access query response:
+After being parsed, each selection's parsed response can be selected by accessing the response dictionary by the selection name.
+
+**Example:**
 ```py
 for attack in response["attacks"].attacks:
     print(f"{attack.defender.name} was attacked")
 ```
 
-Consult the [documentation](http://tornium.github.io/torngen_python_client/) (and the [path documentation](http://tornium.github.io/torngen_python_client/)) for information on available endpoints and parameters. For detailed API usage and available endpoints, refer to the Torn API [Swagger documentation](https://www.torn.com/swagger/index.html) and the generated source code in this repository.
+Consult the [documentation](https://tornium.github.io/torngen_python_client/) (and the [path documentation](https://tornium.github.io/torngen_python_client/torngen/path.html)) for information on available endpoints and parameters. For detailed API usage and available endpoints, refer to the Torn API [Swagger documentation](https://www.torn.com/swagger/index.html) and the generated source code in this repository.
 
 ## License
 Copyright 2025 tiksan
