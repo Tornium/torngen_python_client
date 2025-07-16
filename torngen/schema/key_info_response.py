@@ -11,6 +11,7 @@ from .key_selection_name import KeySelectionName
 from .market_selection_name import MarketSelectionName
 from .racing_selection_name import RacingSelectionName
 from .torn_selection_name import TornSelectionName
+from .user_id import UserId
 from .user_selection_name import UserSelectionName
 
 
@@ -23,6 +24,14 @@ class KeyInfoResponse(BaseSchema):
     info: typing.TypedDict(
         "",
         {
+            "user": typing.TypedDict(
+                "",
+                {
+                    "id": UserId,
+                    "faction_id": None | FactionId,
+                    "company_id": None | CompanyId,
+                },
+            ),
             "selections": typing.TypedDict(
                 "",
                 {
@@ -59,6 +68,14 @@ class KeyInfoResponse(BaseSchema):
                 typing.TypedDict(
                     "",
                     {
+                        "user": typing.TypedDict(
+                            "",
+                            {
+                                "id": UserId,
+                                "faction_id": None | FactionId,
+                                "company_id": None | CompanyId,
+                            },
+                        ),
                         "selections": typing.TypedDict(
                             "",
                             {
