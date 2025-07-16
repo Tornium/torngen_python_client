@@ -2,6 +2,7 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
+from .torn_organized_crime_position_id import TornOrganizedCrimePositionId
 from .torn_organized_crime_required_item import TornOrganizedCrimeRequiredItem
 
 
@@ -13,7 +14,7 @@ class TornOrganizedCrimeSlot(BaseSchema):
 
     required_item: None | TornOrganizedCrimeRequiredItem
     name: str
-    id: str
+    id: TornOrganizedCrimePositionId
 
     @staticmethod
     def parse(data):
@@ -22,5 +23,5 @@ class TornOrganizedCrimeSlot(BaseSchema):
                 data.get("required_item"), None | TornOrganizedCrimeRequiredItem
             ),
             name=BaseSchema.parse(data.get("name"), str),
-            id=BaseSchema.parse(data.get("id"), str),
+            id=BaseSchema.parse(data.get("id"), TornOrganizedCrimePositionId),
         )
