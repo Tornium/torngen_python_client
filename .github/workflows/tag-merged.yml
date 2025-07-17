@@ -43,10 +43,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read version from lib/VERSION
+      - name: Read version from torngen/VERSION
         id: read_version
         run: |
-          echo "version=$(cat lib/VERSION)" >> $GITHUB_OUTPUT
+          echo "version=$(cat torngen/VERSION)" >> $GITHUB_OUTPUT
 
       - name: Create tag
         run: |
