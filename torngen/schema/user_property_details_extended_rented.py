@@ -14,6 +14,7 @@ class UserPropertyDetailsExtendedRented(BaseSchema):
 
     used_by: typing.List[BasicUser]
     status: typing.Literal["rented"]
+    rented_by: BasicUser
     rental_period_remaining: int
     rental_period: int
     cost_per_day: int
@@ -32,6 +33,7 @@ class UserPropertyDetailsExtendedRented(BaseSchema):
         return UserPropertyDetailsExtendedRented(
             used_by=BaseSchema.parse(data.get("used_by"), typing.List[BasicUser]),
             status=BaseSchema.parse(data.get("status"), typing.Literal["rented"]),
+            rented_by=BaseSchema.parse(data.get("rented_by"), BasicUser),
             rental_period_remaining=BaseSchema.parse(
                 data.get("rental_period_remaining"), int
             ),
