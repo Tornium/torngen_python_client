@@ -2,7 +2,7 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
-from ..schema.user_property_response import UserPropertyResponse
+from ..schema.property_property_response import PropertyPropertyResponse
 
 
 class PropertyId(BaseQuery):
@@ -12,7 +12,7 @@ class PropertyId(BaseQuery):
 
     property = Path(
         "/property/{id}/property",
-        UserPropertyResponse,
+        PropertyPropertyResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
