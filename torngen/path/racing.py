@@ -24,7 +24,7 @@ class Racing(BaseQuery):
     )
     """
     `/racing/tracks`: Get race tracks and descriptions
-    Requires public access key. <br>Returns the details about racing tracks.
+    Requires public access key. Returns the details about racing tracks.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -42,7 +42,7 @@ class Racing(BaseQuery):
     )
     """
     `/racing/timestamp`: Get current server time
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -60,7 +60,7 @@ class Racing(BaseQuery):
     )
     """
     `/racing/carupgrades`: Get all possible car upgrades
-    Requires public access key. <br>Returns the details about all possible car upgrades.
+    Requires public access key. Returns the details about all possible car upgrades.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -78,7 +78,7 @@ class Racing(BaseQuery):
     )
     """
     `/racing/lookup`: Get all available racing selections
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -96,7 +96,7 @@ class Racing(BaseQuery):
     )
     """
     `/racing/cars`: Get cars and their racing stats
-    Requires public access key. <br>Returns the stat details about racing cars.
+    Requires public access key. Returns the stat details about racing cars.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -119,7 +119,7 @@ class Racing(BaseQuery):
     )
     """
     `/racing/races`: Get races
-    Requires public access key. <br>Returns a list of races, ordered by race start timestamp.
+    Requires public access key. Returns a list of races, ordered by race start timestamp.
 
     # Parameters
     - limit : N/A

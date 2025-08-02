@@ -20,7 +20,7 @@ class Key(BaseQuery):
     )
     """
     `/key/info`: Get current key info
-    Available for any key. <br>
+    Available for any key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -40,8 +40,7 @@ class Key(BaseQuery):
     )
     """
     `/key/log`: Get current key log history
-    Available for any key. <br>
- * This selection contains up to last 250 request logs.
+    Available for any key. * This selection contains up to last 250 request logs.
 
     # Parameters
     - limit : N/A

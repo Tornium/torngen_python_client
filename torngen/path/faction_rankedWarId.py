@@ -20,7 +20,7 @@ class FactionRankedWarId(BaseQuery):
     )
     """
     `/faction/{rankedWarId}/rankedwarreport`: Get ranked war details
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - rankedWarId : Ranked war id

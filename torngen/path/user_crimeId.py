@@ -20,7 +20,7 @@ class UserCrimeId(BaseQuery):
     )
     """
     `/user/{crimeId}/crimes`: Get your crime statistics
-    Requires minimal access key. <br>Return the details and statistics about for a specific crime.
+    Requires minimal access key. Return the details and statistics about for a specific crime.
 
     # Parameters
     - crimeId : Crime id

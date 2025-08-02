@@ -20,7 +20,7 @@ class PropertyId(BaseQuery):
     )
     """
     `/property/{id}/property`: Get a specific property
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : Property id

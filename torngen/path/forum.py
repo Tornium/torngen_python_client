@@ -22,7 +22,7 @@ class Forum(BaseQuery):
     )
     """
     `/forum/lookup`: Get all available forum selections
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -44,7 +44,7 @@ class Forum(BaseQuery):
     )
     """
     `/forum/threads`: Get threads across all forum categories
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - limit : N/A
@@ -66,7 +66,7 @@ class Forum(BaseQuery):
     )
     """
     `/forum/timestamp`: Get current server time
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -84,7 +84,7 @@ class Forum(BaseQuery):
     )
     """
     `/forum/categories`: Get publicly available forum categories
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
