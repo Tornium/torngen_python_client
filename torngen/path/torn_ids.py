@@ -21,7 +21,7 @@ class TornIds(BaseQuery):
     )
     """
     `/torn/{ids}/items`: Get information about items
-    Requires public key.<br>Details are always populated when available.
+    Requires public key. Details are always populated when available.
 
     # Parameters
     - ids : Item id or a list of item ids (comma separated)

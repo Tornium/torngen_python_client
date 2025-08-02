@@ -31,7 +31,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/hof`: Get a faction's hall of fame rankings.
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -51,7 +51,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/wars`: Get a faction's wars & pacts details
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -71,7 +71,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/rankedwars`: Get a faction's ranked wars history
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -95,7 +95,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/chains`: Get a list of a faction's completed chains
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -119,7 +119,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/raids`: Get a faction's raids history
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -139,7 +139,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/chain`: Get a faction's current chain
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -160,7 +160,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/members`: Get a list of a faction's members
-    Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+    Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 
     # Parameters
     - id : Faction id
@@ -181,7 +181,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/territory`: Get a list of a faction's territories
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : Faction id
@@ -201,7 +201,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/basic`: Get a faction's basic details
-    Requires public access key. <br> The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+    Requires public access key. The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 
     # Parameters
     - id : Faction id
@@ -221,7 +221,7 @@ class FactionId(BaseQuery):
     )
     """
     `/faction/{id}/territorywars`: Get a faction's territory wars history
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - id : Faction id

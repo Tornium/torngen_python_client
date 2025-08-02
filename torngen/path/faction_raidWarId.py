@@ -20,7 +20,7 @@ class FactionRaidWarId(BaseQuery):
     )
     """
     `/faction/{raidWarId}/raidreport`: Get raid war details
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - raidWarId : Raid war id
