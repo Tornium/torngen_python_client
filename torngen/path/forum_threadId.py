@@ -21,7 +21,7 @@ class ForumThreadId(BaseQuery):
     )
     """
     `/forum/{threadId}/thread`: Get specific thread details
-    Requires public access key. <br>Contains details of a thread including topic content and poll (if any).
+    Requires public access key. Contains details of a thread including topic content and poll (if any).
 
     # Parameters
     - threadId : Thread id
@@ -43,7 +43,7 @@ class ForumThreadId(BaseQuery):
     )
     """
     `/forum/{threadId}/posts`: Get specific forum thread posts
-    Requires public access key. <br>Returns 20 posts per page for a specific thread.
+    Requires public access key. Returns 20 posts per page for a specific thread.
 
     # Parameters
     - offset : N/A

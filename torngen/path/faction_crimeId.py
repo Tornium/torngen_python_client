@@ -20,7 +20,7 @@ class FactionCrimeId(BaseQuery):
     )
     """
     `/faction/{crimeId}/crime`: Get a specific organized crime
-    Requires minimal access key with faction API access permissions. <br>
+    Requires minimal access key with faction API access permissions.
 
     # Parameters
     - crimeId : Crime id

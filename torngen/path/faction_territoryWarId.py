@@ -24,7 +24,7 @@ class FactionTerritoryWarId(BaseQuery):
     )
     """
     `/faction/{territoryWarId}/territorywarreport`: Get territory war details
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - territoryWarId : Territory war id

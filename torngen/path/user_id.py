@@ -28,13 +28,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/personalstats`: Get a player's personal stats
-    Requires public access key. <br>
- *  UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
- *  UserPersonalStatsFullPublic is returned when the requested category is 'all'.
- *  UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
- *  Otherwise, UserPersonalStatsCategory is returned for the matched category.
- *  It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).
- *  Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
+    Requires public access key. * UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key. * UserPersonalStatsFullPublic is returned when the requested category is 'all'. * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load. * Otherwise, UserPersonalStatsCategory is returned for the matched category. * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key). * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
 
     # Parameters
     - id : User id
@@ -61,7 +55,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/forumposts`: Get posts for a specific player
-    Requires public access key. <br>Returns 20 posts per page for a specific player.
+    Requires public access key. Returns 20 posts per page for a specific player.
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
@@ -86,7 +80,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/bounties`: Get bounties placed on a specific user
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : User id
@@ -108,7 +102,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/properties`: Get specific user's properties
-    Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+    Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
 
     # Parameters
     - id : User id
@@ -130,7 +124,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/hof`: Get hall of fame rankings for a specific player
-    Requires public access key. <br>The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
+    Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
 
     # Parameters
     - id : User id
@@ -150,7 +144,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/property`: Get specific user's property
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : User id
@@ -174,7 +168,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/forumthreads`: Get threads for a specific player
-    Requires public access key. <br>Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
+    Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
 
     # Parameters
     - id : User id

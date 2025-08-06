@@ -23,7 +23,7 @@ class MarketId(BaseQuery):
     )
     """
     `/market/{id}/itemmarket`: Get item market listings
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : Item id
@@ -45,7 +45,7 @@ class MarketId(BaseQuery):
     )
     """
     `/market/{id}/bazaar`: Get item specialized bazaar directory
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - id : Item id

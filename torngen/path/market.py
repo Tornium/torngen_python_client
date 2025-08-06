@@ -22,7 +22,7 @@ class Market(BaseQuery):
     )
     """
     `/market/bazaar`: Get bazaar directory
-    Requires public access key. <br> The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
+    Requires public access key. The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
 
     # Parameters
     - cat : Category of specialized bazaars returned
@@ -41,7 +41,7 @@ class Market(BaseQuery):
     )
     """
     `/market/lookup`: Get all available market selections
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -59,7 +59,7 @@ class Market(BaseQuery):
     )
     """
     `/market/timestamp`: Get current server time
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache

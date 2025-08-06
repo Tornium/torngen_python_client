@@ -22,7 +22,7 @@ class TornLogCategoryId(BaseQuery):
     )
     """
     `/torn/{logCategoryId}/logtypes`: Get available log ids for a specific log category
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - logCategoryId : Log category id
