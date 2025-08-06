@@ -36,7 +36,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/logtypes`: Get all available log ids
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -58,7 +58,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/attacklog`: Get attack log details
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - log : Code of the attack log. E.g. d51ad4fe6be884b309b142e2d1d4f807
@@ -82,7 +82,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/bounties`: Get bounties
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - limit : N/A
@@ -102,7 +102,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/properties`: Get properties details
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -120,7 +120,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/education`: Get education information
-    Requires public access key.<br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -156,7 +156,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/timestamp`: Get current server time
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -177,7 +177,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/territory`: Get territory details
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - ids : Specific territory id or a list of territory ids (comma separated)
@@ -198,7 +198,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/factiontree`: Get full faction tree
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -216,7 +216,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/lookup`: Get all available torn selections
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -255,7 +255,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/factionhof`: Get faction hall of fame positions for a specific category
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - limit : N/A
@@ -278,7 +278,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/items`: Get information about items
-    Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
+    Requires public key. Default category is 'All'. Details are not populated when requesting the category 'All'.
 
     # Parameters
     - cat : Item category type
@@ -298,7 +298,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/crimes`: Get crimes information
-    Requires public access key. <br> Return the details about released crimes.
+    Requires public access key. Return the details about released crimes.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -316,7 +316,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/calendar`: Get calendar information
-    Requires public access key. <br> Get the details about competitions & events in the running year.
+    Requires public access key. Get the details about competitions & events in the running year.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -358,7 +358,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/organizedcrimes`: Get organized crimes information
-    Requires public access key. <br> Return the details about released faction organized crimes.
+    Requires public access key. Return the details about released faction organized crimes.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -376,7 +376,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/logcategories`: Get available log categories
-    Requires public key. <br>
+    Requires public key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache

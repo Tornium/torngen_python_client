@@ -20,7 +20,7 @@ class TornCrimeId(BaseQuery):
     )
     """
     `/torn/{crimeId}/subcrimes`: Get Subcrimes information
-    Requires public access key. <br> Return the details about possible actions for a specific crime.
+    Requires public access key. Return the details about possible actions for a specific crime.
 
     # Parameters
     - crimeId : Crime id

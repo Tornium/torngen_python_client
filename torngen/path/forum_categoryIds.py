@@ -24,7 +24,7 @@ class ForumCategoryIds(BaseQuery):
     )
     """
     `/forum/{categoryIds}/threads`: Get threads for specific public forum category or categories
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - limit : N/A

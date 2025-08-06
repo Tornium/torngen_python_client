@@ -24,6 +24,7 @@ from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_item_market_response import UserItemMarketResponse
 from ..schema.user_job_ranks_response import UserJobRanksResponse
 from ..schema.user_list_response import UserListResponse
+from ..schema.user_logs_response import UserLogsResponse
 from ..schema.user_lookup_response import UserLookupResponse
 from ..schema.user_organized_crime_response import UserOrganizedCrimeResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
@@ -65,7 +66,7 @@ class User(BaseQuery):
     )
     """
     `/user/forumfriends`: Get updates on your friends' activity
-    Requires minimal access key. <br>This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+    Requires minimal access key. This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -87,7 +88,7 @@ class User(BaseQuery):
     )
     """
     `/user/attacks`: Get your detailed attacks
-    Requires limited access key. <br>
+    Requires limited access key.
 
     # Parameters
     - limit : N/A
@@ -109,7 +110,7 @@ class User(BaseQuery):
     )
     """
     `/user/bounties`: Get bounties placed on you
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -127,7 +128,7 @@ class User(BaseQuery):
     )
     """
     `/user/lookup`: Get all available user selections
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -145,7 +146,7 @@ class User(BaseQuery):
     )
     """
     `/user/racingrecords`: Get your current racing records
-    Requires minimal access key. <br>
+    Requires minimal access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -168,7 +169,7 @@ class User(BaseQuery):
     )
     """
     `/user/forumposts`: Get your posts
-    Requires public access key. <br>Returns 20 posts per page.
+    Requires public access key. Returns 20 posts per page.
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
@@ -195,7 +196,7 @@ class User(BaseQuery):
     )
     """
     `/user/list`: Get your friends, enemies or targets list
-    Requires limited access key. <br>
+    Requires limited access key.
 
     # Parameters
     - cat : Select list type
@@ -217,7 +218,7 @@ class User(BaseQuery):
     )
     """
     `/user/factionbalance`: Get your current faction balance
-    Requires limited access key. <br>
+    Requires limited access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -237,13 +238,7 @@ class User(BaseQuery):
     )
     """
     `/user/personalstats`: Get your personal stats
-    Requires public access key. <br>
- * UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.
- * UserPersonalStatsFullPublic is returned when the requested category is 'all'.
- * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
- * Otherwise, UserPersonalStatsCategory is returned for the matched category.
- * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).
- * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
+    Requires public access key. * UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key. * UserPersonalStatsFullPublic is returned when the requested category is 'all'. * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load. * Otherwise, UserPersonalStatsCategory is returned for the matched category. * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key). * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
 
     # Parameters
     - cat : Stats category. Required unless requesting specific stats via &#39;stat&#39; query parameter
@@ -265,7 +260,7 @@ class User(BaseQuery):
     )
     """
     `/user/properties`: Get your own properties
-    Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
+    Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
 
     # Parameters
     - offset : N/A
@@ -285,7 +280,7 @@ class User(BaseQuery):
     )
     """
     `/user/property`: Get your current property
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -303,12 +298,40 @@ class User(BaseQuery):
     )
     """
     `/user/forumsubscribedthreads`: Get updates on threads you subscribed to
-    Requires minimal access key. <br>This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
+    Requires minimal access key. This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    log = Path(
+        "/user/log",
+        UserLogsResponse,
+        log=Parameter("log", "query", required=False, deprecated=False),
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/log`: Get your logs
+    Requires limited access key. It's possible to pass a list of log ids or a log category id.
+
+    # Parameters
+    - log : Log ids, comma separated, e.g. 105,4900,4905
+    - cat : Log category id
+    - limit : N/A
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Full). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -325,8 +348,7 @@ class User(BaseQuery):
     )
     """
     `/user/reports`: Get your reports
-    Requires limited access key. <br>
- * The default limit is set to 25. However, the limit can be set to 100 for the 'stats' category.
+    Requires limited access key. * The default limit is set to 25. However, the limit can be set to 100 for the 'stats' category.
 
     # Parameters
     - cat : Used to filter reports with a specific type.
@@ -353,7 +375,7 @@ class User(BaseQuery):
     )
     """
     `/user/races`: Get user races
-    Requires minimal access key. <br>Returns a list of user races, ordered by race start timestamp.
+    Requires minimal access key. Returns a list of user races, ordered by race start timestamp.
 
     # Parameters
     - limit : N/A
@@ -376,7 +398,7 @@ class User(BaseQuery):
     )
     """
     `/user/calendar`: Get your competition's event start time
-    Requires minimal access key. <br>Only available to yourself.
+    Requires minimal access key. Only available to yourself.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -394,7 +416,7 @@ class User(BaseQuery):
     )
     """
     `/user/forumfeed`: Get updates on your threads and posts
-    Requires minimal access key. <br>This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+    Requires minimal access key. This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -412,7 +434,7 @@ class User(BaseQuery):
     )
     """
     `/user/hof`: Get your hall of fame rankings
-    Requires public access key. <br>When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
+    Requires public access key. When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -430,7 +452,7 @@ class User(BaseQuery):
     )
     """
     `/user/jobranks`: Get your starter job positions
-    Requires minimal access key. <br>
+    Requires minimal access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -452,7 +474,7 @@ class User(BaseQuery):
     )
     """
     `/user/forumthreads`: Get your threads
-    Requires public access key. <br>Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
+    Requires public access key. Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
 
     # Parameters
     - limit : N/A
@@ -474,7 +496,7 @@ class User(BaseQuery):
     )
     """
     `/user/enlistedcars`: Get user enlisted cars
-    Requires minimal access key. <br>Returns a list of all user enlisted cars.
+    Requires minimal access key. Returns a list of all user enlisted cars.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -496,7 +518,7 @@ class User(BaseQuery):
     )
     """
     `/user/attacksfull`: Get your simplified attacks
-    Requires limited access key. <br>Returns up to 1,000 rows. <br>
+    Requires limited access key. Returns up to 1,000 rows.
 
     # Parameters
     - limit : N/A
@@ -518,7 +540,7 @@ class User(BaseQuery):
     )
     """
     `/user/timestamp`: Get current server time
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -537,7 +559,7 @@ class User(BaseQuery):
     )
     """
     `/user/itemmarket`: Get your item market listings for a specific item
-    Requires limited access key. <br>
+    Requires limited access key.
 
     # Parameters
     - offset : N/A
@@ -556,7 +578,7 @@ class User(BaseQuery):
     )
     """
     `/user/organizedcrime`: Get your current ongoing organized crime
-    Requires minimal access key. <br>
+    Requires minimal access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -579,7 +601,7 @@ class User(BaseQuery):
     )
     """
     `/user/revives`: Get your detailed revives
-    Requires limited access key. <br>
+    Requires limited access key.
 
     # Parameters
     - limit : N/A
@@ -607,7 +629,7 @@ class User(BaseQuery):
     )
     """
     `/user/revivesFull`: Get your simplified revives
-    Requires limited access key. <br>
+    Requires limited access key.
 
     # Parameters
     - limit : N/A

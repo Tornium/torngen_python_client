@@ -7,6 +7,7 @@ from .company_id import CompanyId
 from .faction_id import FactionId
 from .faction_selection_name import FactionSelectionName
 from .forum_selection_name import ForumSelectionName
+from .key_info_available_log import KeyInfoAvailableLog
 from .key_selection_name import KeySelectionName
 from .market_selection_name import MarketSelectionName
 from .racing_selection_name import RacingSelectionName
@@ -50,6 +51,13 @@ class KeyInfoResponse(BaseSchema):
                 "",
                 {
                     "type": ApiKeyAccessTypeEnum,
+                    "log": typing.TypedDict(
+                        "",
+                        {
+                            "custom_permissions": bool,
+                            "available": typing.List[KeyInfoAvailableLog],
+                        },
+                    ),
                     "level": int,
                     "faction_id": None | FactionId,
                     "faction": bool,
@@ -94,6 +102,13 @@ class KeyInfoResponse(BaseSchema):
                             "",
                             {
                                 "type": ApiKeyAccessTypeEnum,
+                                "log": typing.TypedDict(
+                                    "",
+                                    {
+                                        "custom_permissions": bool,
+                                        "available": typing.List[KeyInfoAvailableLog],
+                                    },
+                                ),
                                 "level": int,
                                 "faction_id": None | FactionId,
                                 "faction": bool,

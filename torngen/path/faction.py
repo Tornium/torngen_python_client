@@ -55,7 +55,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/revives`: Get your faction's detailed revives
-    Requires limited access key with faction API access permissions. <br>
+    Requires limited access key with faction API access permissions.
 
     # Parameters
     - limit : N/A
@@ -82,7 +82,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/search`: Search factions by name or other criteria
-    Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
+    Requires public access key. This selection is standalone and cannot be used together with other selections.
 
     # Parameters
     - name : Name  to search for.
@@ -110,7 +110,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/news`: Get your faction's news details
-    Requires minimal access key with faction API access permissions. <br> It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
+    Requires minimal access key with faction API access permissions. It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
@@ -138,7 +138,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/rankedwars`: Get ranked wars history for your faction
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - cat : This parameter is deprecated. The ranked wars list can now instead be fetched via &#39;faction&#39; -&gt; &#39;warfare&#39; endpoint. This functionality will be removed on 1st of September 2025. (DEPRECATED) 
@@ -159,8 +159,8 @@ class Faction(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/faction/lookup`: 
-    Requires public access key. <br>
+    `/faction/lookup`: N/A
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -183,7 +183,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/revivesFull`: Get your faction's simplified revives
-    Requires limited access key with faction API access permissions. <br>
+    Requires limited access key with faction API access permissions.
 
     # Parameters
     - limit : N/A
@@ -210,8 +210,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/reports`: Get faction reports
-    Requires limited access key. <br>
- *  The default limit is set to 25. However, the limit can be set to 100 for the 'stats' category.
+    Requires limited access key. * The default limit is set to 25. However, the limit can be set to 100 for the 'stats' category.
 
     # Parameters
     - cat : Used to filter reports with a specific type.
@@ -233,7 +232,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/hof`: Get your faction's hall of fame rankings.
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -251,7 +250,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/wars`: Get your faction's wars & pacts details
-    Requires public access key. <br> 
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -269,7 +268,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/chain`: Get your faction's current chain
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -287,7 +286,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/territory`: Get a list of your faction's territories
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -306,7 +305,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/members`: Get a list of your faction's members
-    Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+    Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
@@ -325,7 +324,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/timestamp`: Get current server time
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -343,7 +342,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/rackets`: Get a list of current rackets
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -361,7 +360,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/applications`: Get your faction's applications
-    Requires minimal access key with faction API access permissions. <br>
+    Requires minimal access key with faction API access permissions.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -379,7 +378,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/basic`: Get your faction's basic details
-    Requires public access key. <br> The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+    Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -397,7 +396,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/chainreport`: Get your faction's latest chain report
-    Requires public access key. <br> This includes currently ongoing chains.
+    Requires public access key. This includes currently ongoing chains.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -419,7 +418,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/attacksfull`: Get your faction's simplified attacks
-    Requires limited access key with faction API access permissions. <br>
+    Requires limited access key with faction API access permissions.
 
     # Parameters
     - limit : N/A
@@ -441,7 +440,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/positions`: Get your faction's positions details
-    Requires minimal access key with faction API access permissions. <br>
+    Requires minimal access key with faction API access permissions.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -463,7 +462,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/attacks`: Get your faction's detailed attacks
-    Requires limited access key with faction API access permissions. <br>
+    Requires limited access key with faction API access permissions.
 
     # Parameters
     - limit : N/A
@@ -490,7 +489,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/warfare`: Get faction warfare
-    Requires public access key. <br>The response depends on the selected category.
+    Requires public access key. The response depends on the selected category.
 
     # Parameters
     - cat : N/A
@@ -517,7 +516,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/chains`: Get a list of your faction's completed chains
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - limit : N/A
@@ -539,7 +538,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/balance`: Get your faction's & member's balance details
-    Requires limited access key with faction API access permissions. <br>
+    Requires limited access key with faction API access permissions.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -559,7 +558,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/contributors`: Get your faction's challenge contributors
-    Requires limiteed access key with faction API access permissions. <br>
+    Requires limiteed access key with faction API access permissions.
 
     # Parameters
     - stat : Get contributors for this field.
@@ -582,7 +581,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/raids`: Get raids history for your faction
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
@@ -608,7 +607,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/territorywars`: Get territory wars history for your faction
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - cat : This parameter is deprecated. The territory wars list can now instead be fetched via &#39;faction&#39; -&gt; &#39;warfare&#39; endpoint. This functionality will be removed on 1st of September 2025. (DEPRECATED) 
@@ -631,7 +630,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/stats`: Get your faction's challenges stats
-    Requires minimal access key with faction API access permissions. <br>
+    Requires minimal access key with faction API access permissions.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -651,7 +650,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/territoryownership`: Get a list of your faction's territories
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - offset : N/A
@@ -671,7 +670,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/upgrades`: Get your faction's upgrades
-    Requires minimal access key with faction API access permissions. <br>
+    Requires minimal access key with faction API access permissions.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -695,11 +694,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/crimes`: Get your faction's organized crimes
-    Requires minimal access key with faction API access permissions. <br> It's possible to get older entries either by timestamp range (from, to) or with offset.<br> Crimes are ordered depending on the category chosen:
- * For categories 'all' & 'available', the ordering field is 'created_at'.
- * For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.
- * For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.
- * For category 'planning', the ordering field is 'ready_at'.
+    Requires minimal access key with faction API access permissions. It's possible to get older entries either by timestamp range (from, to) or with offset. Crimes are ordered depending on the category chosen: * For categories 'all' & 'available', the ordering field is 'created_at'. * For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'. * For categories 'recruiting' & 'expired', the ordering field is 'expired_at'. * For category 'planning', the ordering field is 'ready_at'.
 
     # Parameters
     - cat : Category of organized crimes returned. Category &#39;available&#39; includes both &#39;recruiting&#39; &amp; &#39;planning&#39;, and category &#39;completed&#39; includes both &#39;successful&#39; &amp; &#39;failure&#39; Default category is &#39;all&#39;.

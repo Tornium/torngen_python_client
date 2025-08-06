@@ -20,7 +20,7 @@ class Property(BaseQuery):
     )
     """
     `/property/lookup`: Get all available property selections
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -38,7 +38,7 @@ class Property(BaseQuery):
     )
     """
     `/property/timestamp`: Get current server time
-    Requires public access key. <br>
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
