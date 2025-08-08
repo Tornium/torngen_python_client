@@ -78,6 +78,7 @@ class User(BaseQuery):
     attacks = Path(
         "/user/attacks",
         FactionAttacksResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -91,6 +92,7 @@ class User(BaseQuery):
     Requires limited access key.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks. If not specified, this selection will return both incoming and outgoing attacks.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -508,6 +510,7 @@ class User(BaseQuery):
     attacksfull = Path(
         "/user/attacksfull",
         FactionAttacksFullResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -521,6 +524,7 @@ class User(BaseQuery):
     Requires limited access key. Returns up to 1,000 rows.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks. If not specified, this selection will return both incoming and outgoing attacks.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -590,6 +594,7 @@ class User(BaseQuery):
     revives = Path(
         "/user/revives",
         RevivesResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -604,6 +609,7 @@ class User(BaseQuery):
     Requires limited access key.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing revives. If not specified, this selection will return both incoming and outgoing revives.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -618,6 +624,7 @@ class User(BaseQuery):
     revivesFull = Path(
         "/user/revivesFull",
         RevivesFullResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -632,6 +639,7 @@ class User(BaseQuery):
     Requires limited access key.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing revives. If not specified, this selection will return both incoming and outgoing revives.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time

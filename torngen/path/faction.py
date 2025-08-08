@@ -44,6 +44,7 @@ class Faction(BaseQuery):
     revives = Path(
         "/faction/revives",
         RevivesResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -58,6 +59,7 @@ class Faction(BaseQuery):
     Requires limited access key with faction API access permissions.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing revives. If not specified, this selection will return both incoming and outgoing revives.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -172,6 +174,7 @@ class Faction(BaseQuery):
     revivesFull = Path(
         "/faction/revivesFull",
         RevivesFullResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -186,6 +189,7 @@ class Faction(BaseQuery):
     Requires limited access key with faction API access permissions.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing revives. If not specified, this selection will return both incoming and outgoing revives.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -408,6 +412,7 @@ class Faction(BaseQuery):
     attacksfull = Path(
         "/faction/attacksfull",
         FactionAttacksFullResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -421,6 +426,7 @@ class Faction(BaseQuery):
     Requires limited access key with faction API access permissions.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks. If not specified, this selection will return both incoming and outgoing attacks.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -452,6 +458,7 @@ class Faction(BaseQuery):
     attacks = Path(
         "/faction/attacks",
         FactionAttacksResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -465,6 +472,7 @@ class Faction(BaseQuery):
     Requires limited access key with faction API access permissions.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks. If not specified, this selection will return both incoming and outgoing attacks.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
