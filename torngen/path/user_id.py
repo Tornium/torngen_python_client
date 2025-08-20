@@ -2,6 +2,7 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
+from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
@@ -35,6 +36,28 @@ class UserId(BaseQuery):
     - cat : 
     - stat : Stat names (10 maximum). Used to fetch historical stat values
     - timestamp : Returns stats until this timestamp (converted to nearest date).
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    basic = Path(
+        "/user/{id}/basic",
+        UserBasicResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/basic`: Get basic profile information for a specific user
+    Requires public access key.
+
+    # Parameters
+    - id : User id
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
