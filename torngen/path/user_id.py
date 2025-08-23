@@ -117,6 +117,7 @@ class UserId(BaseQuery):
         "/user/{id}/properties",
         UserPropertiesResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -129,6 +130,7 @@ class UserId(BaseQuery):
 
     # Parameters
     - id : User id
+    - filters : It&#39;s possible to use this query parameter to filter properties by the key owner or their spouse.
     - offset : N/A
     - limit : N/A
     - timestamp : Timestamp to bypass cache

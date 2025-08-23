@@ -296,6 +296,7 @@ class User(BaseQuery):
     properties = Path(
         "/user/properties",
         UserPropertiesResponse,
+        filters=Parameter("filters", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -307,6 +308,7 @@ class User(BaseQuery):
     Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
 
     # Parameters
+    - filters : It&#39;s possible to use this query parameter to filter properties by the key owner or their spouse.
     - offset : N/A
     - limit : N/A
     - timestamp : Timestamp to bypass cache
