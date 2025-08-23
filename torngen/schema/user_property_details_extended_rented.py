@@ -17,6 +17,9 @@ class UserPropertyDetailsExtendedRented(BaseSchema):
     rented_by: BasicUser
     rental_period_remaining: int
     rental_period: int
+    lease_extension: None | typing.TypedDict(
+        "", {"period": int, "created_at": int, "cost": int}
+    )
     cost_per_day: int
     cost: int
     upkeep: typing.TypedDict("", {"staff": int, "property": int})
@@ -38,6 +41,11 @@ class UserPropertyDetailsExtendedRented(BaseSchema):
                 data.get("rental_period_remaining"), int
             ),
             rental_period=BaseSchema.parse(data.get("rental_period"), int),
+            lease_extension=BaseSchema.parse(
+                data.get("lease_extension"),
+                None
+                | typing.TypedDict("", {"period": int, "created_at": int, "cost": int}),
+            ),
             cost_per_day=BaseSchema.parse(data.get("cost_per_day"), int),
             cost=BaseSchema.parse(data.get("cost"), int),
             upkeep=BaseSchema.parse(
