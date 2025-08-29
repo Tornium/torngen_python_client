@@ -11,12 +11,15 @@ from ..schema.torn_education_response import TornEducationResponse
 from ..schema.torn_faction_hof_response import TornFactionHofResponse
 from ..schema.torn_faction_tree_response import TornFactionTreeResponse
 from ..schema.torn_hof_response import TornHofResponse
+from ..schema.torn_honors_response import TornHonorsResponse
 from ..schema.torn_item_ammo_response import TornItemAmmoResponse
 from ..schema.torn_item_mods_response import TornItemModsResponse
 from ..schema.torn_items_response import TornItemsResponse
 from ..schema.torn_log_categories_response import TornLogCategoriesResponse
 from ..schema.torn_log_types_response import TornLogTypesResponse
 from ..schema.torn_lookup_response import TornLookupResponse
+from ..schema.torn_medals_response import TornMedalsResponse
+from ..schema.torn_merits_response import TornMeritsResponse
 from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_properties import TornProperties
 from ..schema.torn_territories_response import TornTerritoriesResponse
@@ -25,6 +28,24 @@ from ..schema.torn_territories_response import TornTerritoriesResponse
 class Torn(BaseQuery):
     """
     A collection of paths representing `Torn`.
+    """
+
+    honors = Path(
+        "/torn/honors",
+        TornHonorsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/honors`: Get all honors
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
     """
 
     logtypes = Path(
@@ -289,6 +310,24 @@ class Torn(BaseQuery):
     
     """
 
+    medals = Path(
+        "/torn/medals",
+        TornMedalsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/medals`: Get all medals
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     crimes = Path(
         "/torn/crimes",
         TornCrimesResponse,
@@ -299,6 +338,24 @@ class Torn(BaseQuery):
     """
     `/torn/crimes`: Get crimes information
     Requires public access key. Return the details about released crimes.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    merits = Path(
+        "/torn/merits",
+        TornMeritsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/merits`: Get all merits
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
