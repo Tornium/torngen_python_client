@@ -23,12 +23,15 @@ from ..schema.user_forum_subscribed_threads_response import (
 )
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
+from ..schema.user_honors_response import UserHonorsResponse
 from ..schema.user_item_market_response import UserItemMarketResponse
 from ..schema.user_job_points_response import UserJobPointsResponse
 from ..schema.user_job_ranks_response import UserJobRanksResponse
 from ..schema.user_list_response import UserListResponse
 from ..schema.user_logs_response import UserLogsResponse
 from ..schema.user_lookup_response import UserLookupResponse
+from ..schema.user_medals_response import UserMedalsResponse
+from ..schema.user_merits_response import UserMeritsResponse
 from ..schema.user_money_response import UserMoneyResponse
 from ..schema.user_organized_crime_response import UserOrganizedCrimeResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
@@ -235,6 +238,24 @@ class User(BaseQuery):
     
     """
 
+    honors = Path(
+        "/user/honors",
+        UserHonorsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/honors`: Get your achieved honors
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     factionbalance = Path(
         "/user/factionbalance",
         UserFactionBalanceResponse,
@@ -262,6 +283,24 @@ class User(BaseQuery):
     )
     """
     `/user/skills`: Get your skills
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    medals = Path(
+        "/user/medals",
+        UserMedalsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/medals`: Get your achieved medals
     Requires minimal access key.
 
     # Parameters
@@ -527,6 +566,24 @@ class User(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    merits = Path(
+        "/user/merits",
+        UserMeritsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/merits`: Get your merits
+    Requires minimal access key.
+
+    # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

@@ -1,0 +1,23 @@
+import typing
+
+HonorTypeEnum = typing.Literal[
+    "attacking",
+    "camo",
+    "weapons",
+    "education",
+    "crimes",
+    "drugs",
+    "jail",
+    "hospital",
+    "travel",
+    "gym",
+    "level",
+    "competitions",
+    "money",
+    "items",
+    "commitment",
+    "casino",
+    "missions",
+    "misc",
+    "default",
+]
