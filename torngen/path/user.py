@@ -12,9 +12,11 @@ from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_battle_stats_response import UserBattleStatsResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_calendar_response import UserCalendarResponse
+from ..schema.user_competition_response import UserCompetitionResponse
 from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
 from ..schema.user_faction_balance_response import UserFactionBalanceResponse
+from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_feed_response import UserForumFeedResponse
 from ..schema.user_forum_friends_response import UserForumFriendsResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
@@ -24,9 +26,11 @@ from ..schema.user_forum_subscribed_threads_response import (
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_honors_response import UserHonorsResponse
+from ..schema.user_icons_response import UserIconsResponse
 from ..schema.user_item_market_response import UserItemMarketResponse
 from ..schema.user_job_points_response import UserJobPointsResponse
 from ..schema.user_job_ranks_response import UserJobRanksResponse
+from ..schema.user_job_response import UserJobResponse
 from ..schema.user_list_response import UserListResponse
 from ..schema.user_logs_response import UserLogsResponse
 from ..schema.user_lookup_response import UserLookupResponse
@@ -35,6 +39,7 @@ from ..schema.user_merits_response import UserMeritsResponse
 from ..schema.user_money_response import UserMoneyResponse
 from ..schema.user_organized_crime_response import UserOrganizedCrimeResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
+from ..schema.user_profile_response import UserProfileResponse
 from ..schema.user_properties_response import UserPropertiesResponse
 from ..schema.user_property_response import UserPropertyResponse
 from ..schema.user_races_response import UserRacesResponse
@@ -194,6 +199,24 @@ class User(BaseQuery):
     
     """
 
+    icons = Path(
+        "/user/icons",
+        UserIconsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/icons`: Get your icons information
+    Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     list = Path(
         "/user/list",
         UserListResponse,
@@ -217,6 +240,26 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    profile = Path(
+        "/user/profile",
+        UserProfileResponse,
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/profile`: Get your own profile
+    Requires public access key.
+
+    # Parameters
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -546,6 +589,24 @@ class User(BaseQuery):
     
     """
 
+    competition = Path(
+        "/user/competition",
+        UserCompetitionResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/competition`: Get your competition information
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     forumthreads = Path(
         "/user/forumthreads",
         UserForumThreadsResponse,
@@ -566,6 +627,24 @@ class User(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    faction = Path(
+        "/user/faction",
+        UserFactionResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/faction`: Get your faction information
+    Requires public access key.
+
+    # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -763,6 +842,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    job = Path(
+        "/user/job",
+        UserJobResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/job`: Get your job information
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

@@ -4,10 +4,15 @@ from parameter import Parameter
 
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_bounties_response import UserBountiesResponse
+from ..schema.user_competition_response import UserCompetitionResponse
+from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
+from ..schema.user_icons_response import UserIconsResponse
+from ..schema.user_job_response import UserJobResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
+from ..schema.user_profile_response import UserProfileResponse
 from ..schema.user_properties_response import UserPropertiesResponse
 from ..schema.user_property_response import UserPropertyResponse
 
@@ -36,6 +41,66 @@ class UserId(BaseQuery):
     - cat : 
     - stat : Stat names (10 maximum). Used to fetch historical stat values
     - timestamp : Returns stats until this timestamp (converted to nearest date).
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    job = Path(
+        "/user/{id}/job",
+        UserJobResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/job`: Get job information for a specific player
+    Requires public access key.
+
+    # Parameters
+    - id : User id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    icons = Path(
+        "/user/{id}/icons",
+        UserIconsResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/icons`: Get icons information for a specific player
+    Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+
+    # Parameters
+    - id : User id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    competition = Path(
+        "/user/{id}/competition",
+        UserCompetitionResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/competition`: Get competition information for a specific player
+    Requires public access key.
+
+    # Parameters
+    - id : User id
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -139,6 +204,26 @@ class UserId(BaseQuery):
     
     """
 
+    faction = Path(
+        "/user/{id}/faction",
+        UserFactionResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/faction`: Get faction information for a specific player
+    Requires public access key.
+
+    # Parameters
+    - id : User id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     hof = Path(
         "/user/{id}/hof",
         UserHofResponse,
@@ -153,6 +238,28 @@ class UserId(BaseQuery):
 
     # Parameters
     - id : User id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    profile = Path(
+        "/user/{id}/profile",
+        UserProfileResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/profile`: Get profile information for a specific player
+    Requires public access key.
+
+    # Parameters
+    - id : User id
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

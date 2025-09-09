@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from ..base_schema import BaseSchema
 from .faction_id import FactionId
 from .user_id import UserId
+from .user_rank_enum import UserRankEnum
 
 
 @dataclass
@@ -14,7 +15,7 @@ class TornHofWithOffenses(BaseSchema):
     username: str
     signed_up: int
     rank_number: int
-    rank_name: str
+    rank_name: UserRankEnum
     rank: str
     position: int
     level: int
@@ -31,7 +32,7 @@ class TornHofWithOffenses(BaseSchema):
             username=BaseSchema.parse(data.get("username"), str),
             signed_up=BaseSchema.parse(data.get("signed_up"), int),
             rank_number=BaseSchema.parse(data.get("rank_number"), int),
-            rank_name=BaseSchema.parse(data.get("rank_name"), str),
+            rank_name=BaseSchema.parse(data.get("rank_name"), UserRankEnum),
             rank=BaseSchema.parse(data.get("rank"), str),
             position=BaseSchema.parse(data.get("position"), int),
             level=BaseSchema.parse(data.get("level"), int),
