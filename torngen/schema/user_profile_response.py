@@ -6,6 +6,7 @@ from .faction_id import FactionId
 from .honor_id import HonorId
 from .profile_spouse import ProfileSpouse
 from .property_id import PropertyId
+from .user_donator_status_enum import UserDonatorStatusEnum
 from .user_gender_enum import UserGenderEnum
 from .user_id import UserId
 from .user_last_action import UserLastAction
@@ -45,6 +46,7 @@ class UserProfileResponse(BaseSchema):
             "forum_posts": int,
             "faction_id": None | FactionId,
             "enemies": int,
+            "donator_status": None | UserDonatorStatusEnum,
             "awards": int,
             "age": int,
         },
@@ -81,6 +83,7 @@ class UserProfileResponse(BaseSchema):
                         "forum_posts": int,
                         "faction_id": None | FactionId,
                         "enemies": int,
+                        "donator_status": None | UserDonatorStatusEnum,
                         "awards": int,
                         "age": int,
                     },

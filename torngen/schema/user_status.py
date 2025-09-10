@@ -15,6 +15,7 @@ class UserStatus(BaseSchema):
     state: str
     details: None | str
     description: str
+    color: str
 
     @staticmethod
     def parse(data):
@@ -24,4 +25,5 @@ class UserStatus(BaseSchema):
             state=BaseSchema.parse(data.get("state"), str),
             details=BaseSchema.parse(data.get("details"), None | str),
             description=BaseSchema.parse(data.get("description"), str),
+            color=BaseSchema.parse(data.get("color"), str),
         )

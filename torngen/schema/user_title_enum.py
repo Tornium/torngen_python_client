@@ -47,4 +47,6 @@ UserTitleEnum = typing.Literal[
     "Nudist",
     "Sage",
     "Coward",
+    "Newcomer",
+    "Deserter",
 ]

@@ -14,6 +14,7 @@ class UserCompany(BaseSchema):
 
     type_id: CompanyTypeId
     type: typing.Literal["company"]
+    rating: int
     position: str
     name: str
     id: CompanyId
@@ -24,6 +25,7 @@ class UserCompany(BaseSchema):
         return UserCompany(
             type_id=BaseSchema.parse(data.get("type_id"), CompanyTypeId),
             type=BaseSchema.parse(data.get("type"), typing.Literal["company"]),
+            rating=BaseSchema.parse(data.get("rating"), int),
             position=BaseSchema.parse(data.get("position"), str),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), CompanyId),
