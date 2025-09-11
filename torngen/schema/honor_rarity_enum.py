@@ -9,4 +9,5 @@ HonorRarityEnum = typing.Literal[
     "Common",
     "Very Common",
     "Unknown",
+    "Unknown Rarity",
 ]
