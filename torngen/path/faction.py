@@ -26,7 +26,9 @@ from ..schema.faction_territories_ownership_response import (
     FactionTerritoriesOwnershipResponse,
 )
 from ..schema.faction_territories_response import FactionTerritoriesResponse
-from ..schema.faction_territory_wars_response import FactionTerritoryWarsResponse
+from ..schema.faction_territory_wars_history_response import (
+    FactionTerritoryWarsHistoryResponse,
+)
 from ..schema.faction_upgrades_response import FactionUpgradesResponse
 from ..schema.faction_warfare_response import FactionWarfareResponse
 from ..schema.faction_wars_response import FactionWarsResponse
@@ -130,7 +132,6 @@ class Faction(BaseQuery):
     rankedwars = Path(
         "/faction/rankedwars",
         FactionRankedWarResponse,
-        cat=Parameter("cat", "query", required=False, deprecated=True),
         from_=Parameter("from", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -143,7 +144,6 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - cat : This parameter is deprecated. The ranked wars list can now instead be fetched via &#39;faction&#39; -&gt; &#39;warfare&#39; endpoint. This functionality will be removed on 1st of September 2025. (DEPRECATED) 
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
@@ -603,8 +603,7 @@ class Faction(BaseQuery):
 
     territorywars = Path(
         "/faction/territorywars",
-        FactionTerritoryWarsResponse,
-        cat=Parameter("cat", "query", required=False, deprecated=True),
+        FactionTerritoryWarsHistoryResponse,
         from_=Parameter("from", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -618,7 +617,6 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - cat : This parameter is deprecated. The territory wars list can now instead be fetched via &#39;faction&#39; -&gt; &#39;warfare&#39; endpoint. This functionality will be removed on 1st of September 2025. (DEPRECATED) 
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
