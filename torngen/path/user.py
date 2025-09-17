@@ -15,6 +15,7 @@ from ..schema.user_calendar_response import UserCalendarResponse
 from ..schema.user_competition_response import UserCompetitionResponse
 from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
+from ..schema.user_events_response import UserEventsResponse
 from ..schema.user_faction_balance_response import UserFactionBalanceResponse
 from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_feed_response import UserForumFeedResponse
@@ -36,7 +37,10 @@ from ..schema.user_logs_response import UserLogsResponse
 from ..schema.user_lookup_response import UserLookupResponse
 from ..schema.user_medals_response import UserMedalsResponse
 from ..schema.user_merits_response import UserMeritsResponse
+from ..schema.user_messages_response import UserMessagesResponse
 from ..schema.user_money_response import UserMoneyResponse
+from ..schema.user_new_events_response import UserNewEventsResponse
+from ..schema.user_new_messages_response import UserNewMessagesResponse
 from ..schema.user_organized_crime_response import UserOrganizedCrimeResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
 from ..schema.user_profile_response import UserProfileResponse
@@ -221,6 +225,7 @@ class User(BaseQuery):
         "/user/list",
         UserListResponse,
         cat=Parameter("cat", "query", required=True, deprecated=False),
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -234,6 +239,7 @@ class User(BaseQuery):
 
     # Parameters
     - cat : Select list type
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
     - limit : N/A
     - offset : N/A
     - sort : Sort rows from newest to oldest Default ordering is ascending
@@ -350,6 +356,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    newmessages = Path(
+        "/user/newmessages",
+        UserNewMessagesResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/newmessages`: Get your unseen messages
+    Requires limited access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -535,6 +559,26 @@ class User(BaseQuery):
     
     """
 
+    newevents = Path(
+        "/user/newevents",
+        UserNewEventsResponse,
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/newevents`: Get your unseen events
+    Requires limited access key.
+
+    # Parameters
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     forumfeed = Path(
         "/user/forumfeed",
         UserForumFeedResponse,
@@ -604,6 +648,32 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    messages = Path(
+        "/user/messages",
+        UserMessagesResponse,
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/messages`: Get your messages
+    Requires limited access key.
+
+    # Parameters
+    - limit : N/A
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - sort : Sorted by the greatest timestamps
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -677,7 +747,7 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/enlistedcars`: Get user enlisted cars
+    `/user/enlistedcars`: Get your enlisted cars
     Requires minimal access key. Returns a list of all user enlisted cars.
 
     # Parameters
@@ -887,6 +957,32 @@ class User(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    events = Path(
+        "/user/events",
+        UserEventsResponse,
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/events`: Get your events
+    Requires limited access key. Unfortunately, the 'sort' parameter is not available for this selection.
+
+    # Parameters
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - limit : N/A
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
