@@ -25,13 +25,13 @@ class UserProfileResponse(BaseSchema):
     profile: typing.TypedDict(
         "",
         {
-            "title": UserTitleEnum,
+            "title": str | UserTitleEnum,
             "status": UserStatus,
             "spouse": None | ProfileSpouse,
             "signed_up": int,
             "role": UserRoleEnum,
             "revivable": bool,
-            "rank": UserRankEnum,
+            "rank": str | UserRankEnum,
             "property": typing.TypedDict("", {"name": str, "id": PropertyId}),
             "name": str,
             "life": typing.TypedDict("", {"maximum": int, "current": int}),
@@ -60,13 +60,13 @@ class UserProfileResponse(BaseSchema):
                 typing.TypedDict(
                     "",
                     {
-                        "title": UserTitleEnum,
+                        "title": str | UserTitleEnum,
                         "status": UserStatus,
                         "spouse": None | ProfileSpouse,
                         "signed_up": int,
                         "role": UserRoleEnum,
                         "revivable": bool,
-                        "rank": UserRankEnum,
+                        "rank": str | UserRankEnum,
                         "property": typing.TypedDict(
                             "", {"name": str, "id": PropertyId}
                         ),

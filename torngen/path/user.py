@@ -8,11 +8,13 @@ from ..schema.reports_response import ReportsResponse
 from ..schema.revives_full_response import RevivesFullResponse
 from ..schema.revives_response import RevivesResponse
 from ..schema.timestamp_response import TimestampResponse
+from ..schema.user_bars_response import UserBarsResponse
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_battle_stats_response import UserBattleStatsResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_calendar_response import UserCalendarResponse
 from ..schema.user_competition_response import UserCompetitionResponse
+from ..schema.user_cooldowns_response import UserCooldownsResponse
 from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
 from ..schema.user_events_response import UserEventsResponse
@@ -41,6 +43,7 @@ from ..schema.user_messages_response import UserMessagesResponse
 from ..schema.user_money_response import UserMoneyResponse
 from ..schema.user_new_events_response import UserNewEventsResponse
 from ..schema.user_new_messages_response import UserNewMessagesResponse
+from ..schema.user_notifications_response import UserNotificationsResponse
 from ..schema.user_organized_crime_response import UserOrganizedCrimeResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
 from ..schema.user_profile_response import UserProfileResponse
@@ -48,7 +51,10 @@ from ..schema.user_properties_response import UserPropertiesResponse
 from ..schema.user_property_response import UserPropertyResponse
 from ..schema.user_races_response import UserRacesResponse
 from ..schema.user_racing_records_response import UserRacingRecordsResponse
+from ..schema.user_refills_response import UserRefillsResponse
 from ..schema.user_skills_response import UserSkillsResponse
+from ..schema.user_travel_response import UserTravelResponse
+from ..schema.user_virus_response import UserVirusResponse
 from ..schema.user_work_stats_response import UserWorkStatsResponse
 
 
@@ -136,6 +142,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    virus = Path(
+        "/user/virus",
+        UserVirusResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/virus`: Get your virus information
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -284,6 +308,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    bars = Path(
+        "/user/bars",
+        UserBarsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/bars`: Get your bars information
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -651,6 +693,42 @@ class User(BaseQuery):
     
     """
 
+    notifications = Path(
+        "/user/notifications",
+        UserNotificationsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/notifications`: Get your notifications
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    cooldowns = Path(
+        "/user/cooldowns",
+        UserCooldownsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/cooldowns`: Get your cooldowns information
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     messages = Path(
         "/user/messages",
         UserMessagesResponse,
@@ -877,6 +955,24 @@ class User(BaseQuery):
     
     """
 
+    travel = Path(
+        "/user/travel",
+        UserTravelResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/travel`: Get your travel information
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     basic = Path(
         "/user/basic",
         UserBasicResponse,
@@ -1016,6 +1112,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    refills = Path(
+        "/user/refills",
+        UserRefillsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/refills`: Get your refills information
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

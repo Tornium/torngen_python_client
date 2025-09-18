@@ -12,4 +12,5 @@ CountryEnum = typing.Literal[
     "United Kingdom",
     "UAE",
     "Cayman Islands",
+    "Torn",
 ]
