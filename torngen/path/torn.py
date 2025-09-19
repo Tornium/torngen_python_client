@@ -33,6 +33,9 @@ class Torn(BaseQuery):
     honors = Path(
         "/torn/honors",
         TornHonorsResponse,
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -42,6 +45,9 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
+    - limit : N/A
+    - offset : N/A
+    - sort : Sorted by the greatest timestamps
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

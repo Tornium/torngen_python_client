@@ -16,6 +16,7 @@ class MarketId(BaseQuery):
         MarketItemMarketResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         bonus=Parameter("bonus", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
@@ -28,6 +29,7 @@ class MarketId(BaseQuery):
     # Parameters
     - id : Item id
     - bonus : Used to filter weapons with a specific bonus.
+    - limit : N/A
     - offset : N/A
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.

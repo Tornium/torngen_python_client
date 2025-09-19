@@ -132,6 +132,8 @@ class Faction(BaseQuery):
     rankedwars = Path(
         "/faction/rankedwars",
         FactionRankedWarResponse,
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -141,9 +143,11 @@ class Faction(BaseQuery):
     )
     """
     `/faction/rankedwars`: Get ranked wars history for your faction
-    Requires public access key.
+    Requires public access key. Use offset to get older results which are always ordered descending.
 
     # Parameters
+    - offset : N/A
+    - limit : N/A
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
@@ -583,6 +587,7 @@ class Faction(BaseQuery):
         from_=Parameter("from", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -595,6 +600,7 @@ class Faction(BaseQuery):
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
+    - limit : N/A
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
