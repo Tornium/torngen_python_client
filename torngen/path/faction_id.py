@@ -65,16 +65,20 @@ class FactionId(BaseQuery):
         "/faction/{id}/rankedwars",
         FactionRankedWarResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
     `/faction/{id}/rankedwars`: Get a faction's ranked wars history
-    Requires public access key.
+    Requires public access key. Use offset to get older results which are always ordered descending.
 
     # Parameters
     - id : Faction id
+    - offset : N/A
+    - limit : N/A
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -113,6 +117,10 @@ class FactionId(BaseQuery):
         "/faction/{id}/raids",
         FactionRaidsResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -123,6 +131,10 @@ class FactionId(BaseQuery):
 
     # Parameters
     - id : Faction id
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - sort : Sorted by the greatest timestamps
+    - limit : N/A
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -215,6 +227,10 @@ class FactionId(BaseQuery):
         "/faction/{id}/territorywars",
         FactionTerritoryWarsHistoryResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -225,6 +241,10 @@ class FactionId(BaseQuery):
 
     # Parameters
     - id : Faction id
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - sort : Sorted by the greatest timestamps
+    - limit : N/A
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
