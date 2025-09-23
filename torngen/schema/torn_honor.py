@@ -14,12 +14,12 @@ class TornHonor(BaseSchema):
     """
 
     type: typing.TypedDict("", {"title": HonorTypeEnum, "id": int})
-    rarity: HonorRarityEnum
+    rarity: typing.Optional[HonorRarityEnum]
     name: str
     id: HonorId
-    equipped: int
+    equipped: typing.Optional[int]
     description: str
-    circulation: int
+    circulation: typing.Optional[int]
 
     @staticmethod
     def parse(data):
@@ -28,10 +28,12 @@ class TornHonor(BaseSchema):
                 data.get("type"),
                 typing.TypedDict("", {"title": HonorTypeEnum, "id": int}),
             ),
-            rarity=BaseSchema.parse(data.get("rarity"), HonorRarityEnum),
+            rarity=BaseSchema.parse(
+                data.get("rarity"), typing.Optional[HonorRarityEnum]
+            ),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), HonorId),
-            equipped=BaseSchema.parse(data.get("equipped"), int),
+            equipped=BaseSchema.parse(data.get("equipped"), typing.Optional[int]),
             description=BaseSchema.parse(data.get("description"), str),
-            circulation=BaseSchema.parse(data.get("circulation"), int),
+            circulation=BaseSchema.parse(data.get("circulation"), typing.Optional[int]),
         )

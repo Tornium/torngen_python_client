@@ -11,12 +11,13 @@ class UserForumSubscribedThreadsResponse(BaseSchema):
     JSON object of `UserForumSubscribedThreadsResponse`.
     """
 
-    forumSubscribedThreads: typing.List[ForumSubscribedThread]
+    forumSubscribedThreads: typing.Optional[typing.List[ForumSubscribedThread]]
 
     @staticmethod
     def parse(data):
         return UserForumSubscribedThreadsResponse(
             forumSubscribedThreads=BaseSchema.parse(
-                data.get("forumSubscribedThreads"), typing.List[ForumSubscribedThread]
+                data.get("forumSubscribedThreads"),
+                typing.Optional[typing.List[ForumSubscribedThread]],
             ),
         )

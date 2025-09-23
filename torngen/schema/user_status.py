@@ -13,9 +13,9 @@ class UserStatus(BaseSchema):
     """
 
     until: None | int
-    travel_type: str
+    travel_type: typing.Optional[str]
     state: str | UserStatusStateEnum
-    plane_image_type: UserPlaneImageTypeEnum
+    plane_image_type: typing.Optional[UserPlaneImageTypeEnum]
     details: None | str
     description: str
     color: str
@@ -24,10 +24,10 @@ class UserStatus(BaseSchema):
     def parse(data):
         return UserStatus(
             until=BaseSchema.parse(data.get("until"), None | int),
-            travel_type=BaseSchema.parse(data.get("travel_type"), str),
+            travel_type=BaseSchema.parse(data.get("travel_type"), typing.Optional[str]),
             state=BaseSchema.parse(data.get("state"), str | UserStatusStateEnum),
             plane_image_type=BaseSchema.parse(
-                data.get("plane_image_type"), UserPlaneImageTypeEnum
+                data.get("plane_image_type"), typing.Optional[UserPlaneImageTypeEnum]
             ),
             details=BaseSchema.parse(data.get("details"), None | str),
             description=BaseSchema.parse(data.get("description"), str),

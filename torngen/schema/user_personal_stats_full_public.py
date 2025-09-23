@@ -195,10 +195,17 @@ class UserPersonalStatsFullPublic(BaseSchema):
                             "auctions": typing.TypedDict("", {"won": int, "sold": int}),
                         },
                     ),
-                    "item_market": typing.TypedDict(
-                        "",
-                        {"sales": int, "revenue": int, "fees": int, "customers": int},
-                    ),
+                    "item_market": typing.Optional[
+                        typing.TypedDict(
+                            "",
+                            {
+                                "sales": int,
+                                "revenue": int,
+                                "fees": int,
+                                "customers": int,
+                            },
+                        )
+                    ],
                     "bazaar": typing.TypedDict(
                         "", {"sales": int, "profit": int, "customers": int}
                     ),
@@ -243,7 +250,9 @@ class UserPersonalStatsFullPublic(BaseSchema):
                             "raid_hits": int,
                         },
                     ),
-                    "escapes": typing.TypedDict("", {"player": int, "foes": int}),
+                    "escapes": typing.Optional[
+                        typing.TypedDict("", {"player": int, "foes": int})
+                    ],
                     "elo": int,
                     "defends": typing.TypedDict(
                         "", {"won": int, "total": int, "stalemate": int, "lost": int}
@@ -486,15 +495,17 @@ class UserPersonalStatsFullPublic(BaseSchema):
                                         ),
                                     },
                                 ),
-                                "item_market": typing.TypedDict(
-                                    "",
-                                    {
-                                        "sales": int,
-                                        "revenue": int,
-                                        "fees": int,
-                                        "customers": int,
-                                    },
-                                ),
+                                "item_market": typing.Optional[
+                                    typing.TypedDict(
+                                        "",
+                                        {
+                                            "sales": int,
+                                            "revenue": int,
+                                            "fees": int,
+                                            "customers": int,
+                                        },
+                                    )
+                                ],
                                 "bazaar": typing.TypedDict(
                                     "", {"sales": int, "profit": int, "customers": int}
                                 ),
@@ -543,9 +554,9 @@ class UserPersonalStatsFullPublic(BaseSchema):
                                         "raid_hits": int,
                                     },
                                 ),
-                                "escapes": typing.TypedDict(
-                                    "", {"player": int, "foes": int}
-                                ),
+                                "escapes": typing.Optional[
+                                    typing.TypedDict("", {"player": int, "foes": int})
+                                ],
                                 "elo": int,
                                 "defends": typing.TypedDict(
                                     "",

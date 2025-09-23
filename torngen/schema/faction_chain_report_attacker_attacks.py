@@ -18,7 +18,7 @@ class FactionChainReportAttackerAttacks(BaseSchema):
     losses: int
     leave: int
     hospitalize: int
-    escapes: int
+    escapes: typing.Optional[int]
     draws: int
     bonuses: int
     assists: int
@@ -34,7 +34,7 @@ class FactionChainReportAttackerAttacks(BaseSchema):
             losses=BaseSchema.parse(data.get("losses"), int),
             leave=BaseSchema.parse(data.get("leave"), int),
             hospitalize=BaseSchema.parse(data.get("hospitalize"), int),
-            escapes=BaseSchema.parse(data.get("escapes"), int),
+            escapes=BaseSchema.parse(data.get("escapes"), typing.Optional[int]),
             draws=BaseSchema.parse(data.get("draws"), int),
             bonuses=BaseSchema.parse(data.get("bonuses"), int),
             assists=BaseSchema.parse(data.get("assists"), int),

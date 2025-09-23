@@ -18,7 +18,7 @@ class TornCrime(BaseSchema):
     id: TornCrimeId
     enhancer_name: str
     enhancer_id: int
-    category_name: str
+    category_name: typing.Optional[str]
     category_id: int
 
     @staticmethod
@@ -35,6 +35,8 @@ class TornCrime(BaseSchema):
             id=BaseSchema.parse(data.get("id"), TornCrimeId),
             enhancer_name=BaseSchema.parse(data.get("enhancer_name"), str),
             enhancer_id=BaseSchema.parse(data.get("enhancer_id"), int),
-            category_name=BaseSchema.parse(data.get("category_name"), str),
+            category_name=BaseSchema.parse(
+                data.get("category_name"), typing.Optional[str]
+            ),
             category_id=BaseSchema.parse(data.get("category_id"), int),
         )

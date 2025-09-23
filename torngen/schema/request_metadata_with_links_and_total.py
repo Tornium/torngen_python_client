@@ -11,12 +11,12 @@ class RequestMetadataWithLinksAndTotal(BaseSchema):
     JSON object of `RequestMetadataWithLinksAndTotal`.
     """
 
-    total: int
+    total: typing.Optional[int]
     links: RequestLinks
 
     @staticmethod
     def parse(data):
         return RequestMetadataWithLinksAndTotal(
-            total=BaseSchema.parse(data.get("total"), int),
+            total=BaseSchema.parse(data.get("total"), typing.Optional[int]),
             links=BaseSchema.parse(data.get("links"), RequestLinks),
         )

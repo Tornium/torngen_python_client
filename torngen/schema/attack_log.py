@@ -17,12 +17,15 @@ class AttackLog(BaseSchema):
     text: str
     icon: str
     defender: None | typing.TypedDict("", {"name": str, "id": UserId})
-    attacker_item: typing.TypedDict("", {"name": str, "id": ItemId})
+    attacker_item: typing.Optional[typing.TypedDict("", {"name": str, "id": ItemId})]
     attacker: None | typing.TypedDict(
         "",
         {
             "name": str,
-            "item": None | typing.TypedDict("", {"name": str, "id": ItemId}),
+            "item": None
+            | typing.TypedDict(
+                "", {"name": typing.Optional[str], "id": typing.Optional[ItemId]}
+            ),
             "id": UserId,
         },
     )
@@ -40,7 +43,7 @@ class AttackLog(BaseSchema):
             ),
             attacker_item=BaseSchema.parse(
                 data.get("attacker_item"),
-                typing.TypedDict("", {"name": str, "id": ItemId}),
+                typing.Optional[typing.TypedDict("", {"name": str, "id": ItemId})],
             ),
             attacker=BaseSchema.parse(
                 data.get("attacker"),
@@ -50,7 +53,13 @@ class AttackLog(BaseSchema):
                     {
                         "name": str,
                         "item": None
-                        | typing.TypedDict("", {"name": str, "id": ItemId}),
+                        | typing.TypedDict(
+                            "",
+                            {
+                                "name": typing.Optional[str],
+                                "id": typing.Optional[ItemId],
+                            },
+                        ),
                         "id": UserId,
                     },
                 ),

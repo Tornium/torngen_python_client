@@ -24,6 +24,20 @@ class BaseSchema(ABC):
         origin = typing.get_origin(type_hints)
         args = typing.get_args(type_hints)
 
+        if origin is dict:
+            # Should only be typing.Dict or dict
+            if len(args) == 0:
+                # Dict with any keys and any values
+                return dict(data)
+            elif len(args) == 2:
+                # Dict with typed keys and values
+                # TODO: Add parsing and type validation to keys and values
+                return dict(data)
+            else:
+                raise TypeError(
+                    f"Dict has {len(args)} types but there should be 0 or 2."
+                )
+
         if isinstance(type_hints, type) and issubclass(type_hints, dict):
             # Should only be typing.TypedDict
             if not hasattr(type_hints, "__annotations__"):

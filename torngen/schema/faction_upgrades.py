@@ -14,7 +14,9 @@ class FactionUpgrades(BaseSchema):
 
     war: typing.List[FactionBranchDetails]
     peace: typing.List[FactionBranchDetails]
-    core: typing.TypedDict("", {"upgrades": typing.List[FactionUpgradeDetails]})
+    core: typing.TypedDict(
+        "", {"upgrades": typing.Optional[typing.List[FactionUpgradeDetails]]}
+    )
 
     @staticmethod
     def parse(data):
@@ -25,6 +27,9 @@ class FactionUpgrades(BaseSchema):
             ),
             core=BaseSchema.parse(
                 data.get("core"),
-                typing.TypedDict("", {"upgrades": typing.List[FactionUpgradeDetails]}),
+                typing.TypedDict(
+                    "",
+                    {"upgrades": typing.Optional[typing.List[FactionUpgradeDetails]]},
+                ),
             ),
         )

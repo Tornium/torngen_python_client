@@ -14,7 +14,7 @@ class FactionCrimeUser(BaseSchema):
     """
 
     progress: int | float
-    outcome_duration: None | int
+    outcome_duration: typing.Optional[None | int]
     outcome: None | FactionCrimeUserOutcome
     joined_at: int
     item_outcome: None | FactionCrimeUserItemOutcome
@@ -24,7 +24,9 @@ class FactionCrimeUser(BaseSchema):
     def parse(data):
         return FactionCrimeUser(
             progress=BaseSchema.parse(data.get("progress"), int | float),
-            outcome_duration=BaseSchema.parse(data.get("outcome_duration"), None | int),
+            outcome_duration=BaseSchema.parse(
+                data.get("outcome_duration"), typing.Optional[None | int]
+            ),
             outcome=BaseSchema.parse(
                 data.get("outcome"), None | FactionCrimeUserOutcome
             ),

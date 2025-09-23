@@ -15,7 +15,7 @@ class ProfileSpouse(BaseSchema):
     status: UserMaritalStatusEnum
     name: str
     id: UserId
-    days_married: int
+    days_married: typing.Optional[int]
 
     @staticmethod
     def parse(data):
@@ -23,5 +23,7 @@ class ProfileSpouse(BaseSchema):
             status=BaseSchema.parse(data.get("status"), UserMaritalStatusEnum),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), UserId),
-            days_married=BaseSchema.parse(data.get("days_married"), int),
+            days_married=BaseSchema.parse(
+                data.get("days_married"), typing.Optional[int]
+            ),
         )

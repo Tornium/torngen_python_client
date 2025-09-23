@@ -19,7 +19,7 @@ class KeyLogResponse(BaseSchema):
                 "selections": str,
                 "ip": str,
                 "id": None | str | int,
-                "comment": None | str,
+                "comment": typing.Optional[None | str],
             },
         )
     ]
@@ -38,7 +38,7 @@ class KeyLogResponse(BaseSchema):
                             "selections": str,
                             "ip": str,
                             "id": None | str | int,
-                            "comment": None | str,
+                            "comment": typing.Optional[None | str],
                         },
                     )
                 ],

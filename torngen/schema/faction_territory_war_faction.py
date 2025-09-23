@@ -15,10 +15,10 @@ class FactionTerritoryWarFaction(BaseSchema):
     """
 
     score: int
-    players_on_wall: typing.List[FactionTerritoryWarFactionWallPlayers]
+    players_on_wall: typing.Optional[typing.List[FactionTerritoryWarFactionWallPlayers]]
     name: str
     id: FactionId
-    chain: int
+    chain: typing.Optional[int]
 
     @staticmethod
     def parse(data):
@@ -26,9 +26,9 @@ class FactionTerritoryWarFaction(BaseSchema):
             score=BaseSchema.parse(data.get("score"), int),
             players_on_wall=BaseSchema.parse(
                 data.get("players_on_wall"),
-                typing.List[FactionTerritoryWarFactionWallPlayers],
+                typing.Optional[typing.List[FactionTerritoryWarFactionWallPlayers]],
             ),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), FactionId),
-            chain=BaseSchema.parse(data.get("chain"), int),
+            chain=BaseSchema.parse(data.get("chain"), typing.Optional[int]),
         )

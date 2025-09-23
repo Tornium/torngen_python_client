@@ -14,7 +14,7 @@ class FactionRaidWarfareFaction(BaseSchema):
     score: int | float
     name: str
     id: FactionId
-    chain: int
+    chain: typing.Optional[int]
 
     @staticmethod
     def parse(data):
@@ -22,5 +22,5 @@ class FactionRaidWarfareFaction(BaseSchema):
             score=BaseSchema.parse(data.get("score"), int | float),
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), FactionId),
-            chain=BaseSchema.parse(data.get("chain"), int),
+            chain=BaseSchema.parse(data.get("chain"), typing.Optional[int]),
         )

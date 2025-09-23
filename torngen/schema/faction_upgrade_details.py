@@ -11,7 +11,7 @@ class FactionUpgradeDetails(BaseSchema):
     JSON object of `FactionUpgradeDetails`.
     """
 
-    unlocked_at: int
+    unlocked_at: typing.Optional[int]
     name: str
     level: int
     id: FactionBranchId
@@ -21,7 +21,7 @@ class FactionUpgradeDetails(BaseSchema):
     @staticmethod
     def parse(data):
         return FactionUpgradeDetails(
-            unlocked_at=BaseSchema.parse(data.get("unlocked_at"), int),
+            unlocked_at=BaseSchema.parse(data.get("unlocked_at"), typing.Optional[int]),
             name=BaseSchema.parse(data.get("name"), str),
             level=BaseSchema.parse(data.get("level"), int),
             id=BaseSchema.parse(data.get("id"), FactionBranchId),

@@ -23,9 +23,11 @@ class PersonalStatsTrading(BaseSchema):
                     "auctions": typing.TypedDict("", {"won": int, "sold": int}),
                 },
             ),
-            "item_market": typing.TypedDict(
-                "", {"sales": int, "revenue": int, "fees": int, "customers": int}
-            ),
+            "item_market": typing.Optional[
+                typing.TypedDict(
+                    "", {"sales": int, "revenue": int, "fees": int, "customers": int}
+                )
+            ],
             "bazaar": typing.TypedDict(
                 "", {"sales": int, "profit": int, "customers": int}
             ),
@@ -54,15 +56,17 @@ class PersonalStatsTrading(BaseSchema):
                                 ),
                             },
                         ),
-                        "item_market": typing.TypedDict(
-                            "",
-                            {
-                                "sales": int,
-                                "revenue": int,
-                                "fees": int,
-                                "customers": int,
-                            },
-                        ),
+                        "item_market": typing.Optional[
+                            typing.TypedDict(
+                                "",
+                                {
+                                    "sales": int,
+                                    "revenue": int,
+                                    "fees": int,
+                                    "customers": int,
+                                },
+                            )
+                        ],
                         "bazaar": typing.TypedDict(
                             "", {"sales": int, "profit": int, "customers": int}
                         ),

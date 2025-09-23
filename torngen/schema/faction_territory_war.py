@@ -12,7 +12,7 @@ class FactionTerritoryWar(BaseSchema):
     JSON object of `FactionTerritoryWar`.
     """
 
-    winner: None | FactionId
+    winner: typing.Optional[None | FactionId]
     war_id: int
     territory: str
     target: int
@@ -23,7 +23,9 @@ class FactionTerritoryWar(BaseSchema):
     @staticmethod
     def parse(data):
         return FactionTerritoryWar(
-            winner=BaseSchema.parse(data.get("winner"), None | FactionId),
+            winner=BaseSchema.parse(
+                data.get("winner"), typing.Optional[None | FactionId]
+            ),
             war_id=BaseSchema.parse(data.get("war_id"), int),
             territory=BaseSchema.parse(data.get("territory"), str),
             target=BaseSchema.parse(data.get("target"), int),

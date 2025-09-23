@@ -13,7 +13,7 @@ class UserCrimeDetailsBootlegging(BaseSchema):
     online_store: typing.TypedDict(
         "", {"visits": int, "sales": int, "earnings": int, "customers": int}
     )
-    dvds_copied: int
+    dvds_copied: typing.Optional[int]
     dvd_sales: typing.TypedDict(
         "",
         {
@@ -39,7 +39,7 @@ class UserCrimeDetailsBootlegging(BaseSchema):
                     "", {"visits": int, "sales": int, "earnings": int, "customers": int}
                 ),
             ),
-            dvds_copied=BaseSchema.parse(data.get("dvds_copied"), int),
+            dvds_copied=BaseSchema.parse(data.get("dvds_copied"), typing.Optional[int]),
             dvd_sales=BaseSchema.parse(
                 data.get("dvd_sales"),
                 typing.TypedDict(

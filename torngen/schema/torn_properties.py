@@ -13,19 +13,21 @@ class TornProperties(BaseSchema):
     JSON object of `TornProperties`.
     """
 
-    properties: typing.List[
-        typing.TypedDict(
-            "",
-            {
-                "upkeep": int,
-                "staff": typing.List[PropertyStaffEnum],
-                "name": str,
-                "modifications": typing.List[PropertyModificationEnum],
-                "id": PropertyTypeId,
-                "happy": int,
-                "cost": int,
-            },
-        )
+    properties: typing.Optional[
+        typing.List[
+            typing.TypedDict(
+                "",
+                {
+                    "upkeep": int,
+                    "staff": typing.List[PropertyStaffEnum],
+                    "name": str,
+                    "modifications": typing.List[PropertyModificationEnum],
+                    "id": PropertyTypeId,
+                    "happy": int,
+                    "cost": int,
+                },
+            )
+        ]
     ]
 
     @staticmethod
@@ -33,19 +35,21 @@ class TornProperties(BaseSchema):
         return TornProperties(
             properties=BaseSchema.parse(
                 data.get("properties"),
-                typing.List[
-                    typing.TypedDict(
-                        "",
-                        {
-                            "upkeep": int,
-                            "staff": typing.List[PropertyStaffEnum],
-                            "name": str,
-                            "modifications": typing.List[PropertyModificationEnum],
-                            "id": PropertyTypeId,
-                            "happy": int,
-                            "cost": int,
-                        },
-                    )
+                typing.Optional[
+                    typing.List[
+                        typing.TypedDict(
+                            "",
+                            {
+                                "upkeep": int,
+                                "staff": typing.List[PropertyStaffEnum],
+                                "name": str,
+                                "modifications": typing.List[PropertyModificationEnum],
+                                "id": PropertyTypeId,
+                                "happy": int,
+                                "cost": int,
+                            },
+                        )
+                    ]
                 ],
             ),
         )
