@@ -217,4 +217,5 @@ PersonalStatsStatName = typing.Literal[
     "crackingskill",
     "forgeryskill",
     "scammingskill",
+    "arsonskill",
 ]

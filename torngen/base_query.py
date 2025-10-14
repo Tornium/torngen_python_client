@@ -6,7 +6,7 @@ from adapter import HTTPAdapter
 from base_path import Path
 from base_schema import BaseSchema
 
-VERSION = "4.2.1"
+VERSION = "4.2.2"
 
 
 class _URLComponents(typing.NamedTuple):
