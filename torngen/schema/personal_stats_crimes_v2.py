@@ -26,6 +26,7 @@ class PersonalStatsCrimesV2(BaseSchema):
             "card_skimming": int,
             "burglary": int,
             "bootlegging": int,
+            "arson": int,
         },
     )
     offenses: typing.TypedDict(
@@ -65,6 +66,7 @@ class PersonalStatsCrimesV2(BaseSchema):
                         "card_skimming": int,
                         "burglary": int,
                         "bootlegging": int,
+                        "arson": int,
                     },
                 ),
             ),
