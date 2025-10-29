@@ -40,6 +40,7 @@ from ..schema.user_lookup_response import UserLookupResponse
 from ..schema.user_medals_response import UserMedalsResponse
 from ..schema.user_merits_response import UserMeritsResponse
 from ..schema.user_messages_response import UserMessagesResponse
+from ..schema.user_missions_response import UserMissionsResponse
 from ..schema.user_money_response import UserMoneyResponse
 from ..schema.user_new_events_response import UserNewEventsResponse
 from ..schema.user_new_messages_response import UserNewMessagesResponse
@@ -142,6 +143,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    missions = Path(
+        "/user/missions",
+        UserMissionsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/missions`: Get your current missions information
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
