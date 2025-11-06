@@ -44,6 +44,7 @@ FactionSelectionName = (
         "crimeexp",
         "drugs",
         "medical",
+        "utilities",
         "temporary",
         "weapons",
     ]
