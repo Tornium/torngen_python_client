@@ -544,6 +544,7 @@ class Faction(BaseQuery):
     balance = Path(
         "/faction/balance",
         FactionBalanceResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -553,6 +554,7 @@ class Faction(BaseQuery):
     Requires limited access key with faction API access permissions.
 
     # Parameters
+    - cat : By default, this selection will return only current faction&#39;s member balances, and the option &#39;all&#39; will return all current members balances + additionally those of ex-members which do have money or points on their balance.
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
