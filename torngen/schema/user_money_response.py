@@ -19,7 +19,17 @@ class UserMoneyResponse(BaseSchema):
             "faction": typing.TypedDict("", {"points": int, "money": int}),
             "daily_networth": int,
             "company": int,
-            "city_bank": typing.TypedDict("", {"until": int, "amount": int}),
+            "city_bank": typing.TypedDict(
+                "",
+                {
+                    "until": int,
+                    "profit": int,
+                    "invested_at": int,
+                    "interest_rate": int | float,
+                    "duration": int,
+                    "amount": int,
+                },
+            ),
             "cayman_bank": int,
         },
     )
@@ -39,7 +49,15 @@ class UserMoneyResponse(BaseSchema):
                         "daily_networth": int,
                         "company": int,
                         "city_bank": typing.TypedDict(
-                            "", {"until": int, "amount": int}
+                            "",
+                            {
+                                "until": int,
+                                "profit": int,
+                                "invested_at": int,
+                                "interest_rate": int | float,
+                                "duration": int,
+                                "amount": int,
+                            },
                         ),
                         "cayman_bank": int,
                     },
