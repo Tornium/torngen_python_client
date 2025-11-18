@@ -525,6 +525,7 @@ class User(BaseQuery):
         UserLogsResponse,
         log=Parameter("log", "query", required=False, deprecated=False),
         cat=Parameter("cat", "query", required=False, deprecated=False),
+        target=Parameter("target", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
@@ -539,6 +540,7 @@ class User(BaseQuery):
     # Parameters
     - log : Log ids, comma separated, e.g. 105,4900,4905
     - cat : Log category id
+    - target : Get logs where you interacted with a specific player by passing their player ID.
     - limit : N/A
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time

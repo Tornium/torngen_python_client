@@ -12,6 +12,7 @@ class TornCalendarActivity(BaseSchema):
 
     title: str
     start: int
+    fixed_start_time: typing.Optional[bool]
     end: int
     description: str
 
@@ -20,6 +21,9 @@ class TornCalendarActivity(BaseSchema):
         return TornCalendarActivity(
             title=BaseSchema.parse(data.get("title"), str),
             start=BaseSchema.parse(data.get("start"), int),
+            fixed_start_time=BaseSchema.parse(
+                data.get("fixed_start_time"), typing.Optional[bool]
+            ),
             end=BaseSchema.parse(data.get("end"), int),
             description=BaseSchema.parse(data.get("description"), str),
         )
