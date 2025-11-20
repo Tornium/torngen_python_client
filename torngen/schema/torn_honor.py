@@ -2,6 +2,7 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
+from .award_crimes_version_enum import AwardCrimesVersionEnum
 from .honor_id import HonorId
 from .honor_rarity_enum import HonorRarityEnum
 from .honor_type_enum import HonorTypeEnum
@@ -19,6 +20,7 @@ class TornHonor(BaseSchema):
     id: HonorId
     equipped: typing.Optional[int]
     description: str
+    crimes_version: typing.Optional[AwardCrimesVersionEnum]
     circulation: typing.Optional[int]
 
     @staticmethod
@@ -35,5 +37,8 @@ class TornHonor(BaseSchema):
             id=BaseSchema.parse(data.get("id"), HonorId),
             equipped=BaseSchema.parse(data.get("equipped"), typing.Optional[int]),
             description=BaseSchema.parse(data.get("description"), str),
+            crimes_version=BaseSchema.parse(
+                data.get("crimes_version"), typing.Optional[AwardCrimesVersionEnum]
+            ),
             circulation=BaseSchema.parse(data.get("circulation"), typing.Optional[int]),
         )
