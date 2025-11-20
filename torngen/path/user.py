@@ -117,7 +117,7 @@ class User(BaseQuery):
     Requires limited access key.
 
     # Parameters
-    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives.
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives. It&#39;s also possible to combine this with &#39;idFilter&#39;. This filter allows using from/to to filter by ids instead of timestamps.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -891,7 +891,7 @@ class User(BaseQuery):
     Requires limited access key. Returns up to 1,000 rows.
 
     # Parameters
-    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives.
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives. It&#39;s also possible to combine this with &#39;idFilter&#39;. This filter allows using from/to to filter by ids instead of timestamps.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -1068,7 +1068,7 @@ class User(BaseQuery):
     Requires limited access key.
 
     # Parameters
-    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives.
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives. It&#39;s also possible to combine this with &#39;idFilter&#39;. This filter allows using from/to to filter by ids instead of timestamps.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
@@ -1124,7 +1124,7 @@ class User(BaseQuery):
     Requires limited access key.
 
     # Parameters
-    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives.
+    - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives. It&#39;s also possible to combine this with &#39;idFilter&#39;. This filter allows using from/to to filter by ids instead of timestamps.
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
