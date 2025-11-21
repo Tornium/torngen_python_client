@@ -3,6 +3,7 @@ import typing
 UserSelectionName = (
     str
     | typing.Literal[
+        "ammo",
         "attacks",
         "attacksfull",
         "bars",
@@ -55,7 +56,6 @@ UserSelectionName = (
         "timestamp",
         "travel",
         "workstats",
-        "ammo",
         "bazaar",
         "criminalrecord",
         "discord",
