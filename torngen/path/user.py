@@ -8,6 +8,7 @@ from ..schema.reports_response import ReportsResponse
 from ..schema.revives_full_response import RevivesFullResponse
 from ..schema.revives_response import RevivesResponse
 from ..schema.timestamp_response import TimestampResponse
+from ..schema.user_ammo_response import UserAmmoResponse
 from ..schema.user_bars_response import UserBarsResponse
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_battle_stats_response import UserBattleStatsResponse
@@ -327,6 +328,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    ammo = Path(
+        "/user/ammo",
+        UserAmmoResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/ammo`: Get your ammo information
+    Requires public minimal key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
