@@ -5,6 +5,7 @@ from parameter import Parameter
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_competition_response import UserCompetitionResponse
+from ..schema.user_discord_response import UserDiscordResponse
 from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
@@ -37,7 +38,7 @@ class UserId(BaseQuery):
     Requires public access key. * UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key. * UserPersonalStatsFullPublic is returned when the requested category is 'all'. * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load. * Otherwise, UserPersonalStatsCategory is returned for the matched category. * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key). * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - cat : 
     - stat : Stat names (10 maximum). Used to fetch historical stat values
     - timestamp : Returns stats until this timestamp (converted to nearest date).
@@ -59,7 +60,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -79,7 +80,7 @@ class UserId(BaseQuery):
     Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -99,7 +100,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -120,7 +121,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
@@ -147,11 +148,31 @@ class UserId(BaseQuery):
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - id : User id
+    - id : User id or user discord id
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    discord = Path(
+        "/user/{id}/discord",
+        UserDiscordResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/discord`: Get discord information for a specific user
+    Requires public access key.
+
+    # Parameters
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -171,7 +192,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -194,7 +215,7 @@ class UserId(BaseQuery):
     Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - filters : It&#39;s possible to use this query parameter to filter properties by the key owner or their spouse.
     - offset : N/A
     - limit : N/A
@@ -217,7 +238,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -237,7 +258,7 @@ class UserId(BaseQuery):
     Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -258,7 +279,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
@@ -279,7 +300,7 @@ class UserId(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -303,7 +324,7 @@ class UserId(BaseQuery):
     Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
 
     # Parameters
-    - id : User id
+    - id : User id or user discord id
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time

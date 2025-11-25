@@ -16,6 +16,7 @@ from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_calendar_response import UserCalendarResponse
 from ..schema.user_competition_response import UserCompetitionResponse
 from ..schema.user_cooldowns_response import UserCooldownsResponse
+from ..schema.user_discord_response import UserDiscordResponse
 from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
 from ..schema.user_events_response import UserEventsResponse
@@ -57,6 +58,7 @@ from ..schema.user_refills_response import UserRefillsResponse
 from ..schema.user_skills_response import UserSkillsResponse
 from ..schema.user_travel_response import UserTravelResponse
 from ..schema.user_virus_response import UserVirusResponse
+from ..schema.user_weapon_exp_response import UserWeaponExpResponse
 from ..schema.user_work_stats_response import UserWorkStatsResponse
 
 
@@ -98,6 +100,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    discord = Path(
+        "/user/discord",
+        UserDiscordResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/discord`: Get your discord information
+    Requires public key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -340,7 +360,7 @@ class User(BaseQuery):
     )
     """
     `/user/ammo`: Get your ammo information
-    Requires public minimal key.
+    Requires minimal key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -890,6 +910,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    weaponexp = Path(
+        "/user/weaponexp",
+        UserWeaponExpResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/weaponexp`: Get your weapon experience information
+    Requires minimal key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
