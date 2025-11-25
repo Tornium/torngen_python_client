@@ -14,6 +14,7 @@ UserSelectionName = (
         "competition",
         "cooldowns",
         "crimes",
+        "discord",
         "enlistedcars",
         "events",
         "faction",
@@ -55,10 +56,10 @@ UserSelectionName = (
         "skills",
         "timestamp",
         "travel",
+        "weaponexp",
         "workstats",
         "bazaar",
         "criminalrecord",
-        "discord",
         "display",
         "education",
         "equipment",
@@ -67,6 +68,5 @@ UserSelectionName = (
         "networth",
         "perks",
         "stocks",
-        "weaponexp",
     ]
 )
