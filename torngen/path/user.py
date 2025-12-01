@@ -19,6 +19,7 @@ from ..schema.user_cooldowns_response import UserCooldownsResponse
 from ..schema.user_discord_response import UserDiscordResponse
 from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
+from ..schema.user_equipment_response import UserEquipmentResponse
 from ..schema.user_events_response import UserEventsResponse
 from ..schema.user_faction_balance_response import UserFactionBalanceResponse
 from ..schema.user_faction_response import UserFactionResponse
@@ -420,6 +421,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    equipment = Path(
+        "/user/equipment",
+        UserEquipmentResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/equipment`: Get your equipment & clothing
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
