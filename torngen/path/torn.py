@@ -13,7 +13,6 @@ from ..schema.torn_faction_tree_response import TornFactionTreeResponse
 from ..schema.torn_hof_response import TornHofResponse
 from ..schema.torn_honors_response import TornHonorsResponse
 from ..schema.torn_item_ammo_response import TornItemAmmoResponse
-from ..schema.torn_item_details_response import TornItemDetailsResponse
 from ..schema.torn_item_mods_response import TornItemModsResponse
 from ..schema.torn_items_response import TornItemsResponse
 from ..schema.torn_log_categories_response import TornLogCategoriesResponse
@@ -93,24 +92,6 @@ class Torn(BaseQuery):
     - offset : N/A
     - sort : Sorted by the greatest timestamps
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
-    
-    """
-
-    itemdetails = Path(
-        "/torn/itemdetails",
-        TornItemDetailsResponse,
-        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
-        comment=Parameter("comment", "query", required=False, deprecated=False),
-        key=Parameter("key", "query", required=False, deprecated=False),
-    )
-    """
-    `/torn/itemdetails`: Get information about a specific item
-    Requires public key.
-
-    # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

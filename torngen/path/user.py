@@ -21,7 +21,6 @@ from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
 from ..schema.user_equipment_response import UserEquipmentResponse
 from ..schema.user_events_response import UserEventsResponse
-from ..schema.user_faction_balance_response import UserFactionBalanceResponse
 from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_feed_response import UserForumFeedResponse
 from ..schema.user_forum_friends_response import UserForumFriendsResponse
@@ -406,24 +405,6 @@ class User(BaseQuery):
     
     """
 
-    factionbalance = Path(
-        "/user/factionbalance",
-        UserFactionBalanceResponse,
-        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
-        comment=Parameter("comment", "query", required=False, deprecated=False),
-        key=Parameter("key", "query", required=False, deprecated=False),
-    )
-    """
-    `/user/factionbalance`: Deprecated. Use user/money instead
-    Will be removed on 1st of December 2025. Requires limited access key.
-
-    # Parameters
-    - timestamp : Timestamp to bypass cache
-    - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
-    
-    """
-
     equipment = Path(
         "/user/equipment",
         UserEquipmentResponse,
@@ -670,7 +651,7 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/calendar`: Get your competition's event start time
+    `/user/calendar`: Get your calendar events start time
     Requires minimal access key. Only available to yourself.
 
     # Parameters

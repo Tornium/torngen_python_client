@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .user_competition_easter_eggs import UserCompetitionEasterEggs
+from .user_competition_elimination import UserCompetitionElimination
 from .user_competition_halloween import UserCompetitionHalloween
 from .user_competition_rps import UserCompetitionRps
 
@@ -14,7 +15,10 @@ class UserCompetitionResponse(BaseSchema):
     """
 
     competition: (
-        UserCompetitionRps | UserCompetitionEasterEggs | UserCompetitionHalloween
+        UserCompetitionElimination
+        | UserCompetitionRps
+        | UserCompetitionEasterEggs
+        | UserCompetitionHalloween
     )
 
     @staticmethod
@@ -22,7 +26,8 @@ class UserCompetitionResponse(BaseSchema):
         return UserCompetitionResponse(
             competition=BaseSchema.parse(
                 data.get("competition"),
-                UserCompetitionRps
+                UserCompetitionElimination
+                | UserCompetitionRps
                 | UserCompetitionEasterEggs
                 | UserCompetitionHalloween,
             ),
