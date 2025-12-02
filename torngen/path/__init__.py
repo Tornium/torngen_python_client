@@ -19,6 +19,7 @@ from .racing_raceId import RacingRaceId
 from .racing_trackId import RacingTrackId
 from .torn import Torn
 from .torn_crimeId import TornCrimeId
+from .torn_id import TornId
 from .torn_ids import TornIds
 from .torn_logCategoryId import TornLogCategoryId
 from .user import User
@@ -47,6 +48,7 @@ __all__ = [
     "RacingTrackId",
     "Torn",
     "TornCrimeId",
+    "TornId",
     "TornIds",
     "TornLogCategoryId",
     "User",
