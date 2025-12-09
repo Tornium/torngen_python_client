@@ -8,6 +8,7 @@ from ..schema.torn_bounties_response import TornBountiesResponse
 from ..schema.torn_calendar_response import TornCalendarResponse
 from ..schema.torn_crimes_response import TornCrimesResponse
 from ..schema.torn_education_response import TornEducationResponse
+from ..schema.torn_elimination_teams_response import TornEliminationTeamsResponse
 from ..schema.torn_faction_hof_response import TornFactionHofResponse
 from ..schema.torn_faction_tree_response import TornFactionTreeResponse
 from ..schema.torn_hof_response import TornHofResponse
@@ -439,6 +440,24 @@ class Torn(BaseQuery):
     )
     """
     `/torn/logcategories`: Get available log categories
+    Requires public key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    elimination = Path(
+        "/torn/elimination",
+        TornEliminationTeamsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/elimination`: Get current standings for all elimination teams
     Requires public key.
 
     # Parameters

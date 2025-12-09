@@ -8,6 +8,8 @@ TornSelectionName = (
         "calendar",
         "crimes",
         "education",
+        "elimination",
+        "eliminationteam",
         "factionhof",
         "factiontree",
         "hof",
