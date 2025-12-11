@@ -2,8 +2,8 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .basic_user import BasicUser
 from .elimination_team_id import EliminationTeamId
+from .torn_elimination_team_leader import TornEliminationTeamLeader
 
 
 @dataclass
@@ -19,7 +19,7 @@ class TornEliminationTeam(BaseSchema):
     name: str
     losses: int
     lives: int
-    leaders: typing.List[BasicUser]
+    leaders: typing.List[TornEliminationTeamLeader]
     id: EliminationTeamId
     eliminated_timestamp: None | int
     eliminated: bool
@@ -34,7 +34,9 @@ class TornEliminationTeam(BaseSchema):
             name=BaseSchema.parse(data.get("name"), str),
             losses=BaseSchema.parse(data.get("losses"), int),
             lives=BaseSchema.parse(data.get("lives"), int),
-            leaders=BaseSchema.parse(data.get("leaders"), typing.List[BasicUser]),
+            leaders=BaseSchema.parse(
+                data.get("leaders"), typing.List[TornEliminationTeamLeader]
+            ),
             id=BaseSchema.parse(data.get("id"), EliminationTeamId),
             eliminated_timestamp=BaseSchema.parse(
                 data.get("eliminated_timestamp"), None | int
