@@ -2,22 +2,24 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
+from .attack_simplified import AttackSimplified
 from .request_metadata_with_links import RequestMetadataWithLinks
-from .user_race_details import UserRaceDetails
 
 
 @dataclass
-class UserRacesResponse(BaseSchema):
+class AttacksFullResponse(BaseSchema):
     """
-    JSON object of `UserRacesResponse`.
+    JSON object of `AttacksFullResponse`.
     """
 
-    races: typing.List[UserRaceDetails]
+    attacks: typing.List[AttackSimplified]
     _metadata: RequestMetadataWithLinks
 
     @staticmethod
     def parse(data):
-        return UserRacesResponse(
-            races=BaseSchema.parse(data.get("races"), typing.List[UserRaceDetails]),
+        return AttacksFullResponse(
+            attacks=BaseSchema.parse(
+                data.get("attacks"), typing.List[AttackSimplified]
+            ),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )

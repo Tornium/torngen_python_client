@@ -2,8 +2,8 @@ from base_path import Path
 from base_query import BaseQuery
 from parameter import Parameter
 
-from ..schema.faction_attacks_full_response import FactionAttacksFullResponse
-from ..schema.faction_attacks_response import FactionAttacksResponse
+from ..schema.attacks_full_response import AttacksFullResponse
+from ..schema.attacks_response import AttacksResponse
 from ..schema.reports_response import ReportsResponse
 from ..schema.revives_full_response import RevivesFullResponse
 from ..schema.revives_response import RevivesResponse
@@ -123,7 +123,7 @@ class User(BaseQuery):
 
     attacks = Path(
         "/user/attacks",
-        FactionAttacksResponse,
+        AttacksResponse,
         filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
@@ -933,7 +933,7 @@ class User(BaseQuery):
 
     attacksfull = Path(
         "/user/attacksfull",
-        FactionAttacksFullResponse,
+        AttacksFullResponse,
         filters=Parameter("filters", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
