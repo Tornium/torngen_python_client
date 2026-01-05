@@ -14,7 +14,7 @@ from .user_id import UserId
 @dataclass
 class UserRaceDetails(BaseSchema):
 
-    skill_gain: typing.Any
+    skill_gain: int | float
     results: typing.List[RacerDetails]
     is_official: bool
     track_id: RaceTrackId
@@ -42,7 +42,7 @@ class UserRaceDetails(BaseSchema):
     @staticmethod
     def parse(data):
         return UserRaceDetails(
-            skill_gain=BaseSchema.parse(data.get("skill_gain"), typing.Any),
+            skill_gain=BaseSchema.parse(data.get("skill_gain"), int | float),
             results=BaseSchema.parse(data.get("results"), typing.List[RacerDetails]),
             is_official=BaseSchema.parse(data.get("is_official"), bool),
             track_id=BaseSchema.parse(data.get("track_id"), RaceTrackId),
