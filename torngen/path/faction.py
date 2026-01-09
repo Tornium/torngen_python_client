@@ -663,7 +663,7 @@ class Faction(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/faction/territoryownership`: Get a list of your faction's territories
+    `/faction/territoryownership`: Get a list territory ownership
     Requires public access key.
 
     # Parameters

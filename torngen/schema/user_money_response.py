@@ -16,10 +16,11 @@ class UserMoneyResponse(BaseSchema):
             "wallet": int,
             "vault": int,
             "points": int,
-            "faction": typing.TypedDict("", {"points": int, "money": int}),
+            "faction": None | typing.TypedDict("", {"points": int, "money": int}),
             "daily_networth": int,
             "company": int,
-            "city_bank": typing.TypedDict(
+            "city_bank": None
+            | typing.TypedDict(
                 "",
                 {
                     "until": int,
@@ -45,10 +46,12 @@ class UserMoneyResponse(BaseSchema):
                         "wallet": int,
                         "vault": int,
                         "points": int,
-                        "faction": typing.TypedDict("", {"points": int, "money": int}),
+                        "faction": None
+                        | typing.TypedDict("", {"points": int, "money": int}),
                         "daily_networth": int,
                         "company": int,
-                        "city_bank": typing.TypedDict(
+                        "city_bank": None
+                        | typing.TypedDict(
                             "",
                             {
                                 "until": int,
