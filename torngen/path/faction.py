@@ -212,6 +212,7 @@ class Faction(BaseQuery):
         target=Parameter("target", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -225,6 +226,7 @@ class Faction(BaseQuery):
     - target : Get reports for a specific player by passing their player ID.
     - limit : N/A
     - offset : N/A
+    - sort : Sorted by the greatest timestamps
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
