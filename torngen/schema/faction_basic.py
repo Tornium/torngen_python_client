@@ -17,6 +17,7 @@ class FactionBasic(BaseSchema):
     tag: str
     respect: int
     rank: FactionRank
+    note: typing.Optional[str]
     name: str
     members: int
     leader_id: UserId
@@ -34,6 +35,7 @@ class FactionBasic(BaseSchema):
             tag=BaseSchema.parse(data.get("tag"), str),
             respect=BaseSchema.parse(data.get("respect"), int),
             rank=BaseSchema.parse(data.get("rank"), FactionRank),
+            note=BaseSchema.parse(data.get("note"), typing.Optional[str]),
             name=BaseSchema.parse(data.get("name"), str),
             members=BaseSchema.parse(data.get("members"), int),
             leader_id=BaseSchema.parse(data.get("leader_id"), UserId),
