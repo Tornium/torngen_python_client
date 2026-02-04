@@ -76,12 +76,12 @@ class User(BaseQuery):
     )
     """
     `/user/education`: Get your education information
-    The response contains a list of complete eduactions and of a current education (if any).
+    Requires minimal access key. The response contains a list of complete eduactions and of a current education (if any).
 
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -193,7 +193,7 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/virus`: Get your virus information
+    `/user/virus`: Get your virus coding information
     Requires minimal access key.
 
     # Parameters
@@ -347,7 +347,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -401,7 +401,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -437,7 +437,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -455,7 +455,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -574,7 +574,7 @@ class User(BaseQuery):
     )
     """
     `/user/log`: Get your logs
-    Requires limited access key. It's possible to pass a list of log ids or a log category id.
+    Requires full access key. It's possible to pass a list of log ids or a log category id.
 
     # Parameters
     - log : Log ids, comma separated, e.g. 105,4900,4905
@@ -875,7 +875,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -911,7 +911,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -993,7 +993,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -1011,7 +1011,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -1024,7 +1024,7 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/itemmarket`: Get your item market listings for a specific item
+    `/user/itemmarket`: Get your item market listings
     Requires limited access key.
 
     # Parameters

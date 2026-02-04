@@ -581,7 +581,7 @@ class Faction(BaseQuery):
     - cat : By default, this selection will return only current faction&#39;s member contributions, and the option &#39;all&#39; will return all contributors.
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
