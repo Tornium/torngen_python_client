@@ -12,12 +12,16 @@ class MarketPropertiesResponse(BaseSchema):
     JSON object of `MarketPropertiesResponse`.
     """
 
+    properties_timestamp: int
     properties: MarketPropertyDetails
     _metadata: RequestMetadataWithLinks
 
     @staticmethod
     def parse(data):
         return MarketPropertiesResponse(
+            properties_timestamp=BaseSchema.parse(
+                data.get("properties_timestamp"), int
+            ),
             properties=BaseSchema.parse(data.get("properties"), MarketPropertyDetails),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )

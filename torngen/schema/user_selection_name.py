@@ -55,6 +55,7 @@ UserSelectionName = (
         "revives",
         "revivesfull",
         "skills",
+        "stocks",
         "timestamp",
         "travel",
         "weaponexp",
@@ -67,6 +68,5 @@ UserSelectionName = (
         "inventory",
         "networth",
         "perks",
-        "stocks",
     ]
 )
