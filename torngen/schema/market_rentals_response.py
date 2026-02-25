@@ -12,12 +12,14 @@ class MarketRentalsResponse(BaseSchema):
     JSON object of `MarketRentalsResponse`.
     """
 
+    rentals_timestamp: int
     rentals: MarketRentalDetails
     _metadata: RequestMetadataWithLinks
 
     @staticmethod
     def parse(data):
         return MarketRentalsResponse(
+            rentals_timestamp=BaseSchema.parse(data.get("rentals_timestamp"), int),
             rentals=BaseSchema.parse(data.get("rentals"), MarketRentalDetails),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )

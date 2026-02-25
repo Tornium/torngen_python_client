@@ -11,10 +11,12 @@ class UserBountiesResponse(BaseSchema):
     JSON object of `UserBountiesResponse`.
     """
 
+    bounties_timestamp: int
     bounties: typing.List[Bounty]
 
     @staticmethod
     def parse(data):
         return UserBountiesResponse(
+            bounties_timestamp=BaseSchema.parse(data.get("bounties_timestamp"), int),
             bounties=BaseSchema.parse(data.get("bounties"), typing.List[Bounty]),
         )

@@ -44,7 +44,4 @@ FactionStatEnum = typing.Literal[
     "attacksrunaway",
     "highestterritories",
     "territoryrespect",
-    "membersamount",
-    "factionage",
-    "upgradesamount",
 ]

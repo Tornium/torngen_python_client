@@ -12,12 +12,14 @@ class TornBountiesResponse(BaseSchema):
     JSON object of `TornBountiesResponse`.
     """
 
+    bounties_timestamp: int
     bounties: typing.List[Bounty]
     _metadata: RequestMetadataWithLinks
 
     @staticmethod
     def parse(data):
         return TornBountiesResponse(
+            bounties_timestamp=BaseSchema.parse(data.get("bounties_timestamp"), int),
             bounties=BaseSchema.parse(data.get("bounties"), typing.List[Bounty]),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )

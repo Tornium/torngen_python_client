@@ -23,6 +23,7 @@ from ..schema.torn_medals_response import TornMedalsResponse
 from ..schema.torn_merits_response import TornMeritsResponse
 from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_properties import TornProperties
+from ..schema.torn_stocks_response import TornStocksResponse
 from ..schema.torn_territories_response import TornTerritoriesResponse
 
 
@@ -185,6 +186,24 @@ class Torn(BaseQuery):
     """
     `/torn/timestamp`: Get current server time
     Requires public key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    stocks = Path(
+        "/torn/stocks",
+        TornStocksResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/stocks`: Get all stocks
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache

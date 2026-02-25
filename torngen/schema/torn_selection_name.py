@@ -24,6 +24,7 @@ TornSelectionName = (
         "merits",
         "organizedcrimes",
         "properties",
+        "stocks",
         "subcrimes",
         "territory",
         "timestamp",
@@ -42,6 +43,5 @@ TornSelectionName = (
         "searchforcash",
         "shoplifting",
         "stats",
-        "stocks",
     ]
 )
