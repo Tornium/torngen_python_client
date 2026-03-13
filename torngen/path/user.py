@@ -58,6 +58,7 @@ from ..schema.user_racing_records_response import UserRacingRecordsResponse
 from ..schema.user_refills_response import UserRefillsResponse
 from ..schema.user_skills_response import UserSkillsResponse
 from ..schema.user_stocks_response import UserStocksResponse
+from ..schema.user_trades_response import UserTradesResponse
 from ..schema.user_travel_response import UserTravelResponse
 from ..schema.user_virus_response import UserVirusResponse
 from ..schema.user_weapon_exp_response import UserWeaponExpResponse
@@ -826,6 +827,34 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    trades = Path(
+        "/user/trades",
+        UserTradesResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/trades`: Get your trades
+    Requires limited access key. When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
+
+    # Parameters
+    - cat : Category of trades returned
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .attack_player_faction import AttackPlayerFaction
+from .user_faction_basic import UserFactionBasic
 from .user_id import UserId
 
 
@@ -15,7 +15,7 @@ class AttackPlayer(BaseSchema):
     name: str
     level: int
     id: UserId
-    faction: None | AttackPlayerFaction
+    faction: None | UserFactionBasic
 
     @staticmethod
     def parse(data):
@@ -23,5 +23,5 @@ class AttackPlayer(BaseSchema):
             name=BaseSchema.parse(data.get("name"), str),
             level=BaseSchema.parse(data.get("level"), int),
             id=BaseSchema.parse(data.get("id"), UserId),
-            faction=BaseSchema.parse(data.get("faction"), None | AttackPlayerFaction),
+            faction=BaseSchema.parse(data.get("faction"), None | UserFactionBasic),
         )
