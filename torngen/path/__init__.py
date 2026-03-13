@@ -26,6 +26,7 @@ from .torn_stockId import TornStockId
 from .user import User
 from .user_crimeId import UserCrimeId
 from .user_id import UserId
+from .user_tradeId import UserTradeId
 
 __all__ = [
     "Faction",
@@ -56,4 +57,5 @@ __all__ = [
     "User",
     "UserCrimeId",
     "UserId",
+    "UserTradeId",
 ]
