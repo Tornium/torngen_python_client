@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.key_info_response import KeyInfoResponse
 from ..schema.key_log_response import KeyLogResponse
 

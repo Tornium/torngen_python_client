@@ -1,10 +1,8 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
-from ..schema.faction_territory_war_report_response import (
-    FactionTerritoryWarReportResponse,
-)
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
+from ..schema.faction_territory_war_report_response import \
+    FactionTerritoryWarReportResponse
 
 
 class FactionTerritoryWarId(BaseQuery):

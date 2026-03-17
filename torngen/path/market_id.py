@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.auction_house_listing import AuctionHouseListing
 from ..schema.auction_house_response import AuctionHouseResponse
 from ..schema.bazaar_response_specialized import BazaarResponseSpecialized

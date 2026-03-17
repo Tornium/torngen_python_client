@@ -3,7 +3,8 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_crime_item_outcome_enum import FactionCrimeItemOutcomeEnum
-from .faction_crime_user_item_outcome_enum import FactionCrimeUserItemOutcomeEnum
+from .faction_crime_user_item_outcome_enum import \
+    FactionCrimeUserItemOutcomeEnum
 from .item_id import ItemId
 from .item_uid import ItemUid
 

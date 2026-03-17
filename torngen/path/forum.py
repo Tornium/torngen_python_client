@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.forum_categories_response import ForumCategoriesResponse
 from ..schema.forum_lookup_response import ForumLookupResponse
 from ..schema.forum_threads_response import ForumThreadsResponse

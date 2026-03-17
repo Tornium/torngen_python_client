@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.property_lookup_response import PropertyLookupResponse
 from ..schema.timestamp_response import TimestampResponse
 

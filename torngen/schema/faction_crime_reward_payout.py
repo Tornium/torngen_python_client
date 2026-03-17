@@ -2,7 +2,8 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .faction_organized_crime_payout_type import FactionOrganizedCrimePayoutType
+from .faction_organized_crime_payout_type import \
+    FactionOrganizedCrimePayoutType
 from .user_id import UserId
 
 

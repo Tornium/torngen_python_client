@@ -2,9 +2,8 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .user_property_details_extended_with_rent import (
-    UserPropertyDetailsExtendedWithRent,
-)
+from .user_property_details_extended_with_rent import \
+    UserPropertyDetailsExtendedWithRent
 
 
 @dataclass

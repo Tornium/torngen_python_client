@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.attacks_full_response import AttacksFullResponse
 from ..schema.attacks_response import AttacksResponse
 from ..schema.reports_response import ReportsResponse
@@ -25,9 +24,8 @@ from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_feed_response import UserForumFeedResponse
 from ..schema.user_forum_friends_response import UserForumFriendsResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
-from ..schema.user_forum_subscribed_threads_response import (
-    UserForumSubscribedThreadsResponse,
-)
+from ..schema.user_forum_subscribed_threads_response import \
+    UserForumSubscribedThreadsResponse
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_honors_response import UserHonorsResponse

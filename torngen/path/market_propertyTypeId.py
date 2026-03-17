@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.market_properties_response import MarketPropertiesResponse
 from ..schema.market_rentals_response import MarketRentalsResponse
 

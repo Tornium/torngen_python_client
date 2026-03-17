@@ -2,11 +2,11 @@ import re
 import typing
 import urllib.parse
 
-from adapter import HTTPAdapter
-from base_path import Path
-from base_schema import BaseSchema
+from .adapter import HTTPAdapter
+from .base_path import Path
+from .base_schema import BaseSchema
 
-VERSION = "5.5.2"
+VERSION = "5.5.3"
 
 
 class _URLComponents(typing.NamedTuple):

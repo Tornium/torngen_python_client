@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.faction_basic_response import FactionBasicResponse
 from ..schema.faction_chains_response import FactionChainsResponse
 from ..schema.faction_hof_response import FactionHofResponse
@@ -10,9 +9,8 @@ from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
 from ..schema.faction_raids_response import FactionRaidsResponse
 from ..schema.faction_ranked_war_response import FactionRankedWarResponse
 from ..schema.faction_territories_response import FactionTerritoriesResponse
-from ..schema.faction_territory_wars_history_response import (
-    FactionTerritoryWarsHistoryResponse,
-)
+from ..schema.faction_territory_wars_history_response import \
+    FactionTerritoryWarsHistoryResponse
 from ..schema.faction_wars_response import FactionWarsResponse
 
 

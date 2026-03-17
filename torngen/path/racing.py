@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.racing_car_upgrades_response import RacingCarUpgradesResponse
 from ..schema.racing_cars_response import RacingCarsResponse
 from ..schema.racing_lookup_response import RacingLookupResponse

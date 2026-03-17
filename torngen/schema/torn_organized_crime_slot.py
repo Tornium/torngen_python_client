@@ -3,9 +3,8 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_slot_position_info import FactionSlotPositionInfo
-from .torn_organized_crime_position_id_deprecated import (
-    TornOrganizedCrimePositionIdDeprecated,
-)
+from .torn_organized_crime_position_id_deprecated import \
+    TornOrganizedCrimePositionIdDeprecated
 from .torn_organized_crime_required_item import TornOrganizedCrimeRequiredItem
 
 

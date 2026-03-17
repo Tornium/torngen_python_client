@@ -1,7 +1,6 @@
-from base_path import Path
-from base_query import BaseQuery
-from parameter import Parameter
-
+from ..base_path import Path
+from ..base_query import BaseQuery
+from ..parameter import Parameter
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_competition_response import UserCompetitionResponse

@@ -3,7 +3,8 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_id import FactionId
-from .faction_territory_war_report_members import FactionTerritoryWarReportMembers
+from .faction_territory_war_report_members import \
+    FactionTerritoryWarReportMembers
 
 
 @dataclass
