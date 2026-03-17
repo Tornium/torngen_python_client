@@ -22,7 +22,6 @@ for cls in all_base_resources:
             and "ids}" not in key.lower()
         ):
             # all_paths.append((cls, path))
-            print(key)
             url = urllib.parse.urlunparse(
                 _URLComponents(
                     scheme="",
@@ -42,7 +41,6 @@ def test_all_selections(api_key, requests_adapter, test_data):
     query = base_resource().select(selection).key(api_key)
 
     try:
-        print(query.url())
         response = query.get(adapter=requests_adapter)
     except RuntimeError:
         # NOTE: selections containing a resource using a path parmeter are skipped
