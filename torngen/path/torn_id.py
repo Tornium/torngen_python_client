@@ -1,8 +1,9 @@
 from ..base_path import Path
 from ..base_query import BaseQuery
 from ..parameter import Parameter
-from ..schema.torn_elimination_team_players_response import \
-    TornEliminationTeamPlayersResponse
+from ..schema.torn_elimination_team_players_response import (
+    TornEliminationTeamPlayersResponse,
+)
 from ..schema.torn_item_details_response import TornItemDetailsResponse
 
 

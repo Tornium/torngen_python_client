@@ -4,8 +4,9 @@ from .error_access_level_too_low import ErrorAccessLevelTooLow
 from .error_api_disabled import ErrorApiDisabled
 from .error_api_key_paused import ErrorApiKeyPaused
 from .error_backend_error import ErrorBackendError
-from .error_category_selection_unavailable_for_interaction_logs import \
-    ErrorCategorySelectionUnavailableForInteractionLogs
+from .error_category_selection_unavailable_for_interaction_logs import (
+    ErrorCategorySelectionUnavailableForInteractionLogs,
+)
 from .error_closed_temporarily import ErrorClosedTemporarily
 from .error_daily_read_limit_reached import ErrorDailyReadLimitReached
 from .error_incorrect_category import ErrorIncorrectCategory
@@ -22,12 +23,12 @@ from .error_key_read_error import ErrorKeyReadError
 from .error_key_temporary_disabled import ErrorKeyTemporaryDisabled
 from .error_log_unavailable import ErrorLogUnavailable
 from .error_must_migrate_to_crimes_v2 import ErrorMustMigrateToCrimesV2
-from .error_must_migrate_to_organized_crimes_v2 import \
-    ErrorMustMigrateToOrganizedCrimesV2
+from .error_must_migrate_to_organized_crimes_v2 import (
+    ErrorMustMigrateToOrganizedCrimesV2,
+)
 from .error_only_available_in_api_v1 import ErrorOnlyAvailableInApiV1
 from .error_only_available_in_api_v2 import ErrorOnlyAvailableInApiV2
-from .error_only_category_or_stats_allowed import \
-    ErrorOnlyCategoryOrStatsAllowed
+from .error_only_category_or_stats_allowed import ErrorOnlyCategoryOrStatsAllowed
 from .error_race_not_finished import ErrorRaceNotFinished
 from .error_too_many_requests import ErrorTooManyRequests
 from .error_unknown import ErrorUnknown

@@ -4,8 +4,9 @@ from dataclasses import dataclass
 from ..base_schema import BaseSchema
 from .dirty_bomb_id import DirtyBombId
 from .faction_warfare_dirty_bomb_planter import FactionWarfareDirtyBombPlanter
-from .faction_warfare_dirty_bomb_target_faction import \
-    FactionWarfareDirtyBombTargetFaction
+from .faction_warfare_dirty_bomb_target_faction import (
+    FactionWarfareDirtyBombTargetFaction,
+)
 
 
 @dataclass

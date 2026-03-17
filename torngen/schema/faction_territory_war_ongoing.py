@@ -3,8 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_territory_enum import FactionTerritoryEnum
-from .faction_territory_war_ongoing_faction import \
-    FactionTerritoryWarOngoingFaction
+from .faction_territory_war_ongoing_faction import FactionTerritoryWarOngoingFaction
 from .territory_war_id import TerritoryWarId
 
 

@@ -3,8 +3,9 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_id import FactionId
-from .faction_territory_war_faction_wall_players import \
-    FactionTerritoryWarFactionWallPlayers
+from .faction_territory_war_faction_wall_players import (
+    FactionTerritoryWarFactionWallPlayers,
+)
 
 
 @dataclass
