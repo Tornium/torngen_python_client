@@ -7,8 +7,7 @@ from ..schema.torn_bounties_response import TornBountiesResponse
 from ..schema.torn_calendar_response import TornCalendarResponse
 from ..schema.torn_crimes_response import TornCrimesResponse
 from ..schema.torn_education_response import TornEducationResponse
-from ..schema.torn_elimination_teams_response import \
-    TornEliminationTeamsResponse
+from ..schema.torn_elimination_teams_response import TornEliminationTeamsResponse
 from ..schema.torn_faction_hof_response import TornFactionHofResponse
 from ..schema.torn_faction_tree_response import TornFactionTreeResponse
 from ..schema.torn_hof_response import TornHofResponse
