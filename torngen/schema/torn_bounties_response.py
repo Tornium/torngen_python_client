@@ -13,6 +13,7 @@ class TornBountiesResponse(BaseSchema):
     """
 
     bounties_timestamp: int
+    bounties_delay: typing.Optional[int]
     bounties: typing.List[Bounty]
     _metadata: RequestMetadataWithLinks
 
@@ -20,6 +21,9 @@ class TornBountiesResponse(BaseSchema):
     def parse(data):
         return TornBountiesResponse(
             bounties_timestamp=BaseSchema.parse(data.get("bounties_timestamp"), int),
+            bounties_delay=BaseSchema.parse(
+                data.get("bounties_delay"), typing.Optional[int]
+            ),
             bounties=BaseSchema.parse(data.get("bounties"), typing.List[Bounty]),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )
