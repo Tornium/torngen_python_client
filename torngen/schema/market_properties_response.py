@@ -13,6 +13,7 @@ class MarketPropertiesResponse(BaseSchema):
     """
 
     properties_timestamp: int
+    properties_delay: typing.Optional[int]
     properties: MarketPropertyDetails
     _metadata: RequestMetadataWithLinks
 
@@ -21,6 +22,9 @@ class MarketPropertiesResponse(BaseSchema):
         return MarketPropertiesResponse(
             properties_timestamp=BaseSchema.parse(
                 data.get("properties_timestamp"), int
+            ),
+            properties_delay=BaseSchema.parse(
+                data.get("properties_delay"), typing.Optional[int]
             ),
             properties=BaseSchema.parse(data.get("properties"), MarketPropertyDetails),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),

@@ -218,7 +218,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/reports`: Get faction reports
-    Requires limited access key. * The default limit is set to 25. However, the limit can be set to 100 for the 'stats' category.
+    Requires limited access key. The limit is set to 25 when requesting any category other than 'stats'. When requesting the 'stats' category, limit can be increased up to 100.
 
     # Parameters
     - cat : Used to filter reports with a specific type.
@@ -699,6 +699,7 @@ class Faction(BaseQuery):
         FactionCrimesResponse,
         cat=Parameter("cat", "query", required=False, deprecated=False),
         filters=Parameter("filters", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
         to=Parameter("to", "query", required=False, deprecated=False),
@@ -714,6 +715,7 @@ class Faction(BaseQuery):
     # Parameters
     - cat : Category of organized crimes returned. Category &#39;available&#39; includes both &#39;recruiting&#39; &amp; &#39;planning&#39;, and category &#39;completed&#39; includes both &#39;successful&#39; &amp; &#39;failure&#39; Default category is &#39;all&#39;.
     - filters : It&#39;s possible to set this parameter to specify a field used for the sort, from &amp; to query parameters. If not specified, the field will default to the category sorting as described above.
+    - limit : N/A
     - offset : N/A
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time

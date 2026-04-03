@@ -13,7 +13,7 @@ class FactionCrimeRewardPayout(BaseSchema):
     """
 
     type: FactionOrganizedCrimePayoutType
-    percentage: int
+    percentage: int | float
     paid_by: UserId
     paid_at: int
 
@@ -21,7 +21,7 @@ class FactionCrimeRewardPayout(BaseSchema):
     def parse(data):
         return FactionCrimeRewardPayout(
             type=BaseSchema.parse(data.get("type"), FactionOrganizedCrimePayoutType),
-            percentage=BaseSchema.parse(data.get("percentage"), int),
+            percentage=BaseSchema.parse(data.get("percentage"), int | float),
             paid_by=BaseSchema.parse(data.get("paid_by"), UserId),
             paid_at=BaseSchema.parse(data.get("paid_at"), int),
         )

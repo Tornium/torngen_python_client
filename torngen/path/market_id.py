@@ -25,7 +25,7 @@ class MarketId(BaseQuery):
     )
     """
     `/market/{id}/itemmarket`: Get item market listings
-    Requires public access key.
+    <b>Globally cached selection.</b> Requires public access key.
 
     # Parameters
     - id : Item id

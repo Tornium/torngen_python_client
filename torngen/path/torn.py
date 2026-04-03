@@ -110,7 +110,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/bounties`: Get bounties
-    Requires public key.
+    <b>Globally cached selection.</b> Requires public key.
 
     # Parameters
     - limit : N/A

@@ -16,6 +16,7 @@ class ItemMarket(BaseSchema):
     listings: typing.List[ItemMarketListingStackable | ItemMarketListingNonstackable]
     item: ItemMarketItem
     cache_timestamp: int
+    cache_delay: typing.Optional[int]
 
     @staticmethod
     def parse(data):
@@ -26,4 +27,5 @@ class ItemMarket(BaseSchema):
             ),
             item=BaseSchema.parse(data.get("item"), ItemMarketItem),
             cache_timestamp=BaseSchema.parse(data.get("cache_timestamp"), int),
+            cache_delay=BaseSchema.parse(data.get("cache_delay"), typing.Optional[int]),
         )

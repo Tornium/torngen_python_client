@@ -13,6 +13,7 @@ class MarketRentalsResponse(BaseSchema):
     """
 
     rentals_timestamp: int
+    rentals_delay: typing.Optional[int]
     rentals: MarketRentalDetails
     _metadata: RequestMetadataWithLinks
 
@@ -20,6 +21,9 @@ class MarketRentalsResponse(BaseSchema):
     def parse(data):
         return MarketRentalsResponse(
             rentals_timestamp=BaseSchema.parse(data.get("rentals_timestamp"), int),
+            rentals_delay=BaseSchema.parse(
+                data.get("rentals_delay"), typing.Optional[int]
+            ),
             rentals=BaseSchema.parse(data.get("rentals"), MarketRentalDetails),
             _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
         )
