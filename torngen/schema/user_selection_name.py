@@ -28,6 +28,7 @@ UserSelectionName = (
         "hof",
         "honors",
         "icons",
+        "inventory",
         "itemmarket",
         "job",
         "jobpoints",
@@ -67,7 +68,6 @@ UserSelectionName = (
         "display",
         "education",
         "gym",
-        "inventory",
         "networth",
         "perks",
     ]
