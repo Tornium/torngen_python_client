@@ -31,6 +31,7 @@ from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_honors_response import UserHonorsResponse
 from ..schema.user_icons_response import UserIconsResponse
+from ..schema.user_inventory_response import UserInventoryResponse
 from ..schema.user_item_market_response import UserItemMarketResponse
 from ..schema.user_job_points_response import UserJobPointsResponse
 from ..schema.user_job_ranks_response import UserJobRanksResponse
@@ -440,6 +441,30 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    inventory = Path(
+        "/user/inventory",
+        UserInventoryResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/inventory`: Get your inventory
+    <b>Cached selection (1 hour per category).</b> Requires limited access key.
+
+    # Parameters
+    - cat : Items category
+    - offset : N/A
+    - limit : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
