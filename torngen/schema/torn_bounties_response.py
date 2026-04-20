@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .bounty import Bounty
-from .request_metadata_with_links import RequestMetadataWithLinks
+from .request_metadata_with_links_and_total import RequestMetadataWithLinksAndTotal
 
 
 @dataclass
@@ -15,7 +15,7 @@ class TornBountiesResponse(BaseSchema):
     bounties_timestamp: int
     bounties_delay: typing.Optional[int]
     bounties: typing.List[Bounty]
-    _metadata: RequestMetadataWithLinks
+    _metadata: RequestMetadataWithLinksAndTotal
 
     @staticmethod
     def parse(data):
@@ -25,5 +25,7 @@ class TornBountiesResponse(BaseSchema):
                 data.get("bounties_delay"), typing.Optional[int]
             ),
             bounties=BaseSchema.parse(data.get("bounties"), typing.List[Bounty]),
-            _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
+            _metadata=BaseSchema.parse(
+                data.get("_metadata"), RequestMetadataWithLinksAndTotal
+            ),
         )

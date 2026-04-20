@@ -13,6 +13,7 @@ from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_battle_stats_response import UserBattleStatsResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_calendar_response import UserCalendarResponse
+from ..schema.user_casino_response import UserCasinoResponse
 from ..schema.user_competition_response import UserCompetitionResponse
 from ..schema.user_cooldowns_response import UserCooldownsResponse
 from ..schema.user_discord_response import UserDiscordResponse
@@ -85,6 +86,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    casino = Path(
+        "/user/casino",
+        UserCasinoResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/casino`: Get your casino streak & tokens
+    Requires limited access key. Only available to yourself.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
