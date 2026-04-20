@@ -11,6 +11,7 @@ UserSelectionName = (
         "battlestats",
         "bounties",
         "calendar",
+        "casino",
         "competition",
         "cooldowns",
         "crimes",
