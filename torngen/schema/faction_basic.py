@@ -27,6 +27,7 @@ class FactionBasic(BaseSchema):
     co_leader_id: UserId
     capacity: int
     best_chain: int
+    banner_image: str
 
     @staticmethod
     def parse(data):
@@ -45,4 +46,5 @@ class FactionBasic(BaseSchema):
             co_leader_id=BaseSchema.parse(data.get("co_leader_id"), UserId),
             capacity=BaseSchema.parse(data.get("capacity"), int),
             best_chain=BaseSchema.parse(data.get("best_chain"), int),
+            banner_image=BaseSchema.parse(data.get("banner_image"), str),
         )
