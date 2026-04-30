@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
-from .faction_application_status_enum import FactionApplicationStatusEnum
+from .application_status_enum import ApplicationStatusEnum
 from .user_id import UserId
 
 
@@ -25,7 +25,7 @@ class FactionApplication(BaseSchema):
             "id": UserId,
         },
     )
-    status: FactionApplicationStatusEnum
+    status: ApplicationStatusEnum
     message: None | str
     id: int
 
@@ -54,7 +54,7 @@ class FactionApplication(BaseSchema):
                     },
                 ),
             ),
-            status=BaseSchema.parse(data.get("status"), FactionApplicationStatusEnum),
+            status=BaseSchema.parse(data.get("status"), ApplicationStatusEnum),
             message=BaseSchema.parse(data.get("message"), None | str),
             id=BaseSchema.parse(data.get("id"), int),
         )

@@ -1,3 +1,5 @@
+from .company import Company
+from .company_id import CompanyId
 from .faction import Faction
 from .faction_chainId import FactionChainId
 from .faction_crimeId import FactionCrimeId
@@ -29,6 +31,8 @@ from .user_id import UserId
 from .user_tradeId import UserTradeId
 
 __all__ = [
+    "Company",
+    "CompanyId",
     "Faction",
     "FactionChainId",
     "FactionCrimeId",
