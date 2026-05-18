@@ -116,7 +116,7 @@ class Company(BaseQuery):
     )
     """
     `/company/employees`: Get my company's employees
-    Requires public access key. When using Limited, Custom or Full access API keys, the response will be of type CompanyEmployeeExtended, otherwise it will be of type CompanyEmployee.
+    Requires public access key. When using Limited, Custom or Full access API keys, the response will be: * for director: CompanyEmployeeFull * for employee: CompanyEmployeeExtended * anyone else: CompanyEmployee.
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).

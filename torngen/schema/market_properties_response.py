@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .market_property_details import MarketPropertyDetails
-from .request_metadata_with_links import RequestMetadataWithLinks
+from .request_metadata_with_links_and_total import RequestMetadataWithLinksAndTotal
 
 
 @dataclass
@@ -15,7 +15,7 @@ class MarketPropertiesResponse(BaseSchema):
     properties_timestamp: int
     properties_delay: typing.Optional[int]
     properties: MarketPropertyDetails
-    _metadata: RequestMetadataWithLinks
+    _metadata: RequestMetadataWithLinksAndTotal
 
     @staticmethod
     def parse(data):
@@ -27,5 +27,7 @@ class MarketPropertiesResponse(BaseSchema):
                 data.get("properties_delay"), typing.Optional[int]
             ),
             properties=BaseSchema.parse(data.get("properties"), MarketPropertyDetails),
-            _metadata=BaseSchema.parse(data.get("_metadata"), RequestMetadataWithLinks),
+            _metadata=BaseSchema.parse(
+                data.get("_metadata"), RequestMetadataWithLinksAndTotal
+            ),
         )
