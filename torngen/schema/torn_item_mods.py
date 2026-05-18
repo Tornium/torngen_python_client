@@ -14,6 +14,7 @@ class TornItemMods(BaseSchema):
 
     weapons: typing.List[TornItemWeaponTypeEnum]
     name: str
+    image: str
     id: ItemModId
     dual_fit: bool
     description: str
@@ -25,6 +26,7 @@ class TornItemMods(BaseSchema):
                 data.get("weapons"), typing.List[TornItemWeaponTypeEnum]
             ),
             name=BaseSchema.parse(data.get("name"), str),
+            image=BaseSchema.parse(data.get("image"), str),
             id=BaseSchema.parse(data.get("id"), ItemModId),
             dual_fit=BaseSchema.parse(data.get("dual_fit"), bool),
             description=BaseSchema.parse(data.get("description"), str),

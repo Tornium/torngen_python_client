@@ -11,8 +11,11 @@ from .user_status import UserStatus
 
 
 @dataclass
-class CompanyEmployeeExtended(BaseSchema):
+class CompanyEmployeeFull(BaseSchema):
 
+    wage: int
+    value: None | int
+    joined_at: int
     stats: CompanyEmployeeStats
     effectiveness: CompanyEmployeeEffectiveness
     status: UserStatus
@@ -24,7 +27,10 @@ class CompanyEmployeeExtended(BaseSchema):
 
     @staticmethod
     def parse(data):
-        return CompanyEmployeeExtended(
+        return CompanyEmployeeFull(
+            wage=BaseSchema.parse(data.get("wage"), int),
+            value=BaseSchema.parse(data.get("value"), None | int),
+            joined_at=BaseSchema.parse(data.get("joined_at"), int),
             stats=BaseSchema.parse(data.get("stats"), CompanyEmployeeStats),
             effectiveness=BaseSchema.parse(
                 data.get("effectiveness"), CompanyEmployeeEffectiveness

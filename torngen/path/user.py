@@ -34,6 +34,7 @@ from ..schema.user_honors_response import UserHonorsResponse
 from ..schema.user_icons_response import UserIconsResponse
 from ..schema.user_inventory_response import UserInventoryResponse
 from ..schema.user_item_market_response import UserItemMarketResponse
+from ..schema.user_item_mods_response import UserItemModsResponse
 from ..schema.user_job_points_response import UserJobPointsResponse
 from ..schema.user_job_ranks_response import UserJobRanksResponse
 from ..schema.user_job_response import UserJobResponse
@@ -1022,6 +1023,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    itemmods = Path(
+        "/user/itemmods",
+        UserItemModsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/itemmods`: Get your information about available item mods
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
