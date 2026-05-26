@@ -6,6 +6,7 @@ from ..schema.company_employees_response import CompanyEmployeesResponse
 from ..schema.company_lookup_response import CompanyLookupResponse
 from ..schema.company_profile_response_mixed import CompanyProfileResponseMixed
 from ..schema.company_stock_response import CompanyStockResponse
+from ..schema.news_response import NewsResponse
 from ..schema.timestamp_response import TimestampResponse
 
 
@@ -49,6 +50,36 @@ class Company(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    news = Path(
+        "/company/news",
+        NewsResponse,
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        cat=Parameter("cat", "query", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/company/news`: Get your company's news details
+    Requires minimal access key.
+
+    # Parameters
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - cat : News category type
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

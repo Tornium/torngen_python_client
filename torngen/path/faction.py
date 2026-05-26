@@ -13,7 +13,6 @@ from ..schema.faction_crimes_response import FactionCrimesResponse
 from ..schema.faction_hof_response import FactionHofResponse
 from ..schema.faction_lookup_response import FactionLookupResponse
 from ..schema.faction_members_response import FactionMembersResponse
-from ..schema.faction_news_response import FactionNewsResponse
 from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
 from ..schema.faction_positions_response import FactionPositionsResponse
 from ..schema.faction_rackets_response import FactionRacketsResponse
@@ -31,6 +30,7 @@ from ..schema.faction_territory_wars_history_response import (
 from ..schema.faction_upgrades_response import FactionUpgradesResponse
 from ..schema.faction_warfare_response import FactionWarfareResponse
 from ..schema.faction_wars_response import FactionWarsResponse
+from ..schema.news_response import NewsResponse
 from ..schema.reports_response import ReportsResponse
 from ..schema.revives_full_response import RevivesFullResponse
 from ..schema.revives_response import RevivesResponse
@@ -100,7 +100,7 @@ class Faction(BaseQuery):
 
     news = Path(
         "/faction/news",
-        FactionNewsResponse,
+        NewsResponse,
         striptags=Parameter("striptags", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
