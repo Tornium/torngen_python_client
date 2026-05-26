@@ -6,11 +6,11 @@ CompanySelectionName = (
         "applications",
         "employees",
         "lookup",
+        "news",
         "profile",
         "stock",
         "timestamp",
         "companies",
-        "news",
         "search",
     ]
 )

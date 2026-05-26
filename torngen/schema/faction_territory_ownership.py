@@ -12,6 +12,7 @@ class FactionTerritoryOwnership(BaseSchema):
     """
 
     owned_by: None | FactionId
+    irradiated: bool
     id: str
     acquired_at: None | int
 
@@ -19,6 +20,7 @@ class FactionTerritoryOwnership(BaseSchema):
     def parse(data):
         return FactionTerritoryOwnership(
             owned_by=BaseSchema.parse(data.get("owned_by"), None | FactionId),
+            irradiated=BaseSchema.parse(data.get("irradiated"), bool),
             id=BaseSchema.parse(data.get("id"), str),
             acquired_at=BaseSchema.parse(data.get("acquired_at"), None | int),
         )
