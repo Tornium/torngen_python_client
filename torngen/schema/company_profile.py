@@ -20,13 +20,14 @@ class CompanyProfile(BaseSchema):
     rating: int
     name: str
     income: CompanyIncome
-    image: str
+    image: None | str
     id: CompanyId
     employees: CompanyEmployees
     director: CompanyDirector
     days_old: int
     customers: CompanyCustomers
     created_at: int
+    applications_allowed: bool
 
     @staticmethod
     def parse(data):
@@ -35,11 +36,14 @@ class CompanyProfile(BaseSchema):
             rating=BaseSchema.parse(data.get("rating"), int),
             name=BaseSchema.parse(data.get("name"), str),
             income=BaseSchema.parse(data.get("income"), CompanyIncome),
-            image=BaseSchema.parse(data.get("image"), str),
+            image=BaseSchema.parse(data.get("image"), None | str),
             id=BaseSchema.parse(data.get("id"), CompanyId),
             employees=BaseSchema.parse(data.get("employees"), CompanyEmployees),
             director=BaseSchema.parse(data.get("director"), CompanyDirector),
             days_old=BaseSchema.parse(data.get("days_old"), int),
             customers=BaseSchema.parse(data.get("customers"), CompanyCustomers),
             created_at=BaseSchema.parse(data.get("created_at"), int),
+            applications_allowed=BaseSchema.parse(
+                data.get("applications_allowed"), bool
+            ),
         )

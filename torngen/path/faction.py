@@ -66,7 +66,7 @@ class Faction(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -89,10 +89,10 @@ class Faction(BaseQuery):
 
     # Parameters
     - name : Name  to search for.
-    - filters : A filtering query parameter allowing a comma-separated list of filters.    * Each filter can be one of the following:  * Fixed options: &#39;destroyed&#39;, &#39;notDestroyed&#39;, &#39;recruiting&#39;, &#39;notRecruiting&#39;  * Dynamic options: `fieldName`+`condition`+`number`, where:  * * `fieldName` is one of: `id`, `respect`, `members`  * * `condition` is one of: `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`  * * `number`: any integer value  * Examples: `filters=destroyed`, `filters=notDestroyed,recruiting`, `filters=respectLessOrEqual20000,idGreater100,notRecruiting`
+    - filters : A filtering query parameter allowing a comma-separated list of filters.    * Each filter can be one of the following:  * Fixed options: `destroyed`, `notDestroyed`, `recruiting`, `notRecruiting`  * Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:  * * `fieldName` is one of: `id`, `respect`, `members`, `membersMax`  * * `condition` is one of: `=`, `!=`, `&lt;`, `&lt;=`, `&gt;=`, `&gt;`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`  * * `number`: any integer value  * Examples: `filters=destroyed`, `filters=notDestroyed,recruiting`, `filters=respect:&gt;=:20000,id:&lt;:100,notRecruiting`
     - limit : N/A
     - offset : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -122,7 +122,7 @@ class Faction(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - cat : News category type
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -150,7 +150,7 @@ class Faction(BaseQuery):
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -168,7 +168,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -198,7 +198,7 @@ class Faction(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -226,7 +226,7 @@ class Faction(BaseQuery):
     - limit : N/A
     - offset : N/A
     - sort : Sorted by the greatest timestamps
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -244,7 +244,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -262,7 +262,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -280,7 +280,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -298,7 +298,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -318,7 +318,7 @@ class Faction(BaseQuery):
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -336,7 +336,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -354,7 +354,7 @@ class Faction(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -372,7 +372,7 @@ class Faction(BaseQuery):
     Requires minimal access key with faction API access permissions.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -390,7 +390,7 @@ class Faction(BaseQuery):
     Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -408,7 +408,7 @@ class Faction(BaseQuery):
     Requires public access key. This includes currently ongoing chains.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -436,7 +436,7 @@ class Faction(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -454,7 +454,7 @@ class Faction(BaseQuery):
     Requires minimal access key with faction API access permissions.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -482,7 +482,7 @@ class Faction(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -510,7 +510,7 @@ class Faction(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -536,7 +536,7 @@ class Faction(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -556,7 +556,7 @@ class Faction(BaseQuery):
 
     # Parameters
     - cat : By default, this selection will return only current faction&#39;s member balances, and the option &#39;all&#39; will return all current members balances + additionally those of ex-members which do have money or points on their balance.
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -578,7 +578,7 @@ class Faction(BaseQuery):
     # Parameters
     - stat : Get contributors for this field.
     - cat : By default, this selection will return only current faction&#39;s member contributions, and the option &#39;all&#39; will return all contributors.
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -604,7 +604,7 @@ class Faction(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
     - limit : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -630,7 +630,7 @@ class Faction(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
     - limit : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -648,7 +648,7 @@ class Faction(BaseQuery):
     Requires minimal access key with faction API access permissions.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -670,7 +670,7 @@ class Faction(BaseQuery):
     # Parameters
     - offset : N/A
     - limit : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -688,7 +688,7 @@ class Faction(BaseQuery):
     Requires minimal access key with faction API access permissions.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -720,7 +720,7 @@ class Faction(BaseQuery):
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     

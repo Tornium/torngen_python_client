@@ -49,7 +49,7 @@ class Torn(BaseQuery):
     - limit : N/A
     - offset : N/A
     - sort : Sorted by the greatest timestamps
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -67,7 +67,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -93,7 +93,7 @@ class Torn(BaseQuery):
     - offset : N/A
     - sort : Sorted by the greatest timestamps
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -115,7 +115,7 @@ class Torn(BaseQuery):
     # Parameters
     - limit : N/A
     - offset : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -133,7 +133,7 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -151,7 +151,7 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -169,7 +169,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -187,7 +187,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -205,7 +205,7 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -229,7 +229,7 @@ class Torn(BaseQuery):
     - ids : Specific territory id or a list of territory ids (comma separated)
     - offset : N/A
     - limit : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -247,7 +247,7 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -265,7 +265,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -283,7 +283,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -307,7 +307,7 @@ class Torn(BaseQuery):
     - limit : N/A
     - offset : N/A
     - cat : Leaderboards category
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -329,7 +329,7 @@ class Torn(BaseQuery):
     # Parameters
     - cat : Item category type
     - sort : Sort rows from newest to oldest Default ordering is ascending
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -347,7 +347,7 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -365,7 +365,7 @@ class Torn(BaseQuery):
     Requires public access key. Return the details about released crimes.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -383,7 +383,7 @@ class Torn(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -401,7 +401,7 @@ class Torn(BaseQuery):
     Requires public access key. Get the details about competitions & events in the running year.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -425,7 +425,7 @@ class Torn(BaseQuery):
     - limit : N/A
     - offset : N/A
     - cat : Leaderboards category
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -443,7 +443,7 @@ class Torn(BaseQuery):
     Requires public access key. Return the details about released faction organized crimes.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -461,7 +461,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -479,7 +479,7 @@ class Torn(BaseQuery):
     Requires public key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
