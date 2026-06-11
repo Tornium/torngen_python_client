@@ -32,7 +32,7 @@ class MarketPropertyTypeId(BaseQuery):
     - offset : N/A
     - limit : N/A
     - sort : Sorted by the greatest timestamps
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -60,7 +60,7 @@ class MarketPropertyTypeId(BaseQuery):
     - offset : N/A
     - limit : N/A
     - sort : Sorted by the greatest timestamps
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     

@@ -1,6 +1,7 @@
 from ..base_path import Path
 from ..base_query import BaseQuery
 from ..parameter import Parameter
+from ..schema.companies_search_response import CompaniesSearchResponse
 from ..schema.company_applications_response import CompanyApplicationsResponse
 from ..schema.company_employees_response import CompanyEmployeesResponse
 from ..schema.company_lookup_response import CompanyLookupResponse
@@ -27,7 +28,7 @@ class Company(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -47,7 +48,7 @@ class Company(BaseQuery):
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -77,7 +78,7 @@ class Company(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - cat : News category type
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -95,7 +96,7 @@ class Company(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -113,7 +114,7 @@ class Company(BaseQuery):
     Requires limited access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -131,7 +132,7 @@ class Company(BaseQuery):
     Requires limited access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -151,7 +152,33 @@ class Company(BaseQuery):
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    search = Path(
+        "/company/search",
+        CompaniesSearchResponse,
+        name=Parameter("name", "query", required=False, deprecated=False),
+        filters=Parameter("filters", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/company/search`: Search companies by name or other criteria
+    Requires public access key. This selection is standalone and cannot be used together with other selections.
+
+    # Parameters
+    - name : Name  to search for.
+    - filters : A filtering query parameter allowing a comma-separated list of filters.    *  Each filter can be one of the following:  *  Fixed options: `recruiting`, `notRecruiting`  *  Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:  *  * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`  *  * `condition` is one of: `=`, `!=`, `&lt;`, `&lt;=`, `&gt;=`, `&gt;`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`  *  * `number`: any integer value  *  Examples: `filters=recruiting`, `filters=weeklyIncome:&gt;=:20000,id:&lt;:1000,notRecruiting`, `filters=type:Equal:10,rating:=:10,dailyIncome:&lt;=:6666666`
+    - limit : N/A
+    - offset : N/A
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     

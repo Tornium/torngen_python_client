@@ -22,7 +22,7 @@ class Key(BaseQuery):
     Available for any key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -44,7 +44,7 @@ class Key(BaseQuery):
     # Parameters
     - limit : N/A
     - offset : N/A
-    - timestamp : Timestamp to bypass cache
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     

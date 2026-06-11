@@ -16,6 +16,7 @@ class FactionSearch(BaseSchema):
     tag: None | str
     respect: int
     name: str
+    members_max: int
     members: int
     leader: FactionSearchLeader
     is_recruiting: bool
@@ -31,6 +32,7 @@ class FactionSearch(BaseSchema):
             tag=BaseSchema.parse(data.get("tag"), None | str),
             respect=BaseSchema.parse(data.get("respect"), int),
             name=BaseSchema.parse(data.get("name"), str),
+            members_max=BaseSchema.parse(data.get("members_max"), int),
             members=BaseSchema.parse(data.get("members"), int),
             leader=BaseSchema.parse(data.get("leader"), FactionSearchLeader),
             is_recruiting=BaseSchema.parse(data.get("is_recruiting"), bool),
