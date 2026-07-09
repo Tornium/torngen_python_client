@@ -802,7 +802,7 @@ FactionTerritoryEnum = typing.Literal[
     "FAD",
     "FAE",
     "FAF",
-    "FAG",
+    "XAG",
     "FBA",
     "FBB",
     "FBC",
