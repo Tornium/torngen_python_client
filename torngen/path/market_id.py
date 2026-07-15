@@ -1,7 +1,7 @@
 from ..base_path import Path
 from ..base_query import BaseQuery
 from ..parameter import Parameter
-from ..schema.auction_house_listing import AuctionHouseListing
+from ..schema.auction_house_listing_response import AuctionHouseListingResponse
 from ..schema.auction_house_response import AuctionHouseResponse
 from ..schema.bazaar_response_specialized import BazaarResponseSpecialized
 from ..schema.market_item_market_response import MarketItemMarketResponse
@@ -60,7 +60,7 @@ class MarketId(BaseQuery):
 
     auctionhouselisting = Path(
         "/market/{id}/auctionhouselisting",
-        AuctionHouseListing,
+        AuctionHouseListingResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),

@@ -234,7 +234,7 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/organizedcrimes`: Get available slots for organized crimes with status 'Recruiting'
+    `/user/organizedcrimes`: Get your available slots for organized crimes with status 'Recruiting'
     Requires minimal access key. Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
 
     # Parameters
@@ -713,7 +713,7 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/races`: Get user races
+    `/user/races`: Get your races
     Requires minimal access key. Returns a list of user races, ordered by race start timestamp.
 
     # Parameters

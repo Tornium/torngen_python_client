@@ -18,7 +18,7 @@ class TornEducationRewards(BaseSchema):
             "endurance": None | int,
         },
     )
-    honor: None | str
+    honor: None | int
     effect: None | str
 
     @staticmethod
@@ -35,6 +35,6 @@ class TornEducationRewards(BaseSchema):
                     },
                 ),
             ),
-            honor=BaseSchema.parse(data.get("honor"), None | str),
+            honor=BaseSchema.parse(data.get("honor"), None | int),
             effect=BaseSchema.parse(data.get("effect"), None | str),
         )
