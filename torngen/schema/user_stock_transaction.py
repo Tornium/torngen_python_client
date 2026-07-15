@@ -12,7 +12,7 @@ class UserStockTransaction(BaseSchema):
 
     timestamp: int
     shares: int
-    price: int
+    price: int | float
     id: int
 
     @staticmethod
@@ -20,6 +20,6 @@ class UserStockTransaction(BaseSchema):
         return UserStockTransaction(
             timestamp=BaseSchema.parse(data.get("timestamp"), int),
             shares=BaseSchema.parse(data.get("shares"), int),
-            price=BaseSchema.parse(data.get("price"), int),
+            price=BaseSchema.parse(data.get("price"), int | float),
             id=BaseSchema.parse(data.get("id"), int),
         )

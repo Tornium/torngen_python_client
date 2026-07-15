@@ -34,9 +34,7 @@ class PersonalStatsAttackingPublic(BaseSchema):
                     "raid_hits": int,
                 },
             ),
-            "escapes": typing.Optional[
-                typing.TypedDict("", {"player": int, "foes": int})
-            ],
+            "escapes": typing.TypedDict("", {"player": int, "foes": int}),
             "elo": int,
             "defends": typing.TypedDict(
                 "", {"won": int, "total": int, "stalemate": int, "lost": int}
@@ -111,9 +109,7 @@ class PersonalStatsAttackingPublic(BaseSchema):
                                 "raid_hits": int,
                             },
                         ),
-                        "escapes": typing.Optional[
-                            typing.TypedDict("", {"player": int, "foes": int})
-                        ],
+                        "escapes": typing.TypedDict("", {"player": int, "foes": int}),
                         "elo": int,
                         "defends": typing.TypedDict(
                             "",

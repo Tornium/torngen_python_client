@@ -11,7 +11,7 @@ class UserIconPrivate(BaseSchema):
     until: None | int
     title: str
     id: UserIconId
-    description: str
+    description: None | str
 
     @staticmethod
     def parse(data):
@@ -19,5 +19,5 @@ class UserIconPrivate(BaseSchema):
             until=BaseSchema.parse(data.get("until"), None | int),
             title=BaseSchema.parse(data.get("title"), str),
             id=BaseSchema.parse(data.get("id"), UserIconId),
-            description=BaseSchema.parse(data.get("description"), str),
+            description=BaseSchema.parse(data.get("description"), None | str),
         )

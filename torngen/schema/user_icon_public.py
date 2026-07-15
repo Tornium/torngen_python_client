@@ -13,12 +13,12 @@ class UserIconPublic(BaseSchema):
 
     title: str
     id: UserIconId
-    description: str
+    description: None | str
 
     @staticmethod
     def parse(data):
         return UserIconPublic(
             title=BaseSchema.parse(data.get("title"), str),
             id=BaseSchema.parse(data.get("id"), UserIconId),
-            description=BaseSchema.parse(data.get("description"), str),
+            description=BaseSchema.parse(data.get("description"), None | str),
         )

@@ -24,7 +24,7 @@ class UserMissionsResponse(BaseSchema):
                 typing.TypedDict(
                     "",
                     {
-                        "type": MissionRewardUpgrade,
+                        "type": str | MissionRewardUpgrade,
                         "expires_at": int,
                         "details": MissionRewardDetailsItem
                         | MissionRewardDetailsUpgrade
@@ -77,7 +77,7 @@ class UserMissionsResponse(BaseSchema):
                             typing.TypedDict(
                                 "",
                                 {
-                                    "type": MissionRewardUpgrade,
+                                    "type": str | MissionRewardUpgrade,
                                     "expires_at": int,
                                     "details": MissionRewardDetailsItem
                                     | MissionRewardDetailsUpgrade

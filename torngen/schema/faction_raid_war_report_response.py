@@ -11,12 +11,10 @@ class FactionRaidWarReportResponse(BaseSchema):
     JSON object of `FactionRaidWarReportResponse`.
     """
 
-    raidreport: typing.List[FactionRaidReport]
+    raidreport: FactionRaidReport
 
     @staticmethod
     def parse(data):
         return FactionRaidWarReportResponse(
-            raidreport=BaseSchema.parse(
-                data.get("raidreport"), typing.List[FactionRaidReport]
-            ),
+            raidreport=BaseSchema.parse(data.get("raidreport"), FactionRaidReport),
         )
