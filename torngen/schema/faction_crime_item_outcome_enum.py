@@ -1,3 +1,3 @@
 import typing
 
-FactionCrimeItemOutcomeEnum = typing.Literal["lost", "used"]
+FactionCrimeItemOutcomeEnum = typing.Literal["lost", "used", "unused"]
