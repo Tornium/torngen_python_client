@@ -22,6 +22,7 @@ TornSelectionName = (
         "lookup",
         "medals",
         "merits",
+        "museum",
         "organizedcrimes",
         "properties",
         "stocks",

@@ -20,6 +20,7 @@ from ..schema.torn_log_types_response import TornLogTypesResponse
 from ..schema.torn_lookup_response import TornLookupResponse
 from ..schema.torn_medals_response import TornMedalsResponse
 from ..schema.torn_merits_response import TornMeritsResponse
+from ..schema.torn_museum_response import TornMuseumResponse
 from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_properties import TornProperties
 from ..schema.torn_stocks_response import TornStocksResponse
@@ -29,6 +30,24 @@ from ..schema.torn_territories_response import TornTerritoriesResponse
 class Torn(BaseQuery):
     """
     A collection of paths representing `Torn`.
+    """
+
+    museum = Path(
+        "/torn/museum",
+        TornMuseumResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/museum`: Get all museum sets
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
     """
 
     honors = Path(
