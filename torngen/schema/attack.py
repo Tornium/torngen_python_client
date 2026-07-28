@@ -7,6 +7,7 @@ from .attack_id import AttackId
 from .attack_player import AttackPlayer
 from .attacking_finishing_hit_effects import AttackingFinishingHitEffects
 from .faction_attack_result import FactionAttackResult
+from .territory_war_id import TerritoryWarId
 
 
 @dataclass
@@ -15,6 +16,7 @@ class Attack(BaseSchema):
     JSON object of `Attack`.
     """
 
+    territory_war_id: None | TerritoryWarId
     started: int
     result: FactionAttackResult
     respect_loss: int | float
@@ -31,6 +33,7 @@ class Attack(BaseSchema):
             "chain": int | float,
         },
     )
+    is_territory_war: bool
     is_stealthed: bool
     is_ranked_war: bool
     is_raid: bool
@@ -46,6 +49,9 @@ class Attack(BaseSchema):
     @staticmethod
     def parse(data):
         return Attack(
+            territory_war_id=BaseSchema.parse(
+                data.get("territory_war_id"), None | TerritoryWarId
+            ),
             started=BaseSchema.parse(data.get("started"), int),
             result=BaseSchema.parse(data.get("result"), FactionAttackResult),
             respect_loss=BaseSchema.parse(data.get("respect_loss"), int | float),
@@ -65,6 +71,7 @@ class Attack(BaseSchema):
                     },
                 ),
             ),
+            is_territory_war=BaseSchema.parse(data.get("is_territory_war"), bool),
             is_stealthed=BaseSchema.parse(data.get("is_stealthed"), bool),
             is_ranked_war=BaseSchema.parse(data.get("is_ranked_war"), bool),
             is_raid=BaseSchema.parse(data.get("is_raid"), bool),
