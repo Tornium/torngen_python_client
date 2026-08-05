@@ -43,6 +43,7 @@ UserSelectionName = (
         "messages",
         "missions",
         "money",
+        "networth",
         "newevents",
         "newmessages",
         "notifications",
@@ -71,7 +72,6 @@ UserSelectionName = (
         "display",
         "education",
         "gym",
-        "networth",
         "perks",
     ]
 )

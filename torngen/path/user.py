@@ -46,6 +46,7 @@ from ..schema.user_merits_response import UserMeritsResponse
 from ..schema.user_messages_response import UserMessagesResponse
 from ..schema.user_missions_response import UserMissionsResponse
 from ..schema.user_money_response import UserMoneyResponse
+from ..schema.user_networth_response import UserNetworthResponse
 from ..schema.user_new_events_response import UserNewEventsResponse
 from ..schema.user_new_messages_response import UserNewMessagesResponse
 from ..schema.user_notifications_response import UserNotificationsResponse
@@ -551,7 +552,7 @@ class User(BaseQuery):
     )
     """
     `/user/newmessages`: Get your unseen messages
-    Requires limited access key.
+    Requires limited access key. This selection is cached for 1 hour.
 
     # Parameters
     - timestamp : Timestamp to bypass cache or get the data in specific point in time
@@ -1262,6 +1263,24 @@ class User(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    networth = Path(
+        "/user/networth",
+        UserNetworthResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/networth`: Get your networth
+    Requires limited access key.
+
+    # Parameters
     - timestamp : Timestamp to bypass cache or get the data in specific point in time
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
