@@ -25,7 +25,7 @@ class TornIds(BaseQuery):
 
     # Parameters
     - ids : Medal id or a list of medal ids (comma separated)
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -45,7 +45,7 @@ class TornIds(BaseQuery):
 
     # Parameters
     - ids : Honor id or a list of honor ids (comma separated)
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -67,7 +67,7 @@ class TornIds(BaseQuery):
     # Parameters
     - ids : Item id or a list of item ids (comma separated)
     - sort : Sort rows from newest to oldest Default ordering is ascending
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
