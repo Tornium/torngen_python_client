@@ -4,6 +4,7 @@ from ..parameter import Parameter
 from ..schema.auction_house_response import AuctionHouseResponse
 from ..schema.bazaar_response import BazaarResponse
 from ..schema.market_lookup_response import MarketLookupResponse
+from ..schema.points_market_response import PointsMarketResponse
 from ..schema.timestamp_response import TimestampResponse
 
 
@@ -26,7 +27,7 @@ class Market(BaseQuery):
 
     # Parameters
     - cat : Category of specialized bazaars returned
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -52,7 +53,7 @@ class Market(BaseQuery):
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -70,7 +71,7 @@ class Market(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -88,7 +89,25 @@ class Market(BaseQuery):
     Requires public access key.
 
     # Parameters
-    - timestamp : Timestamp to bypass cache or get the data in specific point in time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    pointsmarket = Path(
+        "/market/pointsmarket",
+        PointsMarketResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/market/pointsmarket`: Get points market listings
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
