@@ -26,6 +26,7 @@ from .torn_id import TornId
 from .torn_ids import TornIds
 from .torn_logCategoryId import TornLogCategoryId
 from .torn_stockId import TornStockId
+from .torn_typeId import TornTypeId
 from .user import User
 from .user_crimeId import UserCrimeId
 from .user_id import UserId
@@ -62,6 +63,7 @@ __all__ = [
     "Key",
     "Torn",
     "TornStockId",
+    "TornTypeId",
     "RacingTrackId",
     "CompanyTypeId",
 ]
