@@ -2,6 +2,7 @@ import typing
 from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
+from .company_stock_id import CompanyStockId
 
 
 @dataclass
@@ -17,7 +18,7 @@ class CompanyStockItem(BaseSchema):
     on_order: int
     name: str
     in_stock: int
-    id: int
+    id: CompanyStockId
     cost: int
 
     @staticmethod
@@ -30,6 +31,6 @@ class CompanyStockItem(BaseSchema):
             on_order=BaseSchema.parse(data.get("on_order"), int),
             name=BaseSchema.parse(data.get("name"), str),
             in_stock=BaseSchema.parse(data.get("in_stock"), int),
-            id=BaseSchema.parse(data.get("id"), int),
+            id=BaseSchema.parse(data.get("id"), CompanyStockId),
             cost=BaseSchema.parse(data.get("cost"), int),
         )

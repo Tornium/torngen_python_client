@@ -5,6 +5,7 @@ from ..schema.attack_log_response import AttackLogResponse
 from ..schema.timestamp_response import TimestampResponse
 from ..schema.torn_bounties_response import TornBountiesResponse
 from ..schema.torn_calendar_response import TornCalendarResponse
+from ..schema.torn_companies_response import TornCompaniesResponse
 from ..schema.torn_crimes_response import TornCrimesResponse
 from ..schema.torn_education_response import TornEducationResponse
 from ..schema.torn_elimination_teams_response import TornEliminationTeamsResponse
@@ -444,6 +445,24 @@ class Torn(BaseQuery):
     - limit : N/A
     - offset : N/A
     - cat : Leaderboards category
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    companies = Path(
+        "/torn/companies",
+        TornCompaniesResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/companies`: Get all companies details
+    Requires public access key.
+
+    # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
