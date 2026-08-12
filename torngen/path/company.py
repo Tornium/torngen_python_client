@@ -174,8 +174,8 @@ class Company(BaseQuery):
     Requires public access key. This selection is standalone and cannot be used together with other selections.
 
     # Parameters
-    - name : Name  to search for.
-    - filters : A filtering query parameter allowing a comma-separated list of filters.    *  Each filter can be one of the following:  *  Fixed options: `recruiting`, `notRecruiting`  *  Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:  *  * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`  *  * `condition` is one of: `=`, `!=`, `&lt;`, `&lt;=`, `&gt;=`, `&gt;`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`  *  * `number`: any integer value  *  Examples: `filters=recruiting`, `filters=weeklyIncome:&gt;=:20000,id:&lt;:1000,notRecruiting`, `filters=type:Equal:10,rating:=:10,dailyIncome:&lt;=:6666666`
+    - name : Name to search for.
+    - filters : A filtering query parameter allowing a comma-separated list of filters.    *  Each filter can be one of the following:  *  Fixed options: `recruiting`, `notRecruiting`  *  Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:  *  * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`  *  * `condition` is one of: `=`, `!=`, `&lt;`, `&lt;=`, `&gt;=`, `&gt;`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`  *  * `number`: any integer value  *  Examples:  * `filters=recruiting`,  * `filters=weeklyIncome:&gt;=:20000,id:&lt;:1000,notRecruiting`,  * `filters=type:Equal:10,rating:=:10,dailyIncome:&lt;=:6666666`
     - limit : N/A
     - offset : N/A
     - timestamp : Timestamp to bypass cache
