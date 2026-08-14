@@ -380,7 +380,7 @@ class User(BaseQuery):
     )
     """
     `/user/icons`: Get your icons information
-    Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+    Requires public access key. When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -521,7 +521,7 @@ class User(BaseQuery):
     )
     """
     `/user/inventory`: Get your inventory
-    <b>Cached selection (1 hour per category).</b> Requires limited access key.
+    <b>Cached selection (1 hour per category).</b> Requires minimal access key.
 
     # Parameters
     - cat : Items category
@@ -529,7 +529,7 @@ class User(BaseQuery):
     - limit : N/A
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -577,13 +577,13 @@ class User(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/medals`: Get your achieved medals
-    Requires minimal access key.
+    `/user/medals`: Get all your achieved medals
+    Requires public access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

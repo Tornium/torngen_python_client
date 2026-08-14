@@ -69,7 +69,7 @@ class Company(BaseQuery):
     )
     """
     `/company/news`: Get your company's news details
-    Requires minimal access key.
+    Requires limited access key.
 
     # Parameters
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
@@ -80,7 +80,7 @@ class Company(BaseQuery):
     - cat : News category type
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

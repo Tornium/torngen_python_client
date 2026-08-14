@@ -11,6 +11,7 @@ from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_icons_response import UserIconsResponse
 from ..schema.user_job_response import UserJobResponse
+from ..schema.user_medals_response import UserMedalsResponse
 from ..schema.user_personal_stats_response import UserPersonalStatsResponse
 from ..schema.user_profile_response import UserProfileResponse
 from ..schema.user_properties_response import UserPropertiesResponse
@@ -189,6 +190,26 @@ class UserId(BaseQuery):
     """
     `/user/{id}/bounties`: Get bounties placed on a specific user
     Requires public access key.
+
+    # Parameters
+    - id : User id or user discord id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    medals = Path(
+        "/user/{id}/medals",
+        UserMedalsResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/medals`: Get medals achieved by a specific player
+    Requires public access key. Returns only highest medal in each category (just like profiles on site).
 
     # Parameters
     - id : User id or user discord id
