@@ -28,7 +28,16 @@ from ..schema.faction_territory_wars_history_response import (
     FactionTerritoryWarsHistoryResponse,
 )
 from ..schema.faction_upgrades_response import FactionUpgradesResponse
+from ..schema.faction_warfare_chains_response import FactionWarfareChainsResponse
+from ..schema.faction_warfare_dirty_bombs_response import (
+    FactionWarfareDirtyBombsResponse,
+)
+from ..schema.faction_warfare_raids_response import FactionWarfareRaidsResponse
+from ..schema.faction_warfare_ranked_response import FactionWarfareRankedResponse
 from ..schema.faction_warfare_response import FactionWarfareResponse
+from ..schema.faction_warfare_territory_wars_response import (
+    FactionWarfareTerritoryWarsResponse,
+)
 from ..schema.faction_wars_response import FactionWarsResponse
 from ..schema.news_response import NewsResponse
 from ..schema.reports_response import ReportsResponse
@@ -40,6 +49,32 @@ from ..schema.timestamp_response import TimestampResponse
 class Faction(BaseQuery):
     """
     A collection of paths representing `Faction`.
+    """
+
+    warfareraids = Path(
+        "/faction/warfareraids",
+        FactionWarfareRaidsResponse,
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/warfareraids`: Get all raids
+    Requires public access key.
+
+    # Parameters
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
     """
 
     revives = Path(
@@ -150,6 +185,58 @@ class Faction(BaseQuery):
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - sort : Sorted by the greatest timestamps
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    warfareranked = Path(
+        "/faction/warfareranked",
+        FactionWarfareRankedResponse,
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/warfareranked`: Get all ranked wars
+    Requires public access key.
+
+    # Parameters
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    warfareterritory = Path(
+        "/faction/warfareterritory",
+        FactionWarfareTerritoryWarsResponse,
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/warfareterritory`: Get all territory wars
+    Requires public access key.
+
+    # Parameters
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -414,6 +501,34 @@ class Faction(BaseQuery):
     
     """
 
+    warfarechains = Path(
+        "/faction/warfarechains",
+        FactionWarfareChainsResponse,
+        cat=Parameter("cat", "query", required=True, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/warfarechains`: Get all chains
+    Requires public access key. By default, active chains are returned.
+
+    # Parameters
+    - cat : N/A
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     attacksfull = Path(
         "/faction/attacksfull",
         AttacksFullResponse,
@@ -502,7 +617,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/warfare`: Get faction warfare
-    Requires public access key. The response depends on the selected category.
+    This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'. This will be removed on 1st January 2027<b></b>. Requires public access key. The response depends on the selected category.
 
     # Parameters
     - cat : N/A
@@ -670,6 +785,24 @@ class Faction(BaseQuery):
     # Parameters
     - offset : N/A
     - limit : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    dirtybombs = Path(
+        "/faction/dirtybombs",
+        FactionWarfareDirtyBombsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/dirtybombs`: Get all dirty bombs
+    Requires public access key.
+
+    # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

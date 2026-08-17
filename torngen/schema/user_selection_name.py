@@ -26,6 +26,7 @@ UserSelectionName = (
         "forumposts",
         "forumsubscribedthreads",
         "forumthreads",
+        "gym",
         "hof",
         "honors",
         "icons",
@@ -71,7 +72,6 @@ UserSelectionName = (
         "criminalrecord",
         "display",
         "education",
-        "gym",
         "perks",
     ]
 )

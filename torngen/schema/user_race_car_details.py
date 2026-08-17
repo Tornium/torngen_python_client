@@ -16,9 +16,9 @@ class UserRaceCarDetails(BaseSchema):
     races_entered: int
     points_spent: int
     parts: typing.List[RaceCarUpgradeId]
-    name: None | str
     is_removed: bool
     id: RaceCarId
+    car_name: None | str
     top_speed: int
     tarmac: int
     safety: int
@@ -38,9 +38,9 @@ class UserRaceCarDetails(BaseSchema):
             races_entered=BaseSchema.parse(data.get("races_entered"), int),
             points_spent=BaseSchema.parse(data.get("points_spent"), int),
             parts=BaseSchema.parse(data.get("parts"), typing.List[RaceCarUpgradeId]),
-            name=BaseSchema.parse(data.get("name"), None | str),
             is_removed=BaseSchema.parse(data.get("is_removed"), bool),
             id=BaseSchema.parse(data.get("id"), RaceCarId),
+            car_name=BaseSchema.parse(data.get("car_name"), None | str),
             top_speed=BaseSchema.parse(data.get("top_speed"), int),
             tarmac=BaseSchema.parse(data.get("tarmac"), int),
             safety=BaseSchema.parse(data.get("safety"), int),

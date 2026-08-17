@@ -29,6 +29,7 @@ from ..schema.user_forum_subscribed_threads_response import (
     UserForumSubscribedThreadsResponse,
 )
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
+from ..schema.user_gym_response import UserGymResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_honors_response import UserHonorsResponse
 from ..schema.user_icons_response import UserIconsResponse
@@ -697,6 +698,7 @@ class User(BaseQuery):
         to=Parameter("to", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        nanostamp=Parameter("nanostamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
@@ -712,6 +714,7 @@ class User(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - timestamp : Timestamp to bypass cache
+    - nanostamp : Timestamp in nanoseconds to bypass system limitation when using regular timestamps
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Full). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -826,6 +829,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    gym = Path(
+        "/user/gym",
+        UserGymResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/gym`: Get your currently active gym
+    Requires minimal access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

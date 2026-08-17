@@ -6,19 +6,19 @@ from .torn_sub_crime_id import TornSubCrimeId
 
 
 @dataclass
-class TornSubcrime(BaseSchema):
+class TornSearchForCash(BaseSchema):
     """
-    JSON object of `TornSubcrime`.
+    JSON object of `TornSearchForCash`.
     """
 
-    nerve_cost: int
-    name: str
+    title: str
+    percentage: int
     id: TornSubCrimeId
 
     @staticmethod
     def parse(data):
-        return TornSubcrime(
-            nerve_cost=BaseSchema.parse(data.get("nerve_cost"), int),
-            name=BaseSchema.parse(data.get("name"), str),
+        return TornSearchForCash(
+            title=BaseSchema.parse(data.get("title"), str),
+            percentage=BaseSchema.parse(data.get("percentage"), int),
             id=BaseSchema.parse(data.get("id"), TornSubCrimeId),
         )

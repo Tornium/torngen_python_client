@@ -6,6 +6,7 @@ from .faction_id import FactionId
 from .honor_id import HonorId
 from .profile_spouse import ProfileSpouse
 from .property_id import PropertyId
+from .revive_setting import ReviveSetting
 from .user_donator_status_enum import UserDonatorStatusEnum
 from .user_gender_enum import UserGenderEnum
 from .user_id import UserId
@@ -30,6 +31,7 @@ class UserProfileResponse(BaseSchema):
             "spouse": None | ProfileSpouse,
             "signed_up": int,
             "role": UserRoleEnum,
+            "revive_setting": ReviveSetting,
             "revivable": bool,
             "rank": str | UserRankEnum,
             "property": typing.TypedDict("", {"name": str, "id": PropertyId}),
@@ -65,6 +67,7 @@ class UserProfileResponse(BaseSchema):
                         "spouse": None | ProfileSpouse,
                         "signed_up": int,
                         "role": UserRoleEnum,
+                        "revive_setting": ReviveSetting,
                         "revivable": bool,
                         "rank": str | UserRankEnum,
                         "property": typing.TypedDict(
