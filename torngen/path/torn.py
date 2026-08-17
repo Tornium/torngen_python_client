@@ -11,6 +11,7 @@ from ..schema.torn_education_response import TornEducationResponse
 from ..schema.torn_elimination_teams_response import TornEliminationTeamsResponse
 from ..schema.torn_faction_hof_response import TornFactionHofResponse
 from ..schema.torn_faction_tree_response import TornFactionTreeResponse
+from ..schema.torn_gyms_response import TornGymsResponse
 from ..schema.torn_hof_response import TornHofResponse
 from ..schema.torn_honors_response import TornHonorsResponse
 from ..schema.torn_item_ammo_response import TornItemAmmoResponse
@@ -24,6 +25,8 @@ from ..schema.torn_merits_response import TornMeritsResponse
 from ..schema.torn_museum_response import TornMuseumResponse
 from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_properties import TornProperties
+from ..schema.torn_search_for_cash_response import TornSearchForCashResponse
+from ..schema.torn_shoplifting_response import TornShopliftingResponse
 from ..schema.torn_stocks_response import TornStocksResponse
 from ..schema.torn_territories_response import TornTerritoriesResponse
 
@@ -231,6 +234,24 @@ class Torn(BaseQuery):
     
     """
 
+    searchforcash = Path(
+        "/torn/searchforcash",
+        TornSearchForCashResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/searchforcash`: Get search for cash crime statuses
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     territory = Path(
         "/torn/territory",
         TornTerritoriesResponse,
@@ -373,6 +394,24 @@ class Torn(BaseQuery):
     
     """
 
+    shoplifting = Path(
+        "/torn/shoplifting",
+        TornShopliftingResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/shoplifting`: Get shoplifting crime statuses
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     crimes = Path(
         "/torn/crimes",
         TornCrimesResponse,
@@ -400,6 +439,24 @@ class Torn(BaseQuery):
     )
     """
     `/torn/merits`: Get all merits
+    Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    gyms = Path(
+        "/torn/gyms",
+        TornGymsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/gyms`: Get all gyms
     Requires public access key.
 
     # Parameters
