@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from ..base_schema import BaseSchema
 from .item_id import ItemId
 from .torn_item_armor_details import TornItemArmorDetails
+from .torn_item_shop import TornItemShop
 from .torn_item_type_enum import TornItemTypeEnum
 from .torn_item_weapon_details import TornItemWeaponDetails
 from .torn_item_weapon_type_enum import TornItemWeaponTypeEnum
@@ -18,10 +19,13 @@ class TornItem(BaseSchema):
     value: typing.TypedDict(
         "",
         {
-            "vendor": None | typing.TypedDict("", {"name": str, "country": str}),
-            "sell_price": None | int,
+            "vendor": typing.Optional[
+                None | typing.TypedDict("", {"name": str, "country": str})
+            ],
+            "shops": typing.List[TornItemShop],
+            "sell_price": typing.Optional[None | int],
             "market_price": int,
-            "buy_price": None | int,
+            "buy_price": typing.Optional[None | int],
         },
     )
     type: TornItemTypeEnum
@@ -46,11 +50,13 @@ class TornItem(BaseSchema):
                 typing.TypedDict(
                     "",
                     {
-                        "vendor": None
-                        | typing.TypedDict("", {"name": str, "country": str}),
-                        "sell_price": None | int,
+                        "vendor": typing.Optional[
+                            None | typing.TypedDict("", {"name": str, "country": str})
+                        ],
+                        "shops": typing.List[TornItemShop],
+                        "sell_price": typing.Optional[None | int],
                         "market_price": int,
-                        "buy_price": None | int,
+                        "buy_price": typing.Optional[None | int],
                     },
                 ),
             ),

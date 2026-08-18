@@ -714,7 +714,7 @@ class User(BaseQuery):
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
     - timestamp : Timestamp to bypass cache
-    - nanostamp : Timestamp in nanoseconds to bypass system limitation when using regular timestamps
+    - nanostamp : Timestamp in nanoseconds to bypass system limitation when more than 100 logs were returned in the same second.
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Full). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
