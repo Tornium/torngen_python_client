@@ -14,6 +14,7 @@ FactionSelectionName = (
         "contributors",
         "crime",
         "crimes",
+        "crimeexp",
         "dirtbombs",
         "hof",
         "lookup",
@@ -41,15 +42,5 @@ FactionSelectionName = (
         "warfareranked",
         "warfareterritory",
         "wars",
-        "armor",
-        "boosters",
-        "caches",
-        "cesium",
-        "crimeexp",
-        "drugs",
-        "medical",
-        "utilities",
-        "temporary",
-        "weapons",
     ]
 )
