@@ -2,6 +2,7 @@ from ..base_path import Path
 from ..base_query import BaseQuery
 from ..parameter import Parameter
 from ..schema.torn_honors_response import TornHonorsResponse
+from ..schema.torn_item_details_response import TornItemDetailsResponse
 from ..schema.torn_items_response import TornItemsResponse
 from ..schema.torn_medals_response import TornMedalsResponse
 
@@ -67,6 +68,26 @@ class TornIds(BaseQuery):
     # Parameters
     - ids : Item id or a list of item ids (comma separated)
     - sort : Sort rows from newest to oldest Default ordering is ascending
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    itemdetails = Path(
+        "/torn/{ids}/itemdetails",
+        TornItemDetailsResponse,
+        ids=Parameter("ids", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/{ids}/itemdetails`: Get information about a specific item
+    Requires public key.
+
+    # Parameters
+    - ids : Item uid or a list of item uids (comma separated)
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

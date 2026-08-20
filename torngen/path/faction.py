@@ -9,8 +9,10 @@ from ..schema.faction_basic_response import FactionBasicResponse
 from ..schema.faction_chain_report_response import FactionChainReportResponse
 from ..schema.faction_chains_response import FactionChainsResponse
 from ..schema.faction_contributors_response import FactionContributorsResponse
+from ..schema.faction_crime_exp_response import FactionCrimeExpResponse
 from ..schema.faction_crimes_response import FactionCrimesResponse
 from ..schema.faction_hof_response import FactionHofResponse
+from ..schema.faction_inventory_response import FactionInventoryResponse
 from ..schema.faction_lookup_response import FactionLookupResponse
 from ..schema.faction_members_response import FactionMembersResponse
 from ..schema.faction_ongoing_chain_response import FactionOngoingChainResponse
@@ -188,6 +190,24 @@ class Faction(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    crimeexp = Path(
+        "/faction/crimeexp",
+        FactionCrimeExpResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/crimeexp`: Get your faction members crime experience
+    Requires minimal access key. Members are ordered descending, from highest crime experience to lowest.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -408,6 +428,30 @@ class Faction(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    inventory = Path(
+        "/faction/inventory",
+        FactionInventoryResponse,
+        cat=Parameter("cat", "query", required=True, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/inventory`: Get your faction's inventory items.
+    <b>Cached selection (1 hour, all items cached at once).</b> Requires limited access key.
+
+    # Parameters
+    - cat : Armory category
+    - limit : N/A
+    - offset : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
