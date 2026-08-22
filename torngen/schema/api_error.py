@@ -7,6 +7,7 @@ from .error_backend_error import ErrorBackendError
 from .error_category_selection_unavailable_for_interaction_logs import (
     ErrorCategorySelectionUnavailableForInteractionLogs,
 )
+from .error_city_stats_cron_failed import ErrorCityStatsCronFailed
 from .error_closed_temporarily import ErrorClosedTemporarily
 from .error_daily_read_limit_reached import ErrorDailyReadLimitReached
 from .error_file_does_not_exist import ErrorFileDoesNotExist
@@ -37,7 +38,8 @@ from .error_wrong_fields import ErrorWrongFields
 from .error_wrong_type import ErrorWrongType
 
 ApiError = (
-    ErrorFileDoesNotExist
+    ErrorCityStatsCronFailed
+    | ErrorFileDoesNotExist
     | ErrorCategorySelectionUnavailableForInteractionLogs
     | ErrorIncorrectLogId
     | ErrorMustMigrateToOrganizedCrimesV2
