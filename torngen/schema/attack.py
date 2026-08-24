@@ -43,7 +43,7 @@ class Attack(BaseSchema):
     ended: int
     defender: AttackPlayer
     code: AttackCode
-    chain: int
+    chain: None | int
     attacker: None | AttackPlayer
 
     @staticmethod
@@ -84,6 +84,6 @@ class Attack(BaseSchema):
             ended=BaseSchema.parse(data.get("ended"), int),
             defender=BaseSchema.parse(data.get("defender"), AttackPlayer),
             code=BaseSchema.parse(data.get("code"), AttackCode),
-            chain=BaseSchema.parse(data.get("chain"), int),
+            chain=BaseSchema.parse(data.get("chain"), None | int),
             attacker=BaseSchema.parse(data.get("attacker"), None | AttackPlayer),
         )
