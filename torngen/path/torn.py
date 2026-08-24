@@ -8,6 +8,7 @@ from ..schema.torn_bounties_response import TornBountiesResponse
 from ..schema.torn_calendar_response import TornCalendarResponse
 from ..schema.torn_cards_response import TornCardsResponse
 from ..schema.torn_city_shops_response import TornCityShopsResponse
+from ..schema.torn_city_stats_response import TornCityStatsResponse
 from ..schema.torn_companies_response import TornCompaniesResponse
 from ..schema.torn_crimes_response import TornCrimesResponse
 from ..schema.torn_education_response import TornEducationResponse
@@ -29,6 +30,7 @@ from ..schema.torn_museum_response import TornMuseumResponse
 from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_poker_tables_response import TornPokerTablesResponse
 from ..schema.torn_properties import TornProperties
+from ..schema.torn_rock_paper_scissors_response import TornRockPaperScissorsResponse
 from ..schema.torn_search_for_cash_response import TornSearchForCashResponse
 from ..schema.torn_shoplifting_response import TornShopliftingResponse
 from ..schema.torn_stocks_response import TornStocksResponse
@@ -136,6 +138,24 @@ class Torn(BaseQuery):
     """
     `/torn/bank`: Get current bank rates
     Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    rockpaperscissors = Path(
+        "/torn/rockpaperscissors",
+        TornRockPaperScissorsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/rockpaperscissors`: Get rock paper scissors competition stats
+    Requires public key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -426,6 +446,24 @@ class Torn(BaseQuery):
     """
     `/torn/shoplifting`: Get shoplifting crime statuses
     Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    stats = Path(
+        "/torn/stats",
+        TornCityStatsResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/stats`: Get daily city stats
+    Requires public key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache

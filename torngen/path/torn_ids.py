@@ -3,6 +3,7 @@ from ..base_query import BaseQuery
 from ..parameter import Parameter
 from ..schema.torn_honors_response import TornHonorsResponse
 from ..schema.torn_item_details_response import TornItemDetailsResponse
+from ..schema.torn_item_stats_response import TornItemStatsResponse
 from ..schema.torn_items_response import TornItemsResponse
 from ..schema.torn_medals_response import TornMedalsResponse
 
@@ -52,6 +53,26 @@ class TornIds(BaseQuery):
     
     """
 
+    itemstats = Path(
+        "/torn/{ids}/itemstats",
+        TornItemStatsResponse,
+        ids=Parameter("ids", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/{ids}/itemstats`: Get specific item(s) stats
+    Requires public key.
+
+    # Parameters
+    - ids : Item uid or a list of item uids (comma separated), 25 uids maximum
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     items = Path(
         "/torn/{ids}/items",
         TornItemsResponse,
@@ -83,11 +104,11 @@ class TornIds(BaseQuery):
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/torn/{ids}/itemdetails`: Get information about a specific item
+    `/torn/{ids}/itemdetails`: Get details for specific item(s)
     Requires public key.
 
     # Parameters
-    - ids : Item uid or a list of item uids (comma separated)
+    - ids : Item uid or a list of item uids (comma separated), 25 uids maximum
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
