@@ -10,6 +10,9 @@ from .error_category_selection_unavailable_for_interaction_logs import (
 from .error_city_stats_cron_failed import ErrorCityStatsCronFailed
 from .error_closed_temporarily import ErrorClosedTemporarily
 from .error_daily_read_limit_reached import ErrorDailyReadLimitReached
+from .error_endpoint_closed_until_attacking_period import (
+    ErrorEndpointClosedUntilAttackingPeriod,
+)
 from .error_file_does_not_exist import ErrorFileDoesNotExist
 from .error_incorrect_category import ErrorIncorrectCategory
 from .error_incorrect_id import ErrorIncorrectId
@@ -38,7 +41,8 @@ from .error_wrong_fields import ErrorWrongFields
 from .error_wrong_type import ErrorWrongType
 
 ApiError = (
-    ErrorCityStatsCronFailed
+    ErrorEndpointClosedUntilAttackingPeriod
+    | ErrorCityStatsCronFailed
     | ErrorFileDoesNotExist
     | ErrorCategorySelectionUnavailableForInteractionLogs
     | ErrorIncorrectLogId
