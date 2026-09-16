@@ -18,6 +18,7 @@ class UserTrade(BaseSchema):
     modified_at: None | int
     id: TradeId
     expires_at: None | int
+    description: str
     completed_at: None | int
 
     @staticmethod
@@ -29,5 +30,6 @@ class UserTrade(BaseSchema):
             modified_at=BaseSchema.parse(data.get("modified_at"), None | int),
             id=BaseSchema.parse(data.get("id"), TradeId),
             expires_at=BaseSchema.parse(data.get("expires_at"), None | int),
+            description=BaseSchema.parse(data.get("description"), str),
             completed_at=BaseSchema.parse(data.get("completed_at"), None | int),
         )
