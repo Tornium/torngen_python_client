@@ -18,7 +18,7 @@ class TornItemDetails(BaseSchema):
     name: str
     id: ItemId
     uid: ItemUid
-    stats: ItemMarketListingItemStats
+    stats: None | ItemMarketListingItemStats
     rarity: None | typing.Literal["yellow", "orange", "red"]
     bonuses: typing.List[ItemMarketListingItemBonus]
 
@@ -32,7 +32,9 @@ class TornItemDetails(BaseSchema):
             name=BaseSchema.parse(data.get("name"), str),
             id=BaseSchema.parse(data.get("id"), ItemId),
             uid=BaseSchema.parse(data.get("uid"), ItemUid),
-            stats=BaseSchema.parse(data.get("stats"), ItemMarketListingItemStats),
+            stats=BaseSchema.parse(
+                data.get("stats"), None | ItemMarketListingItemStats
+            ),
             rarity=BaseSchema.parse(
                 data.get("rarity"), None | typing.Literal["yellow", "orange", "red"]
             ),

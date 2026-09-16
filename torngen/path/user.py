@@ -200,6 +200,8 @@ class User(BaseQuery):
         name=Parameter("name", "query", required=False, deprecated=False),
         filters=Parameter("filters", "query", required=False, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        cursor=Parameter("cursor", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
@@ -212,6 +214,8 @@ class User(BaseQuery):
     - name : Name to search for.
     - filters : A filtering query parameter allowing a comma-separated list of filters.    *  Filters in this selection reflect on-site filters, and they can be:  *  One of: `married`, `notMarried`, `traveling`, `notTraveling`, `inFaction`, `notInFaction`, `inCompany`, `notInCompany`, `inHospital`, `notInHospital`, `inJail`, `notInJail`, `inFederalJail`, `notInFederalJail`  *  Additionally, one of last action: `lastActionNow`, `lastActionRecent`, `lastActionHourAgo`, `lastActionDayAgo`, `lastActionWeekAgo`, `lastActionMonthAgo`, `lastActionYearAgo`  *  Additionally, one of gender: `male`, `female`, `enby`  *  Any dynamic option: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:  *  * `fieldName` is one of: `level`, `daysOld`, `offences`  *  * `condition` is one of: `=`, `!=`, `&lt;`, `&lt;=`, `&gt;=`, `&gt;`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`  *  * `number`: any integer value  *  Additionally, a dynamic list of faction ids (negates `inFaction` and `notInFaction` filters): `factions`+`:`+`list of ids separated by semicolon ;`  *  Examples:  * `filters=married`,  * `filters=daysOld:&gt;=:5000,offences:&gt;:100000,notInFaction`,  * `filters=factions:1;2;3`,  * `filters=level:=:100,lastActionYearAgo,male,inFaction,offences:&gt;=:1000,offences:&lt;=:1000000,daysOld:&gt;:500,daysOld:&lt;:7000`
     - offset : N/A
+    - sort : Sorted by the greatest timestamps
+    - cursor : Opaque cursor from pagination links for searches without a name, in either sort direction. Offset is ignored for these searches.
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
