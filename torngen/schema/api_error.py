@@ -31,6 +31,7 @@ from .error_must_migrate_to_crimes_v2 import ErrorMustMigrateToCrimesV2
 from .error_must_migrate_to_organized_crimes_v2 import (
     ErrorMustMigrateToOrganizedCrimesV2,
 )
+from .error_no_competition_available import ErrorNoCompetitionAvailable
 from .error_only_available_in_api_v1 import ErrorOnlyAvailableInApiV1
 from .error_only_available_in_api_v2 import ErrorOnlyAvailableInApiV2
 from .error_only_category_or_stats_allowed import ErrorOnlyCategoryOrStatsAllowed
@@ -41,7 +42,8 @@ from .error_wrong_fields import ErrorWrongFields
 from .error_wrong_type import ErrorWrongType
 
 ApiError = (
-    ErrorEndpointClosedUntilAttackingPeriod
+    ErrorNoCompetitionAvailable
+    | ErrorEndpointClosedUntilAttackingPeriod
     | ErrorCityStatsCronFailed
     | ErrorFileDoesNotExist
     | ErrorCategorySelectionUnavailableForInteractionLogs

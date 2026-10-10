@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from ..base_schema import BaseSchema
 from .elimination_team_id import EliminationTeamId
 from .torn_elimination_team_attacks_summary import TornEliminationTeamAttacksSummary
-from .torn_elimination_team_leader import TornEliminationTeamLeader
+from .torn_elimination_team_captain import TornEliminationTeamCaptain
 
 
 @dataclass
@@ -21,16 +21,16 @@ class TornEliminationTeam(BaseSchema):
     name: str
     losses: int
     lives: int
-    leaders: typing.TypedDict(
-        "",
-        {
-            "vice_captains": typing.List[TornEliminationTeamLeader],
-            "captain": None | TornEliminationTeamLeader,
-        },
-    )
     id: EliminationTeamId
     eliminated_timestamp: None | int
     eliminated: bool
+    captains: typing.TypedDict(
+        "",
+        {
+            "vice_captains": typing.List[TornEliminationTeamCaptain],
+            "captain": None | TornEliminationTeamCaptain,
+        },
+    )
     attacking_summary: typing.List[TornEliminationTeamAttacksSummary]
 
     @staticmethod
@@ -44,21 +44,21 @@ class TornEliminationTeam(BaseSchema):
             name=BaseSchema.parse(data.get("name"), str),
             losses=BaseSchema.parse(data.get("losses"), int),
             lives=BaseSchema.parse(data.get("lives"), int),
-            leaders=BaseSchema.parse(
-                data.get("leaders"),
-                typing.TypedDict(
-                    "",
-                    {
-                        "vice_captains": typing.List[TornEliminationTeamLeader],
-                        "captain": None | TornEliminationTeamLeader,
-                    },
-                ),
-            ),
             id=BaseSchema.parse(data.get("id"), EliminationTeamId),
             eliminated_timestamp=BaseSchema.parse(
                 data.get("eliminated_timestamp"), None | int
             ),
             eliminated=BaseSchema.parse(data.get("eliminated"), bool),
+            captains=BaseSchema.parse(
+                data.get("captains"),
+                typing.TypedDict(
+                    "",
+                    {
+                        "vice_captains": typing.List[TornEliminationTeamCaptain],
+                        "captain": None | TornEliminationTeamCaptain,
+                    },
+                ),
+            ),
             attacking_summary=BaseSchema.parse(
                 data.get("attacking_summary"),
                 typing.List[TornEliminationTeamAttacksSummary],
