@@ -6,4 +6,5 @@ JobPositionCasinoEnum = typing.Literal[
     "Revenue Manager",
     "Casino Manager",
     "Casino President",
+    "Dealer",
 ]

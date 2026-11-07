@@ -30,6 +30,7 @@ from ..schema.user_forum_subscribed_threads_response import (
 )
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_gym_response import UserGymResponse
+from ..schema.user_halloween_response import UserHalloweenResponse
 from ..schema.user_hof_response import UserHofResponse
 from ..schema.user_honors_response import UserHonorsResponse
 from ..schema.user_icons_response import UserIconsResponse
@@ -65,6 +66,7 @@ from ..schema.user_search_response import UserSearchResponse
 from ..schema.user_skills_response import UserSkillsResponse
 from ..schema.user_stocks_response import UserStocksResponse
 from ..schema.user_trades_response import UserTradesResponse
+from ..schema.user_travel_inventory_response import UserTravelInventoryResponse
 from ..schema.user_travel_response import UserTravelResponse
 from ..schema.user_virus_response import UserVirusResponse
 from ..schema.user_weapon_exp_response import UserWeaponExpResponse
@@ -312,6 +314,24 @@ class User(BaseQuery):
     
     """
 
+    halloween = Path(
+        "/user/halloween",
+        UserHalloweenResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/halloween`: Get your Halloween treats information
+    Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     lookup = Path(
         "/user/lookup",
         UserLookupResponse,
@@ -526,7 +546,7 @@ class User(BaseQuery):
     )
     """
     `/user/inventory`: Get your inventory
-    <b>Cached selection (1 hour per category).</b> Requires minimal access key.
+    <b>Cached selection (15 minutes per category).</b> Requires minimal access key.
 
     # Parameters
     - cat : Items category
@@ -535,6 +555,24 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    travelinventory = Path(
+        "/user/travelinventory",
+        UserTravelInventoryResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/travelinventory`: Get your travel inventory capacity
+    Requires limited access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -708,7 +746,7 @@ class User(BaseQuery):
     )
     """
     `/user/log`: Get your logs
-    Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.
+    Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections. Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.
 
     # Parameters
     - log : Log ids, comma separated, e.g. 105,4900,4905
@@ -716,9 +754,9 @@ class User(BaseQuery):
     - target : Get logs where you interacted with a specific player by passing their player ID.
     - limit : N/A
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
-    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be from and including this time
     - timestamp : Timestamp to bypass cache
-    - nanostamp : Timestamp in nanoseconds to bypass system limitation when more than 100 logs were returned in the same second.
+    - nanostamp : Nanosecond cursor for user/log pagination, returned as `_metadata.nanostamp`. Pass it back (without `to`) to continue from the exact position with no skipped or repeated logs; it also bypasses the limitation when more than 100 logs share the same second.
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Full). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     

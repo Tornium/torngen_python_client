@@ -443,7 +443,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/inventory`: Get your faction's inventory items.
-    <b>Cached selection (1 hour, all items cached at once).</b> Requires limited access key.
+    <b>Cached selection (5 minutes, all items cached at once).</b> Requires limited access key.
 
     # Parameters
     - cat : Armory category

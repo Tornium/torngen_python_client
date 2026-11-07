@@ -17,10 +17,12 @@ class ReportStockAnalysis(BaseSchema):
             "",
             {
                 "trip_duration": int,
+                "restock_timestamp": None | int,
                 "item": typing.TypedDict(
                     "",
                     {
                         "value": int,
+                        "stock": int,
                         "price": int,
                         "name": str,
                         "id": ItemId,
@@ -43,10 +45,12 @@ class ReportStockAnalysis(BaseSchema):
                         "",
                         {
                             "trip_duration": int,
+                            "restock_timestamp": None | int,
                             "item": typing.TypedDict(
                                 "",
                                 {
                                     "value": int,
+                                    "stock": int,
                                     "price": int,
                                     "name": str,
                                     "id": ItemId,
