@@ -16,6 +16,7 @@ from ..schema.torn_elimination_teams_response import TornEliminationTeamsRespons
 from ..schema.torn_faction_hof_response import TornFactionHofResponse
 from ..schema.torn_faction_tree_response import TornFactionTreeResponse
 from ..schema.torn_gyms_response import TornGymsResponse
+from ..schema.torn_halloween_response import TornHalloweenResponse
 from ..schema.torn_hof_response import TornHofResponse
 from ..schema.torn_honors_response import TornHonorsResponse
 from ..schema.torn_item_ammo_response import TornItemAmmoResponse
@@ -541,6 +542,24 @@ class Torn(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    halloween = Path(
+        "/torn/halloween",
+        TornHalloweenResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/halloween`: Get Halloween basket upgrades
+    Requires minimal access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
