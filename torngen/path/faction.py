@@ -11,6 +11,7 @@ from ..schema.faction_chains_response import FactionChainsResponse
 from ..schema.faction_contributors_response import FactionContributorsResponse
 from ..schema.faction_crime_exp_response import FactionCrimeExpResponse
 from ..schema.faction_crimes_response import FactionCrimesResponse
+from ..schema.faction_headlines_response import FactionHeadlinesResponse
 from ..schema.faction_hof_response import FactionHofResponse
 from ..schema.faction_inventory_response import FactionInventoryResponse
 from ..schema.faction_lookup_response import FactionLookupResponse
@@ -443,7 +444,7 @@ class Faction(BaseQuery):
     )
     """
     `/faction/inventory`: Get your faction's inventory items.
-    <b>Cached selection (1 hour, all items cached at once).</b> Requires limited access key.
+    <b>Cached selection (5 minutes, all items cached at once).</b> Requires limited access key.
 
     # Parameters
     - cat : Armory category
@@ -452,6 +453,26 @@ class Faction(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    headlines = Path(
+        "/faction/headlines",
+        FactionHeadlinesResponse,
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/faction/headlines`: Get your faction's news ticker headlines
+    Requires minimal access key with faction API access permissions. Returns the headlines currently shown in your faction's news ticker. 'importance' is 'urgent' for headlines marked as urgent.
+
+    # Parameters
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
