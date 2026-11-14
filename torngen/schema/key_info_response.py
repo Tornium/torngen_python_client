@@ -51,6 +51,7 @@ class KeyInfoResponse(BaseSchema):
                 "",
                 {
                     "type": ApiKeyAccessTypeEnum,
+                    "sensitive_data": bool,
                     "log": typing.TypedDict(
                         "",
                         {
@@ -59,6 +60,7 @@ class KeyInfoResponse(BaseSchema):
                         },
                     ),
                     "level": int,
+                    "legacy_permissions": bool,
                     "faction": bool,
                     "company": bool,
                 },
@@ -100,6 +102,7 @@ class KeyInfoResponse(BaseSchema):
                             "",
                             {
                                 "type": ApiKeyAccessTypeEnum,
+                                "sensitive_data": bool,
                                 "log": typing.TypedDict(
                                     "",
                                     {
@@ -108,6 +111,7 @@ class KeyInfoResponse(BaseSchema):
                                     },
                                 ),
                                 "level": int,
+                                "legacy_permissions": bool,
                                 "faction": bool,
                                 "company": bool,
                             },

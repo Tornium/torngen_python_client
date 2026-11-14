@@ -17,6 +17,8 @@ TornSelectionName = (
         "factionhof",
         "factiontree",
         "gyms",
+        "halloween",
+        "headlines",
         "hof",
         "honors",
         "itemammo",
