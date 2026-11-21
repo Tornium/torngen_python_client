@@ -25,7 +25,7 @@ class MarketId(BaseQuery):
     )
     """
     `/market/{id}/itemmarket`: Get item market listings
-    <b>Globally cached selection.</b> Requires public access key.
+    <b>Globally cached selection (1 hour).</b> Requires public access key.
 
     # Parameters
     - id : Item id
@@ -68,7 +68,7 @@ class MarketId(BaseQuery):
     )
     """
     `/market/{id}/auctionhouselisting`: Get specific item auction house listings
-    Requires public access key.
+    <b>Globally cached selection (15 minutes, ongoing listings only).</b> Requires public access key. Ongoing listings are returned from the cached and delayed ongoing listings.
 
     # Parameters
     - id : Listing id
@@ -82,6 +82,7 @@ class MarketId(BaseQuery):
         "/market/{id}/auctionhouse",
         AuctionHouseResponse,
         id=Parameter("id", "path", required=True, deprecated=False),
+        cat=Parameter("cat", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         sort=Parameter("sort", "query", required=False, deprecated=False),
         from_=Parameter("from", "query", required=False, deprecated=False),
@@ -92,10 +93,11 @@ class MarketId(BaseQuery):
     )
     """
     `/market/{id}/auctionhouse`: Get specific item auction house listings
-    Requires public access key.
+    <b>Globally cached selection (15 minutes, ongoing listings only).</b> Requires public access key. Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 
     # Parameters
     - id : Item id
+    - cat : Listings category, defaults to complete
     - limit : N/A
     - sort : Sorted by the greatest timestamps
     - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
