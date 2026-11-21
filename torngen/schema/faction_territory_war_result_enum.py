@@ -7,4 +7,5 @@ FactionTerritoryWarResultEnum = typing.Literal[
     "end_with_destroy_attack",
     "end_with_destroy_defense",
     "end_with_peace_treaty",
+    "end_with_dirty_bomb",
 ]

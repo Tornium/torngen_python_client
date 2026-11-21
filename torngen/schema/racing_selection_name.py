@@ -5,11 +5,11 @@ RacingSelectionName = (
     | typing.Literal[
         "cars",
         "carupgrades",
-        "lookup",
         "race",
         "races",
         "records",
-        "timestamp",
         "tracks",
+        "lookup",
+        "timestamp",
     ]
 )
