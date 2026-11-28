@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_id import FactionId
+from .faction_ranked_war_template import FactionRankedWarTemplate
 from .item_id import ItemId
 from .ranked_war_id import RankedWarId
 from .user_id import UserId
@@ -18,6 +19,7 @@ class FactionRankedWarReportResponse(BaseSchema):
         "",
         {
             "winner": FactionId,
+            "template": FactionRankedWarTemplate,
             "start": int,
             "id": RankedWarId,
             "forfeit": bool,
@@ -70,6 +72,7 @@ class FactionRankedWarReportResponse(BaseSchema):
                     "",
                     {
                         "winner": FactionId,
+                        "template": FactionRankedWarTemplate,
                         "start": int,
                         "id": RankedWarId,
                         "forfeit": bool,

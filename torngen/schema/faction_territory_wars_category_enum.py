@@ -1,3 +1,3 @@
 import typing
 
-FactionTerritoryWarsCategoryEnum = typing.Literal["finsihed", "ongoing"]
+FactionTerritoryWarsCategoryEnum = typing.Literal["finished", "ongoing"]

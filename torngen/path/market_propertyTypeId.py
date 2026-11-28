@@ -25,7 +25,7 @@ class MarketPropertyTypeId(BaseQuery):
     )
     """
     `/market/{propertyTypeId}/properties`: Get properties market listings
-    <b>Globally cached selection.</b> Requires public access key.
+    <b>Globally cached selection (1 hour).</b> Requires public access key.
 
     # Parameters
     - propertyTypeId : Property type id
@@ -53,7 +53,7 @@ class MarketPropertyTypeId(BaseQuery):
     )
     """
     `/market/{propertyTypeId}/rentals`: Get properties rental listings
-    <b>Globally cached selection.</b> Requires public access key.
+    <b>Globally cached selection (1 hour).</b> Requires public access key.
 
     # Parameters
     - propertyTypeId : Property type id

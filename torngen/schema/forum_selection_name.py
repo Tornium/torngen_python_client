@@ -2,5 +2,5 @@ import typing
 
 ForumSelectionName = (
     str
-    | typing.Literal["categories", "lookup", "posts", "thread", "threads", "timestamp"]
+    | typing.Literal["categories", "posts", "thread", "threads", "lookup", "timestamp"]
 )

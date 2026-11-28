@@ -16,6 +16,8 @@ from ..schema.torn_elimination_teams_response import TornEliminationTeamsRespons
 from ..schema.torn_faction_hof_response import TornFactionHofResponse
 from ..schema.torn_faction_tree_response import TornFactionTreeResponse
 from ..schema.torn_gyms_response import TornGymsResponse
+from ..schema.torn_halloween_response import TornHalloweenResponse
+from ..schema.torn_headlines_response import TornHeadlinesResponse
 from ..schema.torn_hof_response import TornHofResponse
 from ..schema.torn_honors_response import TornHonorsResponse
 from ..schema.torn_item_ammo_response import TornItemAmmoResponse
@@ -30,6 +32,7 @@ from ..schema.torn_museum_response import TornMuseumResponse
 from ..schema.torn_organized_crime_response import TornOrganizedCrimeResponse
 from ..schema.torn_poker_tables_response import TornPokerTablesResponse
 from ..schema.torn_properties import TornProperties
+from ..schema.torn_ranked_war_templates_response import TornRankedWarTemplatesResponse
 from ..schema.torn_rock_paper_scissors_response import TornRockPaperScissorsResponse
 from ..schema.torn_search_for_cash_response import TornSearchForCashResponse
 from ..schema.torn_shoplifting_response import TornShopliftingResponse
@@ -175,7 +178,7 @@ class Torn(BaseQuery):
     )
     """
     `/torn/bounties`: Get bounties
-    <b>Globally cached selection.</b> Requires public key.
+    <b>Globally cached selection (5 minutes).</b> Requires public key.
 
     # Parameters
     - limit : N/A
@@ -418,6 +421,26 @@ class Torn(BaseQuery):
     
     """
 
+    headlines = Path(
+        "/torn/headlines",
+        TornHeadlinesResponse,
+        striptags=Parameter("striptags", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/headlines`: Get news ticker headlines
+    Requires public access key. Returns the headlines currently shown in the news ticker. 'importance' is 'urgent' for headlines marked as announcements.
+
+    # Parameters
+    - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     medals = Path(
         "/torn/medals",
         TornMedalsResponse,
@@ -464,6 +487,24 @@ class Torn(BaseQuery):
     """
     `/torn/stats`: Get daily city stats
     Requires public key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    rankedwartemplates = Path(
+        "/torn/rankedwartemplates",
+        TornRankedWarTemplatesResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/rankedwartemplates`: Get all ranked war modes and rules
+    Requires public access key. Lists every mode and special rule a ranked war can have. The names match the 'mode' and 'rules' values of the 'template' object returned by the faction ranked war selections.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -536,6 +577,24 @@ class Torn(BaseQuery):
     """
     `/torn/merits`: Get all merits
     Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    halloween = Path(
+        "/torn/halloween",
+        TornHalloweenResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/torn/halloween`: Get Halloween basket upgrades
+    Requires public access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
 
     # Parameters
     - timestamp : Timestamp to bypass cache

@@ -3,8 +3,9 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .attack_action_enum import AttackActionEnum
-from .item_id import ItemId
-from .user_id import UserId
+from .attack_log_attacker import AttackLogAttacker
+from .attack_log_defender import AttackLogDefender
+from .attack_log_item import AttackLogItem
 
 
 @dataclass
@@ -16,19 +17,9 @@ class AttackLog(BaseSchema):
     timestamp: int
     text: str
     icon: str
-    defender: None | typing.TypedDict("", {"name": str, "id": UserId})
-    attacker_item: typing.Optional[typing.TypedDict("", {"name": str, "id": ItemId})]
-    attacker: None | typing.TypedDict(
-        "",
-        {
-            "name": str,
-            "item": None
-            | typing.TypedDict(
-                "", {"name": typing.Optional[str], "id": typing.Optional[ItemId]}
-            ),
-            "id": UserId,
-        },
-    )
+    defender: None | AttackLogDefender
+    attacker_item: typing.Optional[None | AttackLogItem]
+    attacker: None | AttackLogAttacker
     action: AttackActionEnum
 
     @staticmethod
@@ -37,32 +28,10 @@ class AttackLog(BaseSchema):
             timestamp=BaseSchema.parse(data.get("timestamp"), int),
             text=BaseSchema.parse(data.get("text"), str),
             icon=BaseSchema.parse(data.get("icon"), str),
-            defender=BaseSchema.parse(
-                data.get("defender"),
-                None | typing.TypedDict("", {"name": str, "id": UserId}),
-            ),
+            defender=BaseSchema.parse(data.get("defender"), None | AttackLogDefender),
             attacker_item=BaseSchema.parse(
-                data.get("attacker_item"),
-                typing.Optional[typing.TypedDict("", {"name": str, "id": ItemId})],
+                data.get("attacker_item"), typing.Optional[None | AttackLogItem]
             ),
-            attacker=BaseSchema.parse(
-                data.get("attacker"),
-                None
-                | typing.TypedDict(
-                    "",
-                    {
-                        "name": str,
-                        "item": None
-                        | typing.TypedDict(
-                            "",
-                            {
-                                "name": typing.Optional[str],
-                                "id": typing.Optional[ItemId],
-                            },
-                        ),
-                        "id": UserId,
-                    },
-                ),
-            ),
+            attacker=BaseSchema.parse(data.get("attacker"), None | AttackLogAttacker),
             action=BaseSchema.parse(data.get("action"), AttackActionEnum),
         )
