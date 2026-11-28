@@ -4,7 +4,9 @@ from ..parameter import Parameter
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_competition_response import UserCompetitionResponse
+from ..schema.user_criminal_record_response import UserCriminalRecordResponse
 from ..schema.user_discord_response import UserDiscordResponse
+from ..schema.user_display_response import UserDisplayResponse
 from ..schema.user_faction_response import UserFactionResponse
 from ..schema.user_forum_posts_response import UserForumPostsResponse
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
@@ -129,6 +131,26 @@ class UserId(BaseQuery):
     
     """
 
+    criminalrecord = Path(
+        "/user/{id}/criminalrecord",
+        UserCriminalRecordResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/criminalrecord`: Get criminal record for a specific player
+    Requires public access key. UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+
+    # Parameters
+    - id : User id or user discord id
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     forumposts = Path(
         "/user/{id}/forumposts",
         UserForumPostsResponse,
@@ -189,7 +211,7 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/bounties`: Get bounties placed on a specific user
-    Requires public access key.
+    <b>Globally cached selection (5 minutes).</b> Requires public access key.
 
     # Parameters
     - id : User id or user discord id
@@ -232,13 +254,41 @@ class UserId(BaseQuery):
     )
     """
     `/user/{id}/properties`: Get specific user's properties
-    Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+    <b>Cached selection (1 hour).</b> Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 
     # Parameters
     - id : User id or user discord id
-    - filters : It&#39;s possible to use this query parameter to filter properties by the key owner or their spouse.
+    - filters : It&#39;s possible to use this query parameter to filter properties to those owned by the requested user or by their spouse.
     - offset : N/A
     - limit : N/A
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    display = Path(
+        "/user/{id}/display",
+        UserDisplayResponse,
+        id=Parameter("id", "path", required=True, deprecated=False),
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/{id}/display`: Get display case for a specific player
+    Requires public access key. Item details are included only for the Primary, Secondary, Melee and Defensive categories. The All category returns every item unless a limit is given. Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+
+    # Parameters
+    - id : User id or user discord id
+    - cat : Items category, defaults to All
+    - offset : N/A
+    - limit : N/A
+    - sort : Sort by item name
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.

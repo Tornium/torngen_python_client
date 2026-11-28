@@ -22,7 +22,7 @@ class CompanyTypeId(BaseQuery):
     )
     """
     `/company/{typeId}/companies`: Get a list of companies for a specific company type
-    Requires public access key.
+    <b>Globally cached selection (1 hour).</b> Requires public access key.
 
     # Parameters
     - typeId : Company type id

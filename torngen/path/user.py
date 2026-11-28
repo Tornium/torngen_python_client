@@ -8,15 +8,19 @@ from ..schema.revives_full_response import RevivesFullResponse
 from ..schema.revives_response import RevivesResponse
 from ..schema.timestamp_response import TimestampResponse
 from ..schema.user_ammo_response import UserAmmoResponse
+from ..schema.user_auction_house_response import UserAuctionHouseResponse
 from ..schema.user_bars_response import UserBarsResponse
 from ..schema.user_basic_response import UserBasicResponse
 from ..schema.user_battle_stats_response import UserBattleStatsResponse
+from ..schema.user_bazaar_response import UserBazaarResponse
 from ..schema.user_bounties_response import UserBountiesResponse
 from ..schema.user_calendar_response import UserCalendarResponse
 from ..schema.user_casino_response import UserCasinoResponse
 from ..schema.user_competition_response import UserCompetitionResponse
 from ..schema.user_cooldowns_response import UserCooldownsResponse
+from ..schema.user_criminal_record_response import UserCriminalRecordResponse
 from ..schema.user_discord_response import UserDiscordResponse
+from ..schema.user_display_response import UserDisplayResponse
 from ..schema.user_education_response import UserEducationResponse
 from ..schema.user_enlisted_cars_response import UserEnlistedCarsResponse
 from ..schema.user_equipment_response import UserEquipmentResponse
@@ -30,7 +34,9 @@ from ..schema.user_forum_subscribed_threads_response import (
 )
 from ..schema.user_forum_threads_response import UserForumThreadsResponse
 from ..schema.user_gym_response import UserGymResponse
+from ..schema.user_halloween_response import UserHalloweenResponse
 from ..schema.user_hof_response import UserHofResponse
+from ..schema.user_honors_detailed_response import UserHonorsDetailedResponse
 from ..schema.user_honors_response import UserHonorsResponse
 from ..schema.user_icons_response import UserIconsResponse
 from ..schema.user_inventory_response import UserInventoryResponse
@@ -42,6 +48,7 @@ from ..schema.user_job_response import UserJobResponse
 from ..schema.user_list_response import UserListResponse
 from ..schema.user_logs_response import UserLogsResponse
 from ..schema.user_lookup_response import UserLookupResponse
+from ..schema.user_medals_detailed_response import UserMedalsDetailedResponse
 from ..schema.user_medals_response import UserMedalsResponse
 from ..schema.user_merits_response import UserMeritsResponse
 from ..schema.user_messages_response import UserMessagesResponse
@@ -65,6 +72,7 @@ from ..schema.user_search_response import UserSearchResponse
 from ..schema.user_skills_response import UserSkillsResponse
 from ..schema.user_stocks_response import UserStocksResponse
 from ..schema.user_trades_response import UserTradesResponse
+from ..schema.user_travel_inventory_response import UserTravelInventoryResponse
 from ..schema.user_travel_response import UserTravelResponse
 from ..schema.user_virus_response import UserVirusResponse
 from ..schema.user_weapon_exp_response import UserWeaponExpResponse
@@ -144,7 +152,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -249,7 +257,25 @@ class User(BaseQuery):
     )
     """
     `/user/bounties`: Get bounties placed on you
-    <b>Globally cached selection.</b> Requires public access key.
+    <b>Globally cached selection (5 minutes).</b> Requires public access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    criminalrecord = Path(
+        "/user/criminalrecord",
+        UserCriminalRecordResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/criminalrecord`: Get your criminal record
+    Requires public access key. UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -309,6 +335,50 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    halloween = Path(
+        "/user/halloween",
+        UserHalloweenResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/halloween`: Get your Halloween treats information
+    Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    display = Path(
+        "/user/display",
+        UserDisplayResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/display`: Get your display case
+    Requires public access key. Item details are included only for the Primary, Secondary, Melee and Defensive categories. The All category returns every item unless a limit is given. Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+
+    # Parameters
+    - cat : Items category, defaults to All
+    - offset : N/A
+    - limit : N/A
+    - sort : Sort by item name
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -498,16 +568,18 @@ class User(BaseQuery):
 
     honors = Path(
         "/user/honors",
-        UserHonorsResponse,
+        UserHonorsDetailedResponseUserHonorsResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/honors`: Get your achieved honors
-    Requires minimal access key.
+    `/user/honors`: Get your honors
+    Requires minimal access key. By default (category 'all'), only your achieved honors are returned as 'UserHonorsResponse'. When a specific category is requested, all honors of that category are returned as 'UserHonorsDetailedResponse', including the ones you have not achieved yet. The 'latest' category returns your 36 most recently achieved honors.
 
     # Parameters
+    - cat : Honors category, defaults to all
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -517,7 +589,7 @@ class User(BaseQuery):
     inventory = Path(
         "/user/inventory",
         UserInventoryResponse,
-        cat=Parameter("cat", "query", required=False, deprecated=False),
+        cat=Parameter("cat", "query", required=True, deprecated=False),
         offset=Parameter("offset", "query", required=False, deprecated=False),
         limit=Parameter("limit", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
@@ -526,7 +598,7 @@ class User(BaseQuery):
     )
     """
     `/user/inventory`: Get your inventory
-    <b>Cached selection (1 hour per category).</b> Requires minimal access key.
+    <b>Cached selection (15 minutes per category).</b> Requires minimal access key.
 
     # Parameters
     - cat : Items category
@@ -535,6 +607,50 @@ class User(BaseQuery):
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    travelinventory = Path(
+        "/user/travelinventory",
+        UserTravelInventoryResponse,
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/travelinventory`: Get your travel inventory capacity
+    Requires limited access key.
+
+    # Parameters
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
+    bazaar = Path(
+        "/user/bazaar",
+        UserBazaarResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        offset=Parameter("offset", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/bazaar`: Get your bazaar
+    Requires Limited, Full or Custom key with sensitive data enabled. Item details are included only for the Primary, Secondary, Melee and Defensive categories. The All category returns every item unless a limit is given. Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+
+    # Parameters
+    - cat : Items category, defaults to All
+    - offset : N/A
+    - limit : N/A
+    - sort : Sort by item name
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -576,16 +692,18 @@ class User(BaseQuery):
 
     medals = Path(
         "/user/medals",
-        UserMedalsResponse,
+        UserMedalsDetailedResponseUserMedalsResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
         timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
         comment=Parameter("comment", "query", required=False, deprecated=False),
         key=Parameter("key", "query", required=False, deprecated=False),
     )
     """
-    `/user/medals`: Get all your achieved medals
-    Requires public access key.
+    `/user/medals`: Get your medals
+    Requires public access key. By default (category 'all'), only your achieved medals are returned as 'UserMedalsResponse'. When a specific category is requested, all medals of that category are returned as 'UserMedalsDetailedResponse', including the ones you have not achieved yet, with your progress towards them. This requires a minimal access key. The 'latest' category returns your 30 most recently achieved medals.
 
     # Parameters
+    - cat : Medals category, defaults to all
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
@@ -601,7 +719,7 @@ class User(BaseQuery):
     )
     """
     `/user/newmessages`: Get your unseen messages
-    Requires limited access key. This selection is cached for 1 hour.
+    Requires limited access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -644,10 +762,10 @@ class User(BaseQuery):
     )
     """
     `/user/properties`: Get your own properties
-    Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
+    <b>Cached selection (1 hour).</b> Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys. The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 
     # Parameters
-    - filters : It&#39;s possible to use this query parameter to filter properties by the key owner or their spouse.
+    - filters : It&#39;s possible to use this query parameter to filter properties to those owned by the requested user or by their spouse.
     - offset : N/A
     - limit : N/A
     - timestamp : Timestamp to bypass cache
@@ -708,7 +826,7 @@ class User(BaseQuery):
     )
     """
     `/user/log`: Get your logs
-    Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.
+    Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections. Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.
 
     # Parameters
     - log : Log ids, comma separated, e.g. 105,4900,4905
@@ -716,9 +834,9 @@ class User(BaseQuery):
     - target : Get logs where you interacted with a specific player by passing their player ID.
     - limit : N/A
     - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
-    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be from and including this time
     - timestamp : Timestamp to bypass cache
-    - nanostamp : Timestamp in nanoseconds to bypass system limitation when more than 100 logs were returned in the same second.
+    - nanostamp : Nanosecond cursor for user/log pagination, returned as `_metadata.nanostamp`. Pass it back (without `to`) to continue from the exact position with no skipped or repeated logs; it also bypasses the limitation when more than 100 logs share the same second.
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
     - key : API key (Full). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
@@ -836,6 +954,34 @@ class User(BaseQuery):
     
     """
 
+    auctionhouse = Path(
+        "/user/auctionhouse",
+        UserAuctionHouseResponse,
+        cat=Parameter("cat", "query", required=False, deprecated=False),
+        limit=Parameter("limit", "query", required=False, deprecated=False),
+        sort=Parameter("sort", "query", required=False, deprecated=False),
+        from_=Parameter("from", "query", required=False, deprecated=False),
+        to=Parameter("to", "query", required=False, deprecated=False),
+        timestamp=Parameter("timestamp", "query", required=False, deprecated=False),
+        comment=Parameter("comment", "query", required=False, deprecated=False),
+        key=Parameter("key", "query", required=False, deprecated=False),
+    )
+    """
+    `/user/auctionhouse`: Get your auction house listings
+    Requires Limited, Full or Custom key with sensitive data enabled. Returns your item listings ordered by their end time.
+
+    # Parameters
+    - cat : Listings category, defaults to all
+    - limit : N/A
+    - sort : Sorted by the greatest timestamps
+    - from_ : Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+    - to : Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+    - timestamp : Timestamp to bypass cache
+    - comment : Comment for your tool/service/bot/website to be visible in the logs.
+    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    
+    """
+
     gym = Path(
         "/user/gym",
         UserGymResponse,
@@ -850,7 +996,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -1110,7 +1256,7 @@ class User(BaseQuery):
     # Parameters
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Public). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -1323,7 +1469,7 @@ class User(BaseQuery):
     )
     """
     `/user/revives`: Get your detailed revives
-    Requires limited access key.
+    Requires minimal access key.
 
     # Parameters
     - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives. It&#39;s also possible to combine this with &#39;idFilter&#39;. This filter allows using from/to to filter by ids instead of timestamps.
@@ -1334,7 +1480,7 @@ class User(BaseQuery):
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 
@@ -1347,7 +1493,7 @@ class User(BaseQuery):
     )
     """
     `/user/networth`: Get your networth
-    Requires limited access key.
+    <b>Cached selection (15 minutes).</b> Requires limited access key.
 
     # Parameters
     - timestamp : Timestamp to bypass cache
@@ -1397,7 +1543,7 @@ class User(BaseQuery):
     )
     """
     `/user/revivesFull`: Get your simplified revives
-    Requires limited access key.
+    Requires minimal access key.
 
     # Parameters
     - filters : It&#39;s possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives. It&#39;s also possible to combine this with &#39;idFilter&#39;. This filter allows using from/to to filter by ids instead of timestamps.
@@ -1408,7 +1554,7 @@ class User(BaseQuery):
     - striptags : Determines if fields include HTML or not (&#39;Hospitalized by &lt;a href=...&gt;user&lt;/a&gt;&#39; vs &#39;Hospitalized by user&#39;).
     - timestamp : Timestamp to bypass cache
     - comment : Comment for your tool/service/bot/website to be visible in the logs.
-    - key : API key (Limited). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
+    - key : API key (Minimal). It&#39;s not required to use this parameter when passing the API key via the Authorization header.
     
     """
 

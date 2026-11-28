@@ -1,0 +1,31 @@
+import typing
+from dataclasses import dataclass
+
+from ..base_schema import BaseSchema
+from .item_market_listing_item_bonus import ItemMarketListingItemBonus
+from .item_market_listing_item_stats import ItemMarketListingItemStats
+
+
+@dataclass
+class UserArmouryItemDetails(BaseSchema):
+    """
+    JSON object of `UserArmouryItemDetails`.
+    """
+
+    stats: None | ItemMarketListingItemStats
+    rarity: None | typing.Literal["yellow", "orange", "red"]
+    bonuses: typing.List[ItemMarketListingItemBonus]
+
+    @staticmethod
+    def parse(data):
+        return UserArmouryItemDetails(
+            stats=BaseSchema.parse(
+                data.get("stats"), None | ItemMarketListingItemStats
+            ),
+            rarity=BaseSchema.parse(
+                data.get("rarity"), None | typing.Literal["yellow", "orange", "red"]
+            ),
+            bonuses=BaseSchema.parse(
+                data.get("bonuses"), typing.List[ItemMarketListingItemBonus]
+            ),
+        )

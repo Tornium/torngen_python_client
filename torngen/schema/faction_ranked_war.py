@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from ..base_schema import BaseSchema
 from .faction_ranked_war_participant import FactionRankedWarParticipant
+from .faction_ranked_war_template import FactionRankedWarTemplate
 
 
 @dataclass
@@ -13,6 +14,7 @@ class FactionRankedWar(BaseSchema):
 
     winner: None | int
     war_id: int
+    template: FactionRankedWarTemplate
     target: int
     start: int
     factions: typing.List[FactionRankedWarParticipant]
@@ -23,6 +25,7 @@ class FactionRankedWar(BaseSchema):
         return FactionRankedWar(
             winner=BaseSchema.parse(data.get("winner"), None | int),
             war_id=BaseSchema.parse(data.get("war_id"), int),
+            template=BaseSchema.parse(data.get("template"), FactionRankedWarTemplate),
             target=BaseSchema.parse(data.get("target"), int),
             start=BaseSchema.parse(data.get("start"), int),
             factions=BaseSchema.parse(
